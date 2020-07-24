@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX jQuery DEMO</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js"></script>
+</head>
+
+<body>
+    <button id="getData">获取数据</button>
+    <div id="result"></div>
+
+    <script>
+        $('#getData').click(getDataAsync);
+
+        // jQuery非异步获取ajax数据
+        function getData() {
+            var xmlhttp = $.ajax({
+                url: 'data.txt',
+                async: false
+            });
+            $('#result').text(xmlhttp.responseText);
+            console.log(xmlhttp);
+        }
+
+        // jQuery异步获取数据
+        function getDataAsync() {
+            var xmlhttp = $.ajax({
+                url: 'data.txt',
+                context: $("#result"),
+                success: function () {
+                    $(this).html(xmlhttp.responseText);
+                    console.log($(this), xmlhttp);
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>抢购倒计时2</title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        .count-frame {
+            position: relative;
+            max-width: 550px;
+            margin: 0px auto;
+            border: 2px solid #E61414;
+            border-radius: 5px;
+            color: #E61414;
+            padding-left: 15px;
+        }
+
+        .right {
+            position: absolute;
+            right: 10px;
+            bottom: 8px;
+        }
+
+        .right .price {
+            float: left;
+            margin: 0 15px;
+            line-height: 37px;
+        }
+
+        .btn {
+            width: 128px;
+            height: 37px;
+            font-size: 20px;
+            line-height: 37px;
+            color: #e61414;
+            border-radius: 6px;
+            border: 1px solid #f9ac00;
+            background: #fee97d linear-gradient(#fee97d 60%, #fde158 100%) repeat-x;
+            outline: none;
+        }
+
+        .btn:hover {
+            cursor: pointer;
+            color: #ff4845;
+            background: #fafeb7 linear-gradient(#feefb1 60%, #fde158 100%) repeat-x;
+        }
+
+        .btn:active {
+            color: #ff1513;
+            background: #fafeb7 linear-gradient(#fde158 60%, #feed88 100%) repeat-x;
+        }
+    </style>
+</head>
+<body>
+<center><h3>苹果 iPhone7 32GB 移动联通双4G（每个ID限购5件）</h3></center>
+<div class="count-frame">
+    <p id="countdown">还剩:
+        <span id="hour">??</span>小时
+        <span id="min">??</span>分
+        <span id="sec">??</span>秒</p>
+    <div class="right">
+        <p class="price">￥3988.0
+            <del>￥4158.00</del>
+        </p>
+        <button class="btn">马上抢购</button>
+    </div>
+</div>
+
+
+</body>
+<script>
+    var msAll = 24 * 3600 * 1000;
+
+    setInterval(function () {
+        var sAll = (msAll / 1000);
+        var hours = Math.floor(sAll / 3600);
+        var mins = Math.floor((sAll - (hours * 3600)) / 60);
+        var secs = Math.floor(sAll - (hours * 3600) - (mins * 60));
+        var secss = sAll.toString().slice(-1);
+
+
+        $('#hour').html(hours);
+        $('#min').html(mins);
+        $('#sec').html(secs + '.' + secss);
+        msAll -= 100;
+    }, 100)
+</script>
+</html>

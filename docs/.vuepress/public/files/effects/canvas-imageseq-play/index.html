@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .object-wrap {
+      max-width: 450px;
+      margin: 10px auto;
+    }
+
+    .object {
+      position: relative;
+      height: 0;
+      width: 100%;
+      padding-bottom: 214.3%;
+    }
+
+    .camera-object {
+      padding-bottom: 150%
+    }
+
+    .canvas-wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <script src="./canvas-keyframes.js"></script>
+  <script src="./index.js"></script>
+</head>
+
+<body>
+  <div class="main">
+    <div class="object-wrap">
+      <div class="object">
+        <div id="phoneCanvas" class="canvas-wrap"></div>
+      </div>
+    </div>
+
+    <div class="object-wrap">
+      <div class="object camera-object">
+        <div id="cameraCanvas" class="canvas-wrap"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    initKeyframes(
+      document.querySelector('#phoneCanvas'),
+      function (i) { return 'https://statics.oneplus.cn/ov/assets/images/events/2019/04/18821/highlight/phones/phone' + i + '.jpg' },
+      100,
+      {
+        fps: 30,
+        width: 504,
+        height: 1080
+      }
+    )
+
+    initKeyframes(
+      document.querySelector('#cameraCanvas'),
+      function (i) { return 'https://statics.oneplus.cn/ov/assets/images/events/2019/04/18821/highlight/camera/camera' + i + '.png' },
+      31,
+      {
+        fps: 15,
+        width: 504,
+        height: 1080
+      }
+    )
+  </script>
+</body>
+
+</html>

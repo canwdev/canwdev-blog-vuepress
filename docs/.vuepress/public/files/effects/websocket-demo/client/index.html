@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>WebSocket Demo</title>
+
+  <style>
+    #output > div {
+      transition: all 1s;
+      background: transparent;
+    }
+
+    #output > div.active {
+      background: blue;
+    }
+  </style>
+</head>
+<body>
+
+<form action="javascript:" id="form">
+  <input type="text" name="message" value="Hello">
+  <button type="submit">Submit</button>
+</form>
+
+<hr>
+
+<button onclick="openConnection()" style="background: green; color: #fff">Open WS</button>
+<button onclick="closeConnection()" style="background: red; color: #fff">Close WS</button>
+
+<pre id="output" style="height: 100px; background: #000; color:#fff; overflow: auto"></pre>
+
+<script>
+  var output = document.getElementById('output')
+  var form = document.getElementById('form')
+
+  var ws = null
+
+  function connect() {
+    if (ws) {
+      console.log('已经存在实例，请勿重复连接')
+      return ws
+    }
+
+    var webSocket = new WebSocket('ws://localhost:8181')
+
+    webSocket.onopen = function (e) {
+      console.log('WebSocket connection opened', e)
+    }
+    webSocket.onclose = function (e) {
+      console.log('WebSocket connection closed', e)
+      ws = null
+    }
+    webSocket.onmessage = function (e) {
+      console.log('onmessage:', e.data)
+      handleOnMessage(e.data)
+    }
+    return webSocket
+  }
+
+  function openConnection() {
+    ws = connect()
+  }
+
+  openConnection()
+
+  function closeConnection() {
+    if (ws) {
+      ws.close()
+    }
+  }
+
+
+  form.addEventListener('submit', sendMessage)
+
+  function sendMessage() {
+    var data = new FormData(form)
+    var message = data.get('message')
+    ws.send(message)
+    console.log('send:', message)
+  }
+
+  function handleOnMessage(message) {
+    var div = document.createElement('div')
+    div.classList.add('active')
+    div.innerText = message
+    output.append(div)
+    div.scrollIntoView()
+    setTimeout(function () {
+      div.classList.remove('active')
+    }, 500)
+  }
+</script>
+</body>
+</html>

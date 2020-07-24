@@ -1,0 +1,26 @@
+{
+  "name": "notes-vuepress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "dev2": "nodemon --watch './docs/.vuepress/config.js' --exec vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://mint.zencode.top:9004/root/notes-vuepress.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vuepress/plugin-google-analytics": "^1.5.0",
+    "@vuepress/plugin-medium-zoom": "^1.5.0",
+    "vuepress": "^1.5.0",
+    "@vuepress/plugin-pwa": "^1.5.1"
+  }
+}

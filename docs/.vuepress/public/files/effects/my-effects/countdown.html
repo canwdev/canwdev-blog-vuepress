@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新年倒计时</title>
+    <style>
+
+
+        .count-frame {
+            max-width: 800px;
+            margin: 50px auto;
+            border: 5px solid darkred;
+            border-radius: 5px;
+            background-color: #faff92;
+            color: red;
+            box-shadow: 0 0 10px red inset;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;">
+        <div class="count-frame">
+            <h3 id="count_down">......</h3>
+        </div>
+    </div>
+
+</body>
+<script>
+    uiObj = document.getElementById('count_down');
+
+    setInterval(function () {
+        uiObj.innerText = counter();
+    }, 1000);
+
+    function counter() {
+        var date = new Date();
+        var year = date.getFullYear();
+        var date2 = new Date(year, 11, 31, 23, 59, 59);
+
+        var time = (date2 - date) / 1000;   //转换成秒
+        var day = Math.floor(time / (24 * 60 * 60));
+        var hour = Math.floor(time % (24 * 60 * 60) / (60 * 60));
+        var minute = Math.floor(time % (24 * 60 * 60) % (60 * 60) / 60);
+        var second = Math.floor(time % (24 * 60 * 60) % (60 * 60) % 60);
+        return year + "年还剩" + day + "天" + hour + "时" + minute + "分" + second + "秒";
+    }
+</script>
+</html>

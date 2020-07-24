@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Web Audio API Demo</title>
+  <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
+</head>
+<body>
+<p>参考：https://juejin.im/post/599e35f5f265da246c4a1910</p>
+
+<hr>
+
+<p><label for="inputVolume">音量：</label><input id="inputVolume" type="range" value="100"  min="0" max="100"></p>
+<p><label for="inputFilter">滤波器：</label><input id="inputFilter" type="range" value="1000" min="0" max="24000"></p>
+<p><label for="inputPanner">左右环绕：</label><input id="inputPanner" type="range" value="0" min="-10" max="10"></p>
+
+<script>
+  // 音频文件路径
+  const url = '/music.m4a'
+
+  // 创建音频上下文对象
+  const audioContext = new AudioContext()
+
+  // 创建source容器
+  const source = audioContext.createBufferSource()
+  // 创建增益节点
+  const gainNode = audioContext.createGain()
+  // 创建“双二阶滤波器”
+  const filterNode = audioContext.createBiquadFilter()
+  // 可以设置滤波器初始参数
+  filterNode.type = "lowpass"
+  filterNode.frequency.value = 1000
+  // “自动声像”节点
+  const pannerNode = audioContext.createPanner()
+
+  // 播放音频
+  const playAudio = function (buffer) {
+    // 在容器中加入buffer
+    source.buffer = buffer
+
+    // 连接增益节点
+    source.connect(gainNode)
+
+    // 连接滤波器节点
+    gainNode.connect(filterNode)
+
+    filterNode.connect(pannerNode)
+
+    // 通过管道（connect）把节点和出口（destination）连接
+    pannerNode.connect(audioContext.destination)
+
+    // 音频流出
+    source.start()
+  }
+
+  // 通过增益节点调整音量，范围在 0~1
+  const updateVolume = val => gainNode.gain.value = val
+
+  // 通过滤波器调整，范围在 0~24000
+  const updateFrequency = val => filterNode.frequency.value = val
+
+  // 声像器调整
+  const updatePanner = val => pannerNode.setPosition(val, 0, 0)
+
+
+  // 请求音频文件
+  axios.get(url, {
+    responseType: 'arraybuffer'
+  }).then(res => {
+    // 转换音频数据为buffer格式
+    audioContext.decodeAudioData(res.data, buffer => {
+      if (buffer) {
+        playAudio(buffer)
+      }
+    })
+  }).catch(e => {
+    console.error(e)
+  })
+
+  // DOM交互
+  inputVolume.addEventListener('input', function() {
+    var volume = this.value / 100
+    updateVolume(volume)
+  })
+
+  inputFilter.addEventListener('input', function() {
+    updateFrequency(this.value)
+  })
+
+  inputPanner.addEventListener('input', function() {
+    updatePanner(this.value)
+  })
+</script>
+</body>
+</html>

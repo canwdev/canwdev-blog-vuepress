@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>2.绘制折线图</title>
+  <style>
+    #canvas {
+      outline: 1px solid #f00;
+    }
+  </style>
+</head>
+<body>
+<canvas id="canvas" width="1200" height="800"></canvas>
+
+<script>
+  // 绘制数据
+  function drawData(context, options) {
+    let data = options.data // 数据点坐标
+    let xLength = (options.chartZone[2] - options.chartZone[0]) * options.padNumber // x轴长度
+    let yLength = (options.chartZone[3] - options.chartZone[1]) * options.padNumber // y轴长度
+    let gap = xLength / options.xAxisLabel.length // x轴间隙
+
+    let yFactor = yLength / options.yMax // y轴数据值到坐标距离的比例因子
+    let activeX = 0 // 绘制过程中x的坐标
+    let activeY = 0 // 绘制过程中y的坐标
+
+    context.strokeStyle = options.barStyle.color || '#1abc9c'
+    context.strokeWidth = 2
+    context.beginPath()
+    context.moveTo(options.chartZone[0], options.chartZone[3]) // 将起点移动至(0,0)坐标
+    for (let i = 0; i < data.length; i++) {
+      activeX = options.chartZone[0] + gap * (i + 1)
+      activeY = options.chartZone[3] - yFactor * data[i]
+      context.lineTo(activeX, activeY)
+    }
+    // 绘制线条
+    context.stroke()
+  }
+
+  // 用贝塞尔曲线绘制平滑折线图
+  // 三次贝塞尔曲线数据拟合
+  function drawDataWithCubicBezier(context, options) {
+    let xLength = (options.chartZone[2] - options.chartZone[0]) * options.padNumber
+    let yLength = (options.chartZone[3] - options.chartZone[1]) * options.padNumber
+    let yFactor = yLength / options.yMax // y轴数据值到坐标距离的比例因子
+    let drawingPoints = calcControlPoints()
+
+    context.strokeStyle = options.barStyle.color || '#1abc9c'
+    context.strokeWidth = 4
+    context.beginPath()
+    context.moveTo(options.chartZone[0], options.chartZone[3])
+
+    // 逐个连接相邻坐标点
+    for (let i = 1; i < drawingPoints.length; i++) {
+      context.bezierCurveTo(
+        drawingPoints[i - 1].cp1x, drawingPoints[i - 1].cp1y,
+        drawingPoints[i - 1].cp2x, drawingPoints[i - 1].cp2y,
+        drawingPoints[i].dx, drawingPoints[i].dy
+      )
+    }
+
+    context.stroke()
+
+    /**
+     * 计算控制点
+     * 本例采用的算法，在每个点计算时需要用到该点左侧1个点和右侧2个点的坐标信息，影响边界点的绘制，本例中采用的方法为直接复制边界点坐标来简化边界点的坐标求值。
+     */
+    function calcControlPoints() {
+      let results = []
+      let y = Object.assign([], options.data)
+      let x = Object.assign([], options.xAxisPos)
+
+      // 补充左值
+      y.unshift(y[0])
+      x.unshift(0)
+
+      // 补充右值
+      x.push(x[x.length - 1])
+      x.push(x[x.length - 1])
+      y.push(y[y.length - 1])
+      y.push(y[y.length - 1])
+
+      // 计算用于绘制曲线的坐标点及控制点坐标值
+      for (let i = 1; i < y.length - 2; i++) {
+        results.push({
+          dx: transToCanvasCoord(x[i], 'x'),
+          dy: transToCanvasCoord(y[i],),
+          cp1x: transToCanvasCoord(x[i] + (x[i+1] - x[i-1]) / 5, 'x'),
+          cp1y: transToCanvasCoord(y[i] + (y[i+1] - y[i-1]) / 5),
+          cp2x: transToCanvasCoord(x[i+1] - (x[i+2] - x[i]) / 5, 'x'),
+          cp2y: transToCanvasCoord(y[i+1] - (y[i+2] - y[i]) / 5),
+
+        })
+      }
+
+      console.log({y, x})
+      console.log({results})
+      return results
+    }
+
+    /**
+     * 将坐标转换为相对canvas的坐标
+     * @param coord 相对于可视坐标系的值
+     * @param flag 标记转换x坐标还是y坐标
+     */
+    function transToCanvasCoord(coord, flag) {
+      if (flag === 'x') {
+        return coord + options.chartZone[0]
+      }
+      return options.chartZone[3] - coord * yFactor
+    }
+  }
+
+
+</script>
+<script src="index.js"></script>
+
+</body>
+</html>

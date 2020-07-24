@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>幻灯片实例1.5 渐变</title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/holder.min.js"></script>
+
+    <style>
+        .container {
+            width: 80%;
+            padding: 0 15px;
+            margin: 0 auto;
+        }
+
+        .carousel {
+            width: 520px;
+            height: 280px;
+            margin: 0 auto;
+            border: 2px solid #6e0600;
+            position: relative;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .slide img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .pager {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        .pager a {
+            text-decoration: none;
+            color: #fff;
+            padding: 0 5px;
+            text-shadow: 0 0 3px #000;
+        }
+
+        .pager a.active {
+            background-color: #920000;
+            font-weight: bold;
+            border: 1px solid #610000;
+            border-radius: 2px;
+        }
+
+        .pager a:hover {
+            background-color: #920000;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>TEST!!!</h1>
+
+    <div class="carousel">
+        <div class="slide">
+            <a href="#" rel="1"><img src="img/1.jpg"/></a>
+            <a href="#" rel="2"><img src="img/2.jpg"/></a>
+            <a href="#" rel="3"><img src="img/3.webp"/></a>
+        </div>
+        <div class="pager">
+            <a href="#" rel="1">1</a>
+            <a href="#" rel="2">2</a>
+            <a href="#" rel="3">3</a>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+
+    $('h1').css({'opacity': 0});
+    $('h1').fadeTo(1000, 1);
+
+    $('.pager a').first().addClass('active');
+    idx = 1;
+    switchTo();
+
+    var count = $('.slide a').size();
+
+    function switchTo() {
+        var slideObj = $('.slide a[rel=' + idx + ']');
+        slideObj.appendTo('.slide');
+        slideObj.css({'opacity': 0});
+        slideObj.fadeTo(1000, 1);
+
+        $('.pager a').removeClass('active');
+        $('.pager a[rel=' + idx + ']').addClass('active');
+    }
+
+    runSwitch = function () {
+        play = setInterval(function () {
+            if (idx < count) {
+                idx++
+            } else {
+                idx = 1;
+            }
+            switchTo();
+        }, 3500)
+    };
+    runSwitch();
+
+    $('.slide a').hover(
+        function () {
+            clearInterval(play);
+        },
+        function () {
+            runSwitch();
+        }
+    );
+
+    $('.pager a').click(function () {
+
+        clearInterval(play);
+        idx = $(this).attr('rel');
+        switchTo();
+        runSwitch();
+        return false;
+    });
+</script>
+</html>

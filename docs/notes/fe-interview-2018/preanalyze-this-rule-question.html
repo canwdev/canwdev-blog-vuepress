@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>预解释作用域this原理题</title>
+</head>
+
+<body>
+360的一道面试题，打开console查看答案。
+</body>
+<script>
+    var num = 20;
+    var obj = {
+        num: 30,
+        fn: (function (num) {
+            this.num *= 3;
+            num += 15;
+            var num = 45;
+            return function () {
+                this.num *= 4;
+                num += 20;
+                console.log(num);
+            }
+        })(num)
+    };
+
+    var fn = obj.fn;
+    fn();
+    obj.fn();
+    console.log(window.num, obj.num);
+
+
+    
+
+    // 以下为解答过程
+    `
+    var num = 20;                   // window.num
+    var obj = {
+        num: 30,
+        fn: (function (num) {
+            this.num *= 3;          // window.num*=3 -> window.num = 60
+            num += 15;              // 20+=15 -> num = 35
+            var num = 45;           // num = 45
+            return function () {    // "function(){ native code }" as if addr in memory is 0xfff111
+                this.num *= 4;
+                num += 20;
+                console.log(num);
+            }
+        })(num)                     // num is window.num is 20
+    };
+
+    var fn = obj.fn;                // get the function address 0xfff111
+
+    fn();                           // fn() -> 0xfff111()
+                                    // this.num*=4 = window.num*=4 -> 240
+                                    // num+= 20 = 45+=20 -> 65
+                                    // -> 65
+
+    obj.fn();                       // obj.fn() -> obj.0xfff111()
+                                    // this.num*=4 = obj.num*=4 -> 120
+                                    // num+=20 = 65+=20 -> 85
+                                    // -> 85
+
+    console.log(window.num, obj.num);   // -> 240
+                                        // -> 120
+    `
+</script>
+
+</html>

@@ -1,0 +1,30 @@
+body, html {
+  height: 100%;
+}
+
+.item {
+  min-width: 5px;
+  min-height: 5px;
+  background: #ccc;
+  outline: 1px dotted #000;
+}
+
+.item.red {
+  background: #F44336;
+}
+
+.item.green {
+  background: #4CAF50;
+}
+
+.item.blue {
+  background: #2196F3;
+}
+
+.item.yellow {
+  background: #FFEB3B;
+}
+
+.item.pink {
+  background: #E91E63;
+}

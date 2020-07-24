@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>土制纵向无缝滚动jQuery插件</title>
+    <style>
+        .scroll-box {
+            height: 100px;
+            overflow: auto;
+            background: aliceblue;
+        }
+
+        .scroll-box .item {
+            font-size: 18px;
+        }
+
+        .scroll-box ol {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>无缝滚动</h1>
+    <div id="box1" class="scroll-box">
+        <ol class="scroller">
+            <!-- li.item*8>a[href="https://bing.com"]{lorem}  -->
+            <li class="item"><a href="https://bing.com">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></li>
+            <li class="item"><a href="https://bing.com">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></li>
+            <li class="item"><a href="https://bing.com">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></li>
+            <li class="item"><a href="https://bing.com">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></li>
+            <li class="item"><a href="https://bing.com">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></li>
+            <li class="item"><a href="https://bing.com">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></li>
+            <li class="item"><a href="https://bing.com">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></li>
+            <li class="item"><a href="https://bing.com">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></li>
+        </ol>
+    </div>
+
+    <h1>间歇滚动</h1>
+    <div id="box2" class="scroll-box">
+        <ol class="scroller">
+            <!-- li.item*8>a[href="https://bing.com"]{lorem}  -->
+            <li class="item"><a href="https://bing.com">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></li>
+            <li class="item"><a href="https://bing.com">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></li>
+            <li class="item"><a href="https://bing.com">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></li>
+            <li class="item"><a href="https://bing.com">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></li>
+            <li class="item"><a href="https://bing.com">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></li>
+            <li class="item"><a href="https://bing.com">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></li>
+            <li class="item"><a href="https://bing.com">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></li>
+            <li class="item"><a href="https://bing.com">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></li>
+        </ol>
+    </div>
+    <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    <script>
+        $(function ($) {
+            // 土制纵向无缝滚动jQuery插件 by canwdev 2018-6-8 15:55:09
+            $.fn.scroller = function (SetFn) {
+                // 默认设置的逻辑比较滑稽（原型链），传递了一个构造函数 setFn 作为自定义设置
+                // 判断参数是否为函数，如果不是，则设置他为函数
+                if (typeof SetFn != 'function') {
+                    SetFn = function () {}
+                };
+
+                // 创建一个默认设置的构造函数
+                function DefaultSet() {};
+                // 设置默认设置的原型的属性
+                DefaultSet.prototype = {
+                    time: 50, // 默认滚动速度（毫秒）
+                    subClassName: '.scroller', // 子元素（li）的默认类名
+                    delay: false, // 设置间歇性滚动延迟，false或者毫秒数。
+                    delayCount: 1 // 滚动延迟条数，即滚动delayCount条延迟delay秒。 
+                };
+
+                // 让（自定义设置）构造函数继承默认设置，
+                // 这样即使不设置，也能继承默认设置的属性，原型链向上查找
+                SetFn.prototype = new DefaultSet();
+                // 实例化自定义设置
+                var set = new SetFn();
+
+                var box = $(this);
+                var boxScroller = box.find(set.subClassName);
+                var itemHeight = boxScroller.children().eq(0).height();
+
+                // 克隆一个副本，放在后面
+                boxScroller.after(boxScroller.clone());
+
+                // 滚动核心代码
+                // 默认滚动模式
+                var scrollUp = function () {
+                    if (box[0].scrollTop >= boxScroller[0].scrollHeight) {
+                        box[0].scrollTop = 0;
+                    } else {
+                        box[0].scrollTop++;
+                    }
+
+                }
+                // 间歇滚动模式
+                var delayTimeout = null;
+                var scrollUpDelay = function () {
+                    var i = -1;
+                    if (box[0].scrollTop != 0) {
+                        i = box[0].scrollTop % (itemHeight * set.delayCount);
+                    }
+
+                    if (i == 0) {
+                        clearInterval(scrolling);
+                        delayTimeout = setTimeout(function () {
+                            box[0].scrollTop++;
+                            startScroll();
+                        }, set.delay);
+                    } else {
+                        scrollUp();
+                    }
+                }
+
+                // 开始滚动
+                var scrolling = null;
+                function startScroll() {
+                    if (set.delay == false) {
+                        scrolling = setInterval(scrollUp, set.time);
+                    } else {
+                        scrolling = setInterval(scrollUpDelay, set.time);
+                    }
+                }
+                startScroll();
+
+                // 鼠标悬停暂停
+                box.hover(
+                    function () {
+                        clearInterval(scrolling);
+                        clearTimeout(delayTimeout);
+                    },
+                    function () {
+                        startScroll();
+                    }
+                )
+
+            }
+        });
+
+        $(function () {
+            $('#box1').scroller();
+            // 使用jQuery插件的方式初始化，传递了一个构造函数，内部有自定义参数
+            $('#box2').scroller(function () {
+                this.time = 10;
+                this.delay = 2000;
+                this.delayCount = 4;
+            });
+        })
+    </script>
+</body>
+
+</html>

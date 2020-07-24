@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+    <style>
+        @keyframes bgcolor {
+            0%   { background-color: #c44040; }
+            10%  { background-color: #c48040; }
+            20%  { background-color: #80c440; }
+            30%  { background-color: #40c440; }
+            40%  { background-color: #40c480; }
+            50%  { background-color: #4080c4; }
+            60%  { background-color: #4040c4; }
+            70%  { background-color: #8040c4; }
+            80%  { background-color: #c44080; }
+            90%  { background-color: #000000; }
+            100% { background-color: #c44040; }
+        }
+        body {
+            font-family: "Segoe UI", "Microsoft Yahei UI";
+            animation-delay: 0s;
+            animation-duration: 60s;
+            animation-iteration-count: infinite;
+            animation-name: bgcolor;
+            overflow: hidden;
+        }
+        .container {
+            position: absolute;
+            top: 50%;
+            text-align: center;
+            transform: translateY(-50%);
+            width: 100%;
+            color: #fff;
+            font-size: 18pt;
+        }
+
+        #count_down {
+            font-size: 26pt;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="description"></div>
+    <p id="count_down">...</p>
+</div>
+</body>
+<script>
+    uiObj = document.getElementById('count_down');
+
+    setInterval(function () {
+        uiObj.innerText = counter();
+    }, 1000);
+
+    function counter() {
+        var date = new Date();
+        var year = date.getFullYear();
+        var date2 = new Date(year, 11, 31, 23, 59, 59);
+
+        var time = (date2 - date) / 1000;   //转换成秒
+        var day = Math.floor(time / (24 * 60 * 60));
+        var hour = Math.floor(time % (24 * 60 * 60) / (60 * 60));
+        var minute = Math.floor(time % (24 * 60 * 60) % (60 * 60) / 60);
+        var second = Math.floor(time % (24 * 60 * 60) % (60 * 60) % 60);
+        return year + " 年还剩 " + day + " 天 " + hour + " 时 " + minute + " 分 " + second + " 秒";
+    }
+</script>
+</html>

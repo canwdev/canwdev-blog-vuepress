@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Fetch API Demo</title>
+</head>
+<body>
+<a href="https://caniuse.com/#search=fetch" target="_blank">Fetch - A modern replacement for XMLHttpRequest.</a>
+<p>打开控制台查看输出。</p>
+
+<script>
+  // Fetch API 非常简单，一行代码搞定
+  fetch('/data.json').then(res => res.json()).then(info => console.log(info))
+
+  // 以下配置都是可选的
+  /* fetch('/data.json', {
+    method: 'GET',
+    // body: {} // 当 method 为 POST 时有用
+    headers: new Headers(), // 可自定义请求头部
+    credentials: 'include' // 包含 cookie
+  }).then() */
+
+  // 还可以写成这样
+  /*
+  const req = new Request('/data.json', {
+    method: 'GET',
+    headers: new Headers(),
+    credentials: 'include'
+  })
+  fetch(req).then()
+  */
+</script>
+</body>
+</html>

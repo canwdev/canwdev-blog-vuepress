@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>幻灯片实例3 实验楼</title>
+
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/holder.min.js"></script>
+    <style>
+        .container {
+            width: 900px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        .carousel {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.45);
+            border-radius: 4px;
+        }
+
+        .img-box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 300px;
+        }
+
+        .img-box img {
+            display: block;
+            float: left;
+            width: 900px;
+            height: 300px;
+        }
+
+        .title-box {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 40px;
+            overflow: hidden;
+            z-index: 5;
+        }
+
+        .title-box p {
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.27);
+            line-height: 40px;
+            width: 100%;
+            margin: 0;
+            padding-left: 10px;
+            position: absolute;
+            bottom: -40px;
+        }
+
+        .title-box p.active {
+            bottom: 0;
+        }
+
+        .pager-box {
+            position: absolute;
+            bottom: 13px;
+            right: 10px;
+            width: 90px;
+            text-align: center;
+            height: 14px;
+            line-height: 40px;
+            z-index: 10;
+        }
+
+        .pager-box span {
+            display: block;
+            float: left;
+            width: 13px;
+            height: 13px;
+            margin-left: 5px;
+            background-color: #fff;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .pager-box span.active {
+            background-color: #646265;
+            border: 1px solid #fff;
+        }
+
+        .left-right-box {
+            color: #fff;
+            z-index: 1;
+            height: 300px;
+            line-height: 300px;
+        }
+
+        .pager-left {
+            position: absolute;
+            left: 0;
+            width: 30px;
+            padding-left: 10px;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));;
+            cursor: pointer;
+            display: none;
+        }
+
+        .pager-right {
+            position: absolute;
+            right: 0;
+            text-align: right;
+            width: 30px;
+            padding-right: 10px;
+            background: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));;
+            cursor: pointer;
+            display: none;
+        }
+
+        .pager-left.active {
+            display: block;
+        }
+
+        .pager-right.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="carousel">
+        <div class="img-box">
+            <a href="https://www.shiyanlou.com/courses/80" target="_blank"><img data-src="holder.js/900x300?theme=lava" src=""/></a>
+            <a href="javascript:"><img data-src="holder.js/900x300?theme=vine" src=""/></a>
+            <a href="javascript:"><img data-src="holder.js/900x300?theme=sky" src=""/></a>
+            <a href="javascript:"><img data-src="holder.js/900x300?theme=social" src=""/></a>
+        </div>
+        <div class="title-box">
+            <p class="active">图像1 - 轮播图是在各大网站中经常见到的图片展示形式，本课程基于 jQuery 实现图片轮播。</p>
+            <p>图像2</p>
+            <p>图像3</p>
+            <p>图像4</p>
+        </div>
+        <div class="pager-box">
+            <span class="active" rel="1"></span>
+            <span rel="2"></span>
+            <span rel="3"></span>
+            <span rel="4"></span>
+        </div>
+        <div class="left-right-box">
+            <div class="pager-lr pager-left"><span class="glyphicon glyphicon-chevron-left">←</span></div>
+            <div class="pager-lr pager-right"><span class="glyphicon glyphicon-chevron-right">→</span></div>
+        </div>
+    </div>
+
+</div>
+</body>
+<script>
+    $(function () {
+        // 控件声明
+        var carousel = $('.carousel'),
+            imgBox = carousel.children('.img-box'),
+            titleBox = carousel.children('.title-box'),
+            titleBoxArr = titleBox.children('p'),
+            pagerBox = carousel.children('.pager-box'),
+            pagerBoxArr = pagerBox.children('span');
+        // 图像属性
+        var imgWidth = carousel.width(),
+            imgCount = imgBox.children('a').size(),
+            imgReelWidth = imgWidth * imgCount;
+        // 轮播id、间隔
+        var activeId = parseInt(pagerBox.children('.active').attr('rel')),
+            nextId = 0,
+            intervalRunning,
+            intervalTime = 4000,
+            imgRunSpeed = 500,
+            titleSpeed = 200,
+            // 用来判断是否应该暂停，如果不判断，则出bug
+            pause = false;
+
+        // 设置图像盒子宽度
+        imgBox.css({'width': imgReelWidth + 'px'});
+
+        // 轮播主函数
+        var rotate = function (clickedId) {
+            if (clickedId) {
+                nextId = clickedId;
+            } else {
+                nextId = (activeId < imgCount) ? (activeId + 1) : 1;
+            }
+//            console.log('activeId='+activeId+',nextId='+nextId);
+
+            $(pagerBoxArr[activeId - 1]).removeClass('active');
+            $(pagerBoxArr[nextId - 1]).addClass('active');
+
+            $(titleBoxArr[activeId - 1]).animate(
+                {bottom: '-40px'}, titleSpeed, function () {
+                    $(titleBoxArr[nextId - 1]).animate(
+                        {bottom: 0}, titleSpeed
+                    )
+                }
+            );
+
+            imgBox.animate(
+                {
+                    left: '-' + (nextId - 1) * imgWidth
+                }, imgRunSpeed
+            );
+//            console.log('fix:'+(nextId - 1));
+
+            activeId = nextId;
+        };
+
+        // 快捷执行轮播
+        function RunRotate() {
+            intervalRunning = setInterval(rotate, intervalTime);
+        }
+
+        RunRotate();
+
+        // 转到特定id
+        function goPosition(clickId) {
+            clearInterval(intervalRunning);
+            rotate(clickId);
+            if (!pause) {
+                RunRotate();
+            }
+        }
+
+        // 左右跳转显隐
+        var pagerLR = $('.pager-lr');
+        carousel.hover(
+            function () {
+                pagerLR.addClass('active')
+            },
+            function () {
+                pagerLR.removeClass('active');
+            }
+        );
+
+        // 左跳页
+        $('.pager-left').click(function () {
+            nextId = (activeId > 1) ? (activeId - 1) : imgCount;
+            goPosition(nextId);
+        });
+
+        $('.pager-right').click(function () {
+            nextId = (activeId < imgCount) ? (activeId + 1) : 1;
+            goPosition(nextId);
+        });
+
+        // 跳转指定页
+        pagerBoxArr.on('click',function () {
+            var clickId = parseInt($(this).attr('rel'));
+            goPosition(clickId);
+        });
+
+        // 鼠标悬停暂停轮播
+        carousel.hover(
+            function () {
+                clearInterval(intervalRunning);
+                pause = true;
+            },
+            function () {
+                RunRotate();
+                pause = false;
+            }
+        )
+    })
+</script>
+</html>

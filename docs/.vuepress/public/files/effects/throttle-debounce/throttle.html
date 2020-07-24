@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Throttle 节流</title>
+
+  <style>
+    #area {
+      width: 400px;
+      height: 300px;
+      background: royalblue;
+      color: #fff;
+      font-size: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #output {
+      background: #ccc;
+      width: 400px;
+      height: 100px;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 50px;
+    }
+  </style>
+
+  <script src="./lodash.min.js"></script>
+</head>
+
+<body>
+
+  <div id="area">Mouse Over Here</div>
+
+  <div id="output">-</div>
+
+  <p>节流：适合大量事件按时间做平均分配触发。</p>
+
+  <script>
+
+    var area = document.querySelector('#area')
+    var output = document.querySelector('#output')
+
+    function updatePosition(event) {
+      console.log('updated', event)
+      output.innerHTML = '(' + event.clientX + ', ' + event.clientY + ')'
+    }
+
+    // 不开启节流
+    // area.addEventListener('mousemove', function (event) {
+    //   updatePosition(event)
+    // })
+
+    // 开启节流
+    var throttledFn = _.throttle(updatePosition, 200)
+    area.addEventListener('mousemove', throttledFn)
+
+
+
+  </script>
+
+</body>
+
+</html>

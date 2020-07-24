@@ -1,0 +1,58 @@
+/* ==UserStyle==
+@name ECMAScript 6 入门 手机版护眼Solarized Light
+@type less
+@homepageURL https://ext.firefoxcn.net/xstyle/md5namespace/28d50042fd0f94e99fef6b678060443f
+@originalMD5 28d50042fd0f94e99fef6b678060443f
+==/UserStyle== */
+
+@-moz-document domain("es6.ruanyifeng.com") {
+    /* ECMAScript 6 入门 手机版护眼Solarized Light */
+    body {
+        background-color: #FDF6E3;
+        color: #333333;
+    }
+    #content pre {
+                                            border: 1px solid #93a1a1;
+                                            border-radius: 0;
+        background-color: #FDF6E3;
+    }
+    #content code {
+        color: #268bd2;
+        background: transparent
+    }
+    .token.punctuation {
+        color: #d33682;
+    }
+    .token.selector,
+    .token.attr-name,
+    .token.string,
+    .token.builtin {
+        color: #2aa198;
+    }
+    .token.comment,
+    .token.prolog,
+    .token.doctype,
+    .token.cdata {
+        color: #93a1a1;
+    }
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+    .token.boolean,
+    .token.number {
+        color: #d33682;
+    }
+    .token.keyword {
+        color: #b58900;
+    }
+    .progress-indicator-2 {
+        height: 5px;
+        background-color: rgba(0, 0, 0, 0.32);
+    }
+    @media only screen and (max-width: 425px) {
+        html {
+            font-size: 160%
+        }
+    }
+}

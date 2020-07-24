@@ -1,0 +1,91 @@
+.math-page {
+  table {
+    font-size 22px
+  }
+}
+
+.home-content {
+  margin-top: 50px
+  text-align: center;
+
+  ul {
+    list-style none
+    display flex
+    align-items center
+    justify-content space-around
+    flex-wrap wrap
+    padding-left: 0
+
+
+    li {
+      width 20%
+      margin-bottom: 15px
+
+      a {
+        color #fff
+        font-size: 18px
+        display block
+        font-family: fantasy;
+        background: $accentColor;
+        box-shadow: 0 0 0 2px $accentColor;
+        border: 2px solid #fff;
+        text-decoration: none;
+        transition all .3s
+        border-radius 2px
+
+        svg {
+          display none !important
+        }
+        &:hover {
+          background: #ff9800;
+          box-shadow: 0 0 0 5px #ff9800;
+          transform: scale(1.1);
+        }
+        &:active {
+          background: #795548;
+          box-shadow: 0 0 0 1px #795548;
+          transform: scale(0.9);
+        }
+      }
+
+      @media screen and (max-width: 450px) {
+        width: 100%
+      }
+    }
+  }
+}
+
+.home-footer {
+  margin-top: 100px
+  text-align: center;
+}
+
+.MathJax {
+  font-size: 22px
+}
+
+.lists-page {
+  ol > li {
+    border: 1px solid rgba(0, 0, 0, 0.22);
+    margin-bottom: 15px;
+    padding: 0 15px 10px;
+    border-radius: 4px;
+
+    & > p:nth-child(1) {
+      font-weight: bold;
+    }
+  }
+}
+
+.search-box {
+  input {
+    border-radius: 4px;
+  }
+  .suggestions {
+    border-radius: 0;
+    max-height: 500px;
+    overflow-y: auto;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+}
+

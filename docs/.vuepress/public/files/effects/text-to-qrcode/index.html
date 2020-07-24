@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>二维码生成器</title>
+  <script src="./qrcode.min.js"></script>
+</head>
+
+<body>
+  <div style="text-align: center;">
+    <form id="qrForm">
+      <div>
+        <textarea type="text" id="textInput" placeholder="请输入文字" required style="width: 300px; height: 100px;"></textarea>
+      </div>
+      <button type="submit">生成二维码</button>
+    </form>
+  
+    <p>
+      <img id="qrImg">
+    </p>
+  </div>
+
+  <script>
+    var qrForm = document.getElementById('qrForm')
+    var textInput = document.getElementById('textInput')
+    var qrImg = document.getElementById('qrImg')
+    qrForm.addEventListener('submit', function (evt) {
+      evt.preventDefault()
+
+      var text = textInput.value
+      qrImg.src = null
+      
+      if (!text) {
+        return
+      }
+
+      
+
+      QRCode.toDataURL(text, (err, qrimg) => {
+        if (err) {
+          console.log('[ERROR] QRCode', err)
+          return
+        }
+        qrImg.src = qrimg
+      })
+    })
+  </script>
+</body>
+
+</html>

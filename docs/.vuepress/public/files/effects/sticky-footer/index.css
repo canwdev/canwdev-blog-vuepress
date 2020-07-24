@@ -1,0 +1,45 @@
+
+html,
+body {
+height: 100%;
+margin: 0;
+padding: 0;
+} 
+ 
+#container {
+min-height: 100%;
+height: auto !important;
+height: 100%;
+}
+#page {
+padding-bottom: 60px;/*高度等于footer的高度*/
+}
+#footer {
+position: relative;
+margin-top: -60px;/*等于footer的高度*/
+height: 60px;
+clear:both;
+background: #c6f;
+}
+/*==========其他div==========*/
+#header {
+padding: 10px;
+background: lime;
+}
+#left {
+width: 18%;
+float: left;
+margin-right: 2%;
+background: orange;
+}
+#content{
+width: 60%;
+float: left;
+margin-right: 2%;
+background: #81cad4;
+}
+#right {
+width: 18%;
+float: left;
+background: yellow;
+}
