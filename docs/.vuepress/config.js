@@ -132,6 +132,9 @@ const config = {
         buttonText: "刷新"
       }
     },
+    'sitemap': {
+      hostname: 'https://canwdev.github.io'
+    },
     // 'vuepress-plugin-mathjax': {}
   }
 }
