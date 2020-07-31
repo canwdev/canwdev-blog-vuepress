@@ -14,6 +14,8 @@ Linux Deploy 是一款能够在 Android 设备上运行 Linux 的软件，使用
 
 ![image-20200307213204195](./linux-deploy-tutorial.assets/image-20200307213204195.png)
 
+Debian 阿里云镜像：http://mirrors.aliyun.com/debian/
+
 ![image-20200307213255049](./linux-deploy-tutorial.assets/image-20200307213255049.png)
 
 ![image-20200307213343166](./linux-deploy-tutorial.assets/image-20200307213343166.png)

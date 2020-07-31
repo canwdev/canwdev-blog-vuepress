@@ -3,10 +3,7 @@
 - [Android ROM 在 Ubuntu 下的 system.new.dat 的解包、修改和打包](./android-rom-modify/README.md)
 
 
-
 ## 常用 Android 刷机命令
-
-
 
 ### 使用 fastboot 刷入 Recovery
 
@@ -18,10 +15,6 @@ fastboot.exe flash recovery recovery.img
 # 立即引导 recovery
 fastboot.exe boot recovery.img
 ```
-
-
-
-
 
 ## 常用 ADB 命令
 
@@ -99,8 +92,6 @@ debug.sf.nobootanimation=1
 # https://source.android.com/devices/tech/perf/low-ram
 ro.config.low_ram=true
 ```
-
-
 
 ## 刷机疑难杂症
 

@@ -1,5 +1,7 @@
 # Android ROM 在 Ubuntu 下的 system.new.dat 的解包、修改和打包
 
+推荐使用 [android-rom-modify](https://github.com/canwdev/android-rom-modify) 脚本进行更快捷的操作
+
 ## 0. 准备工作
 
 解压缩 zip 包，初始化开发环境。
