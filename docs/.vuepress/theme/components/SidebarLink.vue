@@ -101,6 +101,7 @@ function renderExternal (h, to, text) {
 .sidebar .sidebar-sub-headers
   padding-left 1rem
   font-size 0.95em
+  background lightness($accentColor, 96%)
 
 a.sidebar-link
   overflow: hidden;
@@ -111,9 +112,9 @@ a.sidebar-link
   display inline-block
   color $textColor
   border-left 0.25rem solid transparent
-  padding 0.35rem 0 0.35rem 1rem
+  padding 0.35rem 0 0.35rem 0.5rem
   line-height 1.2
-  margin: 1px 0
+  margin: 0
   width: 100%
   box-sizing: border-box
   &:hover, &.active
@@ -125,7 +126,7 @@ a.sidebar-link
   &:hover
     background lighten($accentColor, 10)
   .sidebar-group &
-    padding-left 1.5rem
+    /*padding-left 1.5rem*/
   .sidebar-sub-headers &
     padding-top 0.25rem
     padding-bottom 0.25rem

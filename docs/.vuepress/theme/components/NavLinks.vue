@@ -143,7 +143,7 @@ export default {
 
 @media (min-width: $MQMobile)
   .nav-links a
-    border-radius 4px
+    border-radius $card-border-radius
     &:hover, &.router-link-active
       color $accentColor
   .nav-item > a:not(.external)

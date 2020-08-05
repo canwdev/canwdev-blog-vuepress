@@ -111,6 +111,7 @@ export default {
   box-sizing border-box
   margin 0
   border-left 0.25rem solid transparent
+  background $borderColor
   &.open, &:hover
     text-overflow unset
     white-space unset

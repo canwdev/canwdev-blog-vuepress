@@ -12,11 +12,9 @@
 
 - ![*](./docker.assets/clip_image001.gif) [docker-server 实用化项目](https://gitee.com/canwdev/docker-server)
 
-[[toc]]
+## Docker 基础
 
-# Docker 基础
-
-## 在 Ubuntu 安装 Docker
+### 在 Ubuntu 安装 Docker
 
 参考文档：https://docs.docker.com/engine/install/ubuntu/
 
@@ -98,23 +96,23 @@ sudo apt-get install docker-ce
 
 
 
-## 确保 Docker 已准备就绪
+### 确保 Docker 已准备就绪
 
 docker 的全部操作都要在 root 下进行。
 
 ```
-# docker info
+## docker info
 ```
 
 如果没有报错，则你的 Docker 安装成功了。
 
-## 运行我们的第一个容器
+### 运行我们的第一个容器
 
 ```sh
 docker run -i -t ubuntu /bin/bash
 ```
 
-第一次运行，没有ubuntu镜像，将会从 DockerHub 下载（如果下载失败请看[【**Docker Hub** **镜像配置**】](#_Docker_Hub_镜像配置)），完成后会自动 **附着** 到该容器里。
+第一次运行，没有ubuntu镜像，将会从 DockerHub 下载（如果下载失败请看[【**Docker Hub** **镜像配置**】](#docker-hub-镜像配置)），完成后会自动 **附着** 到该容器里。
 
 在容器环境里，运行 ps -aux 可以查看容器容器中运行的全部进程，当 /bin/bash 退出之后，容器也就停止运行。
 
@@ -156,7 +154,7 @@ sed -i "s@http://.*security.ubuntu.com@http://mirrors.huaweicloud.com@g" /etc/ap
 
  
 
-## 容器命名
+### 容器命名
 
 包含以下字符：小写字母a、z、大写字母A-z、数字0、9、下划线、圆点、横线（如果用正则表达式来表示这些符号，就是 `[a-zA-Z0-9_.-]`，可以用容器命名代替容器id，因此容器命名必须是唯一的
 
@@ -170,11 +168,11 @@ sed -i "s@http://.*security.ubuntu.com@http://mirrors.huaweicloud.com@g" /etc/ap
 
 - 启动镜像：`docker start bob_the_container`（重启则是 restart）
 
-## 附着到容器上
+### 附着到容器上
 
 使用这条命令可以附着到运行中的容器上：`docker attach bob_the_container`
 
-## 创建守护式容器
+### 创建守护式容器
 
 上面所创建的容器都是交互式运行的容器，也可以创建长期运行的容器，叫做守护式容器，没有交互式会话，非常适合运行应用程序和服务。
 
@@ -186,11 +184,11 @@ docker run --name daemon_dave -d ubuntu /bin/sh -c "while true; do echo hello wo
 
 ![image-20200805165748820](./docker.assets/image-20200805165748820.png)
 
-## 查看容器内部的日志
+### 查看容器内部的日志
 
 使用 `docker logs -ft daemon_dave` 查看容器的日志输出，其中 **f** 是 follow 即实时输出（和 tail -f 类似），t 是时间戳。
 
-## 查看容器内的进程
+### 查看容器内的进程
 
 ```
 docker top daemon_dave
@@ -198,7 +196,7 @@ docker top daemon_dave
 
  
 
-## 在容器内部运行进程
+### 在容器内部运行进程
 
 执行一条命令，创建一个空文件：
 
@@ -225,7 +223,7 @@ sudo docker exec -t -i daemon_dave /bin/bash
 :::
 
 
-## 自动重启容器
+### 自动重启容器
 
 添加 --restart 标志，在服务器启动时让docker自动启动容器。
 
@@ -235,29 +233,33 @@ docker run --restart=always --name daemon_dave -d ubuntu /bin/sh -c "while true;
 
 **--restart=on-faliure:5** 意思是只在容器退出代码为非0时才会自动重启，最多重启5次
 
-## 深入容器
+### 深入容器
 
 使用 `docker inspect daemon_dave` 命令，可以输出大量容器信息。
 
-也可以添加 --format 参数以显示指定的信息：`docker inspect --format='{{ .State.Running }}' daemon_dave`
+也可以添加 --format 参数以显示指定的信息：
+
+```sh
+docker inspect --format='{{ .State.Running }}' daemon_dave
+```
 
 --format 非常强大，其支持完整的 Go 语言模板
 
  
 
-## 删除容器
+### 删除容器
 
 不仅可以使用 `docker rm daemon_dave` 来删除容器，还可以用这条命令来删除所有容器：
 
 ```sh
-# 删除所有容器（危）
+## 删除所有容器（危）
 docker rm `docker ps -a -q`
 
-# 删除异常停止的容器（慎用）
+## 删除异常停止的容器（慎用）
 docker rm `docker ps -a | grep Exited | awk '{print $1}'`
 ```
 
-# Docker Hub 镜像配置
+## Docker Hub 镜像配置
 
 由于众所周知的网络问题，国内要设置 Docker Hub 的镜像，否则可能拉不下来镜像。
 
@@ -292,17 +294,17 @@ sudo  systemctl daemon-reload  sudo  systemctl restart docker
 | [网易云](https://c.163yun.com/hub)                           | https://hub-mirror.c.163.com            |                  | Docker Hub                                                   |
 | [腾讯云](https://cloud.tencent.com/document/product/457/9113) | https://mirror.ccs.tencentyun.com       |                  | Docker Hub                                                   |
 
-# 使用 Docker 镜像和仓库
+## 使用 Docker 镜像和仓库
 
  
 
-## 什么是 Docker 镜像
+### 什么是 Docker 镜像
 
 docker 镜像是分层的，利用了写时复制机制，上面的层不会影响下面的层。
 
 ![image-20200805170553260](./docker.assets/image-20200805170553260.png)
 
-## 列出镜像
+### 列出镜像
 
 使用 `docker images` 列出本地的 Docker 镜像（使用 docker ps 列出容器）
 
@@ -318,7 +320,7 @@ docker run -t -i --name new_container ubuntu:12.04 /bin/bash
 
 ![image-20200805170616412](./docker.assets/image-20200805170616412.png)
 
-## 拉取镜像
+### 拉取镜像
 
 如果本地宿主机上没有镜像，Docker 会自动从 Docker Hub 下载，如果想手动拉取，可以使用 pull 命令：
 
@@ -326,7 +328,7 @@ docker run -t -i --name new_container ubuntu:12.04 /bin/bash
 docker pull fedora
 ```
 
-## 查找镜像
+### 查找镜像
 
 使用 `docker search` 命令来查找所有公开的镜像：
 
@@ -334,13 +336,13 @@ docker pull fedora
 
 然后运行 `docker run -i -t node /bin/bash` 就可以启动该镜像
 
-## 构建镜像
+### 构建镜像
 
 要构建自己的镜像，首先要注册一个 [Docker Hub](https://hub.docker.com/) 账号，我的账号名是 canwdev
 
  
 
-## 用 commit 命令创建镜像
+### 用 commit 命令创建镜像
 
 我们使用之前创建的镜像，名为 bob_the_container。和 git 很像，使用 commit 命令来提交修改：
 
@@ -372,7 +374,7 @@ docker commit -m="A new custom image" --author="canwdev" bob_the_container canwd
 
 ![image-20200805170814286](./docker.assets/image-20200805170814286.png)
 
-## 用 Dockerfile 构建镜像
+### 用 Dockerfile 构建镜像
 
 并不推荐使用 docker commit 的方式构建镜像，推荐使用 Dockerfile。
 
@@ -391,7 +393,7 @@ root@mint-virtual-machine:/home/mint/static_web# touch Dockerfile
 在文件中写入以下代码：
 
 ```
-# Version: 0.0.1
+## Version: 0.0.1
 FROM ubuntu:14.04
 LABEL maintainer="canwdev"
 RUN sed -i "s@http://.*archive.ubuntu.com@http://mirrors.huaweicloud.com@g" /etc/apt/sources.list
@@ -405,7 +407,7 @@ EXPOSE 80
 
 当然，也可以使用阿里云镜像：`sudo sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list`
 
-## 基于 Dockerfile 构建新镜像
+### 基于 Dockerfile 构建新镜像
 
 ```
 cd static_web/
@@ -416,7 +418,7 @@ docker build -t="canwdev/static_web:v1" .
 
 构建成功！
 
-## 构建指令失败了会怎么样
+### 构建指令失败了会怎么样
 
 ![image-20200805170931944](./docker.assets/image-20200805170931944.png)
 
@@ -436,7 +438,7 @@ docker build --no-cache -t="canwdev/static_web" .
 
 通过 ENV 设置一个环境变量，如果想刷新一个构建，秩序修改 REFRESHED_AT 环境变量的日期即可。
 
-## 查看新镜像
+### 查看新镜像
 
 使用 docker images：
 
@@ -446,7 +448,7 @@ docker build --no-cache -t="canwdev/static_web" .
 
 ![image-20200805171010603](./docker.assets/image-20200805171010603.png)
 
-## 从新镜像启动容器
+### 从新镜像启动容器
 
 ```
 docker run -d -p 80 --name static_web canwdev/static_web nginx -g "daemon off;"
@@ -468,7 +470,7 @@ docker run -d -p 8080:80 --name static_web canwdev/static_web nginx -g "daemon o
 
 ![image-20200805171049756](./docker.assets/image-20200805171049756.png)
 
-## Dockerfile 指令
+### Dockerfile 指令
 
 **CMD** 命令指定一贯容器启动时要运行的命令，**ENTRYPOINT** 命令和它相似。
 
@@ -515,7 +517,7 @@ ADD ${FRP_NAME}.tar.gz /frp/
 ```
 ADD software.lic /opt/application/software.lic
 ADD http://wordpress.org/latest.zip /root/wordpress.zip
-# 这条会自动解压：
+## 这条会自动解压：
 ADD latest.tar.gz /var/www/wordpress/
 COPY conf.d/ /etc/apache2/
 ```
@@ -528,7 +530,7 @@ COPY conf.d/ /etc/apache2/
 
 ![image-20200805171345703](./docker.assets/image-20200805171345703.png)
 
-## 将镜像推送到 DockerHub
+### 将镜像推送到 DockerHub
 
 ```
 docker push canwdev/static_web
@@ -542,7 +544,7 @@ docker push canwdev/static_web
 
 ![image-20200805171408012](./docker.assets/image-20200805171408012.png)
 
-## 删除镜像
+### 删除镜像
 
 使用 `docker rmi` 来删除镜像：`docker rmi canwdev/screenfetch`
 
@@ -554,9 +556,9 @@ docker push canwdev/static_web
 docker rmi -f `docker images | grep '<none>' | awk '{print $3}'`
 ```
 
-# 在测试中使用Docker
+## 在测试中使用Docker
 
-## 使用Docker测试静态网站
+### 使用Docker测试静态网站
 
 项目代码：https://gitee.com/canwdev/learn-docker/tree/master/nginx-web
 
@@ -568,7 +570,7 @@ docker rmi -f `docker images | grep '<none>' | awk '{print $3}'`
 
  
 
-## 从nginx-web项目和nginx镜像构建容器
+### 从nginx-web项目和nginx镜像构建容器
 
 ```
 docker run -d -p 80 --name nginx_web -v $PWD/website:/var/www/html/website canwdev/nginx nginx
@@ -582,7 +584,7 @@ docker run -d -p 80 --name nginx_web -v $PWD/website:/var/www/html/website canwd
 
 ![image-20200805171514464](./docker.assets/image-20200805171514464.png)
 
-## * 从Docker安装 Gitea
+### * 从Docker安装 Gitea
 
 我们在 Docker Hub 的 Gitea 组织中提供了自动更新的 Docker 镜像，它会保持最新的稳定版。你也可以用其它 Docker 服务来更新。首先你需要pull镜像：
 
@@ -606,7 +608,7 @@ docker run -d --name=gitea -p 10022:22 -p 10080:3000 -v /var/lib/gitea:/data git
 
 注意：目前端口改为非3000时，需要修改配置文件 `LOCAL_ROOT_URL = http://localhost:3000/`。
 
-## 构建Sinatra应用程序
+### 构建Sinatra应用程序
 
 ![image-20200805171900547](./docker.assets/image-20200805171900547.png)
 
@@ -628,7 +630,7 @@ docker run -d --name=gitea -p 10022:22 -p 10080:3000 -v /var/lib/gitea:/data git
 
 ![image-20200805171954194](./docker.assets/image-20200805171954194.png)
 
-## 构建Redis镜像和容器
+### 构建Redis镜像和容器
 
 我们要扩展Sinatra程序，加入Redis后端数据库，并在数据库中存储涮涮的参数，因此需要利用Docker的特新来关联两个容器。
 
@@ -650,7 +652,7 @@ docker run -d --name=gitea -p 10022:22 -p 10080:3000 -v /var/lib/gitea:/data git
 
 连接成功。
 
-## 容器的网络接口
+### 容器的网络接口
 
 Docker会自动给宿主机创建一个新的网络接口，名为docker0，每个Docker容器都会在这个接口上分配一个IP地址，在宿主机使用 `ip a show docker0` 查看该接口。
 
@@ -660,7 +662,11 @@ Docker会自动给宿主机创建一个新的网络接口，名为docker0，每�
 
 如果容器内没有ip和ifconfig命令，可以安装busybox，然后用 `busybox ip a` 来查看网络接口。
 
-也可以通过 `docker inspect -f '{{ .NetworkSettings.IPAddress }}' redis` 这种更简便的方法获取到容器的IP地址。
+也可以通过这种更简便的方法获取到容器的IP地址：
+
+```sh
+docker inspect -f '{{ .NetworkSettings.IPAddress }}' redis
+```
 
 经过暗中观察，宿主机和容器的网络结构图如下：
 
@@ -668,7 +674,7 @@ Docker会自动给宿主机创建一个新的网络接口，名为docker0，每�
 
 知道了redis的ip地址，我们就可以在宿主机或sinatra容器中直接用ip地址来访问redis服务了，不过这里有一个弊端，那就是这个ip地址是会变的（如容器重启），有没有什么好的办法解决这个问题呢？请看下节。
 
-## 让Docker容器互连
+### 让Docker容器互连
 
 docker提供了link参数用于让容器与容器之间连接。
 
@@ -709,7 +715,7 @@ docker run -p 4567 \
 **提示**：如果想要让容器内的网络端口和宿主机的保持一致，使用 --net=host 参数，让Docker容器和宿主机在同一个网络中，这适用于frp、nginx等服务。
 :::
 
-## 搭建 DroneCI
+### 搭建 DroneCI
 
 如果之前安装了Gitea，则只需要参照这个脚本就可以搭建好Drone CI，具体还请阅读官方文档。
 
@@ -743,11 +749,11 @@ docker run \
   drone/drone:1
 ```
 
-# 使用Docker构建服务
+## 使用Docker构建服务
 
-## 构建Jekyll应用
+### 构建Jekyll应用
 
-### Jekyll基础镜像
+#### Jekyll基础镜像
 
 ```
 FROM ubuntu:18.04
@@ -777,7 +783,7 @@ ENTRYPOINT [ "jekyll", "build", "--destination=/var/www/html" ]
 
 在这个Dockerfile里，我们使用VOLUME命令创建了两个卷。
 
-### Apache镜像
+#### Apache镜像
 
 ```
 FROM ubuntu:18.04
@@ -808,7 +814,7 @@ CMD ["-D", "FOREGROUND"]
 
 构建Apache镜像: `docker build -t canwdev/apache .`
 
-### 启动Jekyll网站
+#### 启动Jekyll网站
 
 现在我们有了Jekyll和Apache镜像，可以启动了，不过在此之前还要先到这里https://github.com/turnbullpress/james_blog.git 获取作者的示例源码。
 
@@ -820,7 +826,11 @@ docker run --name james_blog \
 canwdev/jekyll
 ```
 
-查看卷的位置：`docker inspect -f "{{range.Mounts}}{{.}}{{end}}" james_blog`
+查看卷的位置：
+
+```sh
+docker inspect -f "{{range.Mounts}}{{.}}{{end}}" james_blog
+```
 
 上面的Docker命令并不会帮我们启动Jekyll网站，而仅仅是编译网站源代码（生成静态HTML），要启动网站，则需要使用Apache：
 
@@ -836,9 +846,9 @@ docker run -d -P --volumes-from james_blog --name james_blog_apache canwdev/apac
 
 除了一些库404了，网站可以正常的运行！
 
-# 附录
+## 附录
 
-## 镜像的导出和导入
+### 镜像的导出和导入
 
 1. 在外网环境下使用 docker pull 命令下载相应的镜像，使用docker images 列出所有镜像：
 
@@ -886,7 +896,7 @@ docker load < filename.tar
 docker save myimage:latest | gzip > myimage_latest.tar.gz
 ```
 
-## 容器的导出和导入
+### 容器的导出和导入
 
 ```
 docker export containID > filename.tar

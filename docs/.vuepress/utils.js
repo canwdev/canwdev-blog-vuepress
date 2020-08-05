@@ -8,7 +8,7 @@ const sidebarHelper = {
    * https://fangzheng.xyz/Other/VuePress/1.vuepress-auto-sidebar.html
    */
   getChildren: function (rpath) {
-    console.log(rpath)
+    // console.log(rpath)
     let filenames = [];
     fs.readdirSync(__dirname + '/../' + rpath).forEach(fileName => {
       if (excludes.indexOf(fileName) < 0) {
@@ -27,30 +27,6 @@ const sidebarHelper = {
         }
       }
     })
-    return filenames;
-  },
-
-  /**
-   * https://fangzheng.xyz/Other/VuePress/1.vuepress-auto-sidebar.html#_1-getfilenames-js
-   */
-  getFileName:function(rpath) {
-    let filenames = [];
-    fs.readdirSync(rpath).forEach(file => {
-      if (excludes.indexOf(file) < 0 ) {
-        var fullpath = rpath+"/"+file
-        var fileinfo = fs.statSync(fullpath)
-        if(fileinfo.isFile()){
-          if (file === 'README.md') {
-            file = '';
-          } else {
-            file = file.replace('.md', '');
-          }
-          filenames.push(file);
-        }
-      }
-    })
-    // console.log(filenames)
-    filenames.sort(); // 排序
     return filenames;
   }
 }
