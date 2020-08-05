@@ -1,0 +1,15 @@
+kind: pipeline
+type: docker
+name: drone-test
+
+steps:
+  - name: install
+    image: node:alpine
+    commands:
+      - npm i --registry=https://registry.npm.taobao.org
+
+
+  - name: build
+    image: node:alpine
+    commands:
+      - npm run build
