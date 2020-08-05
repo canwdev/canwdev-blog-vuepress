@@ -84,13 +84,17 @@ mysql -h 192.168.1.2 -uroot -p
 
 ## 开放3306端口外网访问
 
-### 1. 查看端口是否开放：`netstat -an|grep 3306`
+### 1. 查看端口是否开放
 
 ```sh
-tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN
+netstat -an|grep 3306
+# tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN
+
+# 或者直接查看 mysql 绑定的ip
+mysqld --verbose --help | grep bind-address
 ```
 
-如果有 127.0.0.1 说明没有对外网开放
+如果有 127.0.0.1 说明没有对外网开放，0.0.0.0 则为开放。
 
 ### 2. 编辑 `/etc/mysql/mysql.conf.d/mysqld.cnf` 配置文件
 
@@ -100,6 +104,7 @@ vi /etc/mysql/mysql.conf.d/mysqld.cnf
 
 # 注释掉 bind-address
 # bind-address		= 127.0.0.1
+# 或者：bind-address	= 0.0.0.0
 
 # 推荐修改默认端口号，防止爆破
 port		= 3306
@@ -112,6 +117,14 @@ port		= 3306
 在服务器上登录数据库：`mysql -h 127.0.0.1 -uroot -p`
 
 登录成功后，输入 sql 语句：
+
+```sql
+use mysql;
+update user set host='%' where user = 'root';
+flush privileges;
+```
+
+上述命令的详细解释：
 
 ```sql
 # 切换到系统数据库 mysql
@@ -130,7 +143,7 @@ select host,user from user;
 # 意思是无论在哪里root账户都能够访问数据库服务
 update user set host='%' where user='root';
 
-# 最后一项设置，开放root账户所有权限
+# 最后一项设置，开放root账户所有权限（可选）
 grant all privileges on *.* to 'root'@'%' identified by '你的root账户密码';
 
 # 使各种权限设置立即生效
