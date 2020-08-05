@@ -23,6 +23,10 @@ quit
 ## 修改mysql密码
 
 ```sh
+# 交互式修改密码，其中 root 是用户名；password 是参数而非密码不要修改！
+mysqladmin -u root -p password
+
+# 在命令行中修改密码（不推荐）
 mysqladmin -u root -p'oldpassword' password 'newpassword'
 ```
 

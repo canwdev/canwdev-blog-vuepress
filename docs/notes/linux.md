@@ -199,3 +199,10 @@ apt install git
 git clone --depth=1 https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 ```
+
+如果 root 用户 `chsh` 时出现问题，首先使用 `which zsh` 查看 zsh 的位置，然后 `vim /etc/passwd`，参考这样修改：
+
+```
+root:x:0:0:root:/root:/usr/bin/zsh
+```
+
