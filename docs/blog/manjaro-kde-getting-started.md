@@ -96,3 +96,16 @@ chmod +x *.bundle
 ![image-20200809125337578](./manjaro-kde-getting-started.assets/image-20200809125337578.png)
 
 启动 VMware，如果出现这个窗口，则需要：`sudo pacman -S linux-headers`，选择对应的版本安装，比如我的是 `linux54-headers`。安装完成后重新打开 VMWare 就可以了。更多说明请查看 [Arch VMware 文档]([https://wiki.archlinux.org/index.php/VMware_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)](https://wiki.archlinux.org/index.php/VMware_(简体中文))
+
+### 安装 VirtualBox 虚拟机
+
+```sh
+sudo pacman -S virtualbox
+# 选择内核对应的版本安装
+
+# 初次启动报错：Kernel driver not installed (rc=-1908)
+sudo pacman -S linux-headers
+sudo pacman -S virtualbox-host-dkms
+sudo modprobe vboxdrv
+```
+
