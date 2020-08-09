@@ -1,24 +1,60 @@
-# 虚拟机
+# 虚拟机常见问题汇总
 
-## VMWare 将多个vmdk文件合并为一个或者将一个vmdk文件拆分为多个
+### Linux 安装 VMware Workstation 虚拟机
 
-**vmware-vdiskmanager.exe** 的位置在：`C:\Program Files (x86)\VMware\VMware Workstation\vmware-vdiskmanager.exe`
+到官网下载 Linux 二进制文件：[VMware-Workstation-Full-15.5.6-16341506.x86_64.bundle](https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-15.5.6-16341506.x86_64.bundle)
 
-执行合并功能：`vmware-vdiskmanager -r <原文件路径(含文件名)> -t 0 <合并后文件路径(含文件名)>`
-
+```sh
+chmod +x *.bundle
+./VMware-Workstation-Full-15.5.6-16341506.x86_64.bundle
 ```
+
+- Q: Directory must be non-empty System service scripts directory (commonly /etc/init.d)
+- A: sudo mkdir `/etc/init.d`
+
+---
+
+![image-20200809125337578](./virtual-machine.assets/image-20200809125337578.png)
+
+启动 VMware，如果出现这个窗口，则需要：`sudo pacman -S linux-headers`，选择对应的版本安装，比如我的是 `linux54-headers`。安装完成后重新打开 VMWare 就可以了。更多说明请查看 [Arch VMware 文档]([https://wiki.archlinux.org/index.php/VMware_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)](https://wiki.archlinux.org/index.php/VMware_(简体中文))
+
+### Arch Linux 安装 VirtualBox 虚拟机
+
+```sh
+sudo pacman -S virtualbox
+# 选择内核对应的版本安装
+
+# 初次启动报错：Kernel driver not installed (rc=-1908)
+sudo pacman -S linux-headers
+sudo pacman -S virtualbox-host-dkms
+sudo modprobe vboxdrv
+```
+
+
+
+## VMWare vmdk 拆分与合并
+
+> **vmware-vdiskmanager.exe** 的位置在：`C:\Program Files (x86)\VMware\VMware Workstation\vmware-vdiskmanager.exe`
+
+### 多个镜像合并为一个
+
+```sh
+# vmware-vdiskmanager -r <原文件路径(含文件名)> -t 0 <合并后文件路径(含文件名)>
+
 vmware-vdiskmanager.exe -r "D:\VM\VMW7\Windows 7.vmdk" -t 0 "D:\VM\Win7-single.vmdk"
 ```
 
-执行拆分功能：`vmware-vdiskmanager -r <原文件路径(含文件名)> -t 1 <分割后文件路径(含文件名)>`
+### 一个镜像拆分为多个
 
-```
+```sh
+# vmware-vdiskmanager -r <原文件路径(含文件名)> -t 1 <分割后文件路径(含文件名)>
+
 vmware-vdiskmanager -r G:\ubuntu\Ubuntu.vmdk -t 1 G:\ubuntu\ubuntu2.vmdk
 ```
 
 
 
-## 压缩虚拟磁盘文件大小
+## vmware-vdiskmanager -r <原文件路径(含文件名)> -t 0 <合并后文件路径(含文件名)>压缩虚拟磁盘文件大小
 
 - [vmware压缩vmdk文件大小](https://www.cnblogs.com/kagari/p/12010147.html)
 - [减小VirtualBox虚拟硬盘文件的大小](https://blog.csdn.net/ganshuyu/article/details/46360271)
@@ -52,11 +88,13 @@ sdelete –z C:
 
 如果你的虚拟硬盘是Vmware的VMDK格式，那就要麻烦点，因为VirtualBox不支持直接压缩VMDK格式，但是可以变通下：先转换成VDI并压缩，再转回VMDK。执行命令：
 
-```
+```sh
 vboxmanage clonehd "source.vmdk" "cloned.vdi" --format vdi
 vboxmanage modifyhd cloned.vdi --compact
 vboxmanage clonehd "cloned.vdi" "compressed.vmdk" --format vmdk
 ```
+
+> 事实上，执行命令的过程中可以发现：在从VMDK转换到VDI的过程中似乎已经做了压缩，文件大小已经减少了很多，第二条命令反而没见到文件大小有什么变化，所以这里第二条命令应该可以省略了。
 
 ### Linux 宿主机 VMware 压缩命令
 
