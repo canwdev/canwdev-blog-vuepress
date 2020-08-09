@@ -274,7 +274,8 @@ docker rm `docker ps -a | grep Exited | awk '{print $1}'`
 然后重启 docker 服务：
 
 ```
-sudo  systemctl daemon-reload  sudo  systemctl restart docker  
+sudo systemctl daemon-reload
+sudo systemctl restart docker  
 ```
 
 命令行执行 docker info，如果从结果中看到了如下内容，说明配置成功。
