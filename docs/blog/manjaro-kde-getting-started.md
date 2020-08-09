@@ -77,9 +77,22 @@ XMODIFIERS=@im=fcitx
 
 注销重新登录后生效，`ctrl+space` 是开启或关闭 fcitx 输入，`ctrl+shift` 是切换输入法。
 
-个人推荐中州韵（[fcitx-rime](https://www.archlinux.org/packages/?name=fcitx-rime)），具体配置可以参考这篇文章：[Rime 输入法配置记录](https://10101.io/2019/01/30/rime-configuration)
+个人推荐中州韵（[fcitx-rime](https://www.archlinux.org/packages/?name=fcitx-rime)）+小鹤双拼，具体配置可以参考这篇文章：[Rime 输入法配置记录](https://10101.io/2019/01/30/rime-configuration)
 
 ### 安装 VMware Workstation 虚拟机
 
+到官网下载 Linux 二进制文件：[VMware-Workstation-Full-15.5.6-16341506.x86_64.bundle](https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-15.5.6-16341506.x86_64.bundle)
+
+```sh
+chmod +x *.bundle
+./VMware-Workstation-Full-15.5.6-16341506.x86_64.bundle
+```
+
 - Q: Directory must be non-empty System service scripts directory (commonly /etc/init.d)
 - A: sudo mkdir `/etc/init.d`
+
+---
+
+![image-20200809125337578](./manjaro-kde-getting-started.assets/image-20200809125337578.png)
+
+启动 VMware，如果出现这个窗口，则需要：`sudo pacman -S linux-headers`，选择对应的版本安装，比如我的是 `linux54-headers`。安装完成后重新打开 VMWare 就可以了。更多说明请查看 [Arch VMware 文档]([https://wiki.archlinux.org/index.php/VMware_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)](https://wiki.archlinux.org/index.php/VMware_(简体中文))
