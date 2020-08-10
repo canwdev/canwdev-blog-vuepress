@@ -127,3 +127,41 @@ D:\VMware>vmware-vdiskmanager.exe -k  C:\Users\windows\Desktop\xxxx-disk1.vmdk
 > VMware Workstation 与 Device/Credential Guard 不兼容。在禁用 Device/Credential Guard 后，可以运行 VMware Workstation。
 
 这往往是因为开启了 Hype-V 功能导致的，先关闭 Hyper-V，然后在命令行以管理员身份执行：`bcdedit /set hypervisorlaunchtype off`，重启电脑。
+
+## [Arch Linux中使用VMware Workstation不能打开vmmon内核模块](https://www.cnblogs.com/zhuxiaoxi/p/8423544.html)
+
+##### 解决方法1
+
+你可以在启动VMware前运行`/etc/init.d/vmware start`来启动服务
+
+##### 解决方法2
+
+在Arch Linux上可以通过安装`vmware-systemd-serverices`这个AUR包，来添加systemctl服务
+
+- 使用`systemctl enable vmware.service`让它每次开机都运行
+- 使用`systemctl start vmware.service`让它临时启动
+
+##### 解决方法3
+
+添加这个文件
+*/etc/systemd/system/vmware.service*
+
+```
+[Unit]
+Description=VMware daemon
+Requires=vmware-usbarbitrator.service
+Before=vmware-usbarbitrator.service
+After=network.target
+
+[Service]
+ExecStart=/etc/init.d/vmware start
+ExecStop=/etc/init.d/vmware stop
+PIDFile=/var/lock/subsys/vmware
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+```
+
+- 使用`systemctl enable vmware.service`让它每次开机都运行
+- 使用`systemctl start vmware.service`让它临时启动
