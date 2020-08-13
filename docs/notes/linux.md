@@ -4,7 +4,9 @@
 
 ## vi 编辑器的方向键变成 ABCD 问题
 
-直接安装 vim，然后使用 vim 编辑。
+解决方案1: 直接安装 vim，然后使用 vim 编辑。
+
+解决方案2:
 
 ```sh
 echo "set nocp" >> ~/.vimrc
@@ -12,7 +14,7 @@ source ~/.vimrc
 # 或者 cp /etc/vim/vimrc ~/.vimrc
 ```
 
-## Ubuntu安装wine
+## Ubuntu 安装 wine
 
 ```sh
 #sudo apt install wine64
@@ -84,19 +86,19 @@ sudo apt install imwheel
 https://github.com/topics/cinnamon-theme
 ```
 
-## 刷新Android设备媒体
+## 刷新 Android 设备媒体
 
 ```sh
 # 如果要彻底重置，请清除 com.android.providers.media 的数据
 adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///sdcard
 ```
 
-## 关闭Android网络检测（网络图标感叹号）
+## 关闭 Android 活动网络检测(captive_portal_detection/网络图标感叹号)
 ```sh
 adb shell "settings put global captive_portal_detection_enabled 0"
 ```
 
-## Linux配置CPU调度
+## Linux 配置 CPU 调度
 
 ```sh
 # 使用root执行
@@ -109,7 +111,7 @@ cpufreq-info -g
 cpufreq-set -g powersave
 ```
 
-## Linux配置ssh命令在后台运行
+## Linux 配置命令在后台运行
 
 ```sh
 # 建议使用root权限运行，日志会输出到当前目录 nohup.out
@@ -152,7 +154,7 @@ mklink /D "C:\目标文件夹\链接文件夹名\" "C:\源文件夹"
 
 安装deb：`sudo dpkg -i xxx.deb`；如果遇到 “dpkg: 依赖关系问题使得 xxx 的配置工作不能继续”，解决方案：`sudo apt -f -y install`
 
-## 常用GUI软件（使用 apt install）
+## 常用GUI软件(使用 apt install)
 
 https://alternativeto.net/platform/xfce
 
@@ -205,4 +207,55 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 ```
 root:x:0:0:root:/root:/usr/bin/zsh
 ```
+
+## rsync 命令
+
+GUI 客户端：`grsync`
+
+```sh
+# 复制文件
+rsync -avrh --progress /pathA/ /pathB/
+
+# 单向同步
+rsync -acOv --delete --progress /pathA/ /pathB/
+```
+
+命令解释：
+
+- `-a` 归档模式，等同于 `-rlptgoD`
+- `-v` 输出更多详细信息
+- `-r` 递归目录
+- `-h` 以人类可读的格式输出数字
+- `-c` 自动忽略文件，方法与CVS相同
+- `-O` omit directories from `--times`
+- `--progress` 在传输过程中显示进度
+- `--delete` 从目标目录中删除无关的文件
+
+## 使用 dd 命令创建引导盘
+
+参考：[How to create a bootable Ubuntu USB flash drive from terminal?](https://askubuntu.com/questions/372607/how-to-create-a-bootable-ubuntu-usb-flash-drive-from-terminal)
+
+首先卸载你的目标磁盘分区
+
+```
+sudo umount /dev/sd<?><?>  
+```
+
+如果你不确定你的盘的代号，使用 `lsblk` 查看，会输出如下的结果，上述的两个 `<?>` 分别表示磁盘 (disk) 号和分区 (part) 号
+
+```
+sdb      8:16   1  14.9G  0 disk 
+├─sdb1   8:17   1   1.6G  0 part /media/username/usb volume name
+└─sdb2   8:18   1   2.4M  0 part 
+```
+
+使用下面命令写入对应的磁盘 (disk)：
+
+```
+sudo dd bs=4M if=path/to/input.iso of=/dev/sd<?> conv=fdatasync  status=progress
+```
+
+`input.iso` 是输入文件（光盘镜像），`/dev/sd<?>` 是目标磁盘。
+
+这种方法速度很快，从未使我失败。
 
