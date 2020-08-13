@@ -1,6 +1,6 @@
 # 虚拟机常见问题汇总
 
-### Linux 安装 VMware Workstation 虚拟机
+## Linux 安装 VMware Workstation 虚拟机
 
 到官网下载 Linux 二进制文件：[VMware-Workstation-Full-15.5.6-16341506.x86_64.bundle](https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-15.5.6-16341506.x86_64.bundle)
 
@@ -18,7 +18,7 @@ chmod +x *.bundle
 
 启动 VMware，如果出现这个窗口，则需要：`sudo pacman -S linux-headers`，选择对应的版本安装，比如我的是 `linux54-headers`。安装完成后重新打开 VMWare 就可以了。更多说明请查看 [Arch VMware 文档]([https://wiki.archlinux.org/index.php/VMware_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)](https://wiki.archlinux.org/index.php/VMware_(简体中文))
 
-### Arch Linux 安装 VirtualBox 虚拟机
+## Arch Linux 安装 VirtualBox 虚拟机
 
 ```sh
 sudo pacman -S virtualbox
@@ -29,8 +29,6 @@ sudo pacman -S linux-headers
 sudo pacman -S virtualbox-host-dkms
 sudo modprobe vboxdrv
 ```
-
-
 
 ## VMWare vmdk 拆分与合并
 
@@ -52,9 +50,7 @@ vmware-vdiskmanager.exe -r "D:\VM\VMW7\Windows 7.vmdk" -t 0 "D:\VM\Win7-single.v
 vmware-vdiskmanager -r G:\ubuntu\Ubuntu.vmdk -t 1 G:\ubuntu\ubuntu2.vmdk
 ```
 
-
-
-## vmware-vdiskmanager -r <原文件路径(含文件名)> -t 0 <合并后文件路径(含文件名)>压缩虚拟磁盘文件大小
+## 压缩虚拟磁盘文件大小
 
 - [vmware压缩vmdk文件大小](https://www.cnblogs.com/kagari/p/12010147.html)
 - [减小VirtualBox虚拟硬盘文件的大小](https://blog.csdn.net/ganshuyu/article/details/46360271)
@@ -121,7 +117,6 @@ D:\VMware>vmware-vdiskmanager.exe -k  C:\Users\windows\Desktop\xxxx-disk1.vmdk
 
 ![img](./virtual-machine.assets/1309874-20191224175352134-1105705161.png)
 
-
 ## VMware Workstation 与 Device/Credential Guard 不兼容?
 
 > VMware Workstation 与 Device/Credential Guard 不兼容。在禁用 Device/Credential Guard 后，可以运行 VMware Workstation。
@@ -165,3 +160,21 @@ WantedBy=multi-user.target
 
 - 使用`systemctl enable vmware.service`让它每次开机都运行
 - 使用`systemctl start vmware.service`让它临时启动
+
+## VirtualBox 共享文件夹到 Linux 客户机，如何挂载
+
+参考：[Mounting VirtualBox shared folders on Ubuntu Server 16.04 LTS](https://gist.github.com/estorgio/1d679f962e8209f8a9232f7593683265)
+
+首先，要确保安装了增强功能。然后在「设置-共享文件夹」中添加一个共享文件夹，勾选「自动挂载」并填入挂载点，例如「VMShared」。
+
+到客户机，执行以下命令：
+
+```sh
+# 创建挂载目标
+sudo mkdir /mnt/VMShared
+
+# 挂载共享目录
+sudo mount -t vboxsf VMShared /mnt/VMShared
+```
+
+这样就可以完成挂载。

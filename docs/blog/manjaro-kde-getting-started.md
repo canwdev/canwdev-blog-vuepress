@@ -34,6 +34,20 @@ KDE 是一款桌面环境，操作与 Windows 类似，强大好用 :)
 
 ![image-20200808232535479](./manjaro-kde-getting-started.assets/image-20200808232535479.png)
 
+也可以使用命令行的方式设置软件源：
+
+编辑 /etc/pacman.d/mirrorlist， 在文件的最顶端添加：
+
+```
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
+```
+
+更新软件包缓存：
+
+```sh
+sudo pacman -Syy
+```
+
 ### pacman 包管理器
 
 由之前没怎么用过 Arch，所以对 pacman 完全不熟悉，去[官方文档](https://wiki.archlinux.org/index.php/pacman#Removing_packages)看了一下基本操作，感觉非常简单，安装速度比 apt 快多了！
