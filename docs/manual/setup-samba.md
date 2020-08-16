@@ -1,23 +1,25 @@
-# 安装并配置 Samba 服务
+# 安装并配置 Samba 文件共享服务
 
-参考：https://www.linuxidc.com/Linux/2018-11/155466.htm
+参考：https://www.Public/Linux/2018-11/155466.htm
 
 > Samba(SMB) 是一种在局域网上共享文件和打印机的一种通信协议，我们可以利用 Samba 在网络中访问开启了该服务的计算机中的文件，就像访问本地磁盘一样便利。
 
-## 在 Ubuntu 上安装配置 Samba 服务器
+## 安装并配置 Samba 服务器
 
 1. 安装服务
-    `sudo apt-get install samba samba-common`
+    Ubuntu：`sudo apt-get install samba samba-common`
+    
+    Manjaro KDE：`pamac install samba kdenetwork-filesharing manjaro-settings-samba`
     
 2. 创建一个用于分享的samba目录
-    `sudo mkdir /home/linuxidc/linuxidc.com/share`
-    
-3. 给创建的这个目录设置权限
-    `sudo chmod 777 /home/linuxidc/linuxidc.com/share`
-    
-4. 添加用户(下面的linuxidc是我的用户名，之后会需要设置samba的密码)。 
+    `sudo mkdir /home/username/Public/share`
 
-    `sudo smbpasswd -a linuxidc`
+3. 给创建的这个目录设置权限
+    `sudo chmod 0700 /home/username/Public/share`
+
+4. 添加用户(下面的 username 是我的 Linux 用户名，之后会需要设置samba的独立密码)。 
+
+    `sudo smbpasswd -a username`
 
 5. 配置samba的配置文件
 
@@ -27,32 +29,40 @@
     [share]
     comment = share folder
     browseable = yes
-    path = /home/linuxidc/linuxidc.com/share
+    path = /home/username/Public/share
     create mask = 0700
     directory mask = 0700
-    valid users = linuxidc
-    force user = linuxidc
-    force group = linuxidc
+    valid users = username
+    force user = username
+    force group = username
     public = yes
     available = yes
     writable = yes
     ```
 
-    在上面valid users = linuxidc中的**linuxidc**为我的用户名。
+    > 在上面valid users = username中的**username**为我的 Linux 用户名
+
+    > 如果要开启 symlink，需要在 `[global]` 节中写入以下配置：
+    >
+    > ```
+    > follow symlinks = yes
+    > wide links = yes
+    > unix extensions = no
+    > ```
 
 6. 重启samba服务器，这样 samba 服务就配置完成并启动成功了
 
-    `sudo service smbd restart`
+    - Ubuntu: `sudo service smbd restart`
+    - Manjaro: `sudo systemctl restart smb`
 
-7. 查看本机 IP 地址：
+7. 查看本机 IP 地址：`ifconfig` 或者 `ip a`
 
-    `ifconfig`
 
 
 
 ## 在 Windows 中连接 Samba
 
-`Win+R` 在弹出的运行窗口中输入 `\\ip` 即可访问。如`\\192.168.182.188`。
+`Win+R` 在弹出的运行窗口中输入 `\\ip` 即可访问。如`\\192.168.1.102`。
 
 在 Win10 中可能会有提示：**你不能访问此共享文件夹，因为你组织的安全策略阻止未经身份验证的来宾访问。这些策略可帮助保护你的电脑免受网络上不安全设备或恶意设备的威胁。**
 
