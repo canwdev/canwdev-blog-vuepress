@@ -230,6 +230,8 @@ rsync -acOv --delete --progress /pathA/ /pathB/
 - `-O` omit directories from `--times`
 - `--progress` 在传输过程中显示进度
 - `--delete` 从目标目录中删除无关的文件
+- `-A` 是保留 `ACL|访问控制列表`
+- `-X` 是保留扩展属性
 
 ## 使用 dd 命令创建引导盘
 
