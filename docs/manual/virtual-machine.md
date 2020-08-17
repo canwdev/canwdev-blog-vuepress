@@ -175,6 +175,9 @@ sudo mkdir /mnt/VMShared
 
 # 挂载共享目录
 sudo mount -t vboxsf VMShared /mnt/VMShared
+
+# 挂载为可写，用户是 user
+sudo mount -t vboxsf LinuxZone -o rw,dmode=777,gid=user,uid=user /mnt/LinuxZone1
 ```
 
 这样就可以完成挂载。
