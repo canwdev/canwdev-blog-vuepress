@@ -7,10 +7,10 @@ actionLink: /notes/
 
 <div class="home-content">
 
-### 离线可用 · 本站已开启 Service Worker
+### 离线可用 · 已开启 Service Worker
 
 <!-- - [💻 linux-command](https://zencode.top:81/linux-command/) -->
-- [⏬ 下载离线笔记](https://github.com/canwdev/notes-vuepress/archive/master.zip)
+- [⏬ 本站源码](https://github.com/canwdev/notes-vuepress)
 <!-- - [🎵 云音乐下载](http://zencode.top:82/music-down/) -->
 
 </div>
