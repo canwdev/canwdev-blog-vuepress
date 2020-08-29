@@ -63,7 +63,7 @@ const config = {
       '/blog/': [
         {
           title: '博客',
-          sidebarDepth: 0,
+          sidebarDepth: 2,
           children: sidebarHelper.getChildren('/blog/')
         }
       ],
@@ -103,7 +103,7 @@ const config = {
       '/manual/': [
         {
           title: '手册',
-          sidebarDepth: 0,
+          sidebarDepth: 2,
           children: sidebarHelper.getChildren('/manual/')
         }
       ],
