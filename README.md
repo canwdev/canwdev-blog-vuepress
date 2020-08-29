@@ -5,8 +5,9 @@
 
 ## 目录
 
-- [manual](docs/manual)
-- [notes](docs/notes)
+- [Notes](docs/notes)
+- [Manual](docs/manual)
+- [Blog](docs/blog)
 
 ## 运行
 

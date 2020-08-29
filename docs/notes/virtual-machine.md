@@ -1,4 +1,4 @@
-# 虚拟机常见问题汇总
+# 虚拟机笔记
 
 ## Linux 安装 VMware Workstation 虚拟机
 
@@ -161,7 +161,22 @@ WantedBy=multi-user.target
 - 使用`systemctl enable vmware.service`让它每次开机都运行
 - 使用`systemctl start vmware.service`让它临时启动
 
-## VirtualBox 共享文件夹到 Linux 客户机，如何挂载
+## 如何在 Linux 客户机挂载 VirtualBox 共享文件夹
+
+首先需要安装增强工具。
+
+如果勾选了自动挂载，并设置了挂载点（如 `VMShared`），则一般来说会挂载到 `/media/sf_VMShared/`，但这个目录只有 `root` 用户或 `vboxsf` 组的用户才有权限访问（[参考](https://stackoverflow.com/a/26981786)）。
+
+```sh
+# 添加当前用户到组
+sudo adduser $USER vboxsf
+# 如果上面那条执行失败就用这一条
+sudo usermod --append --groups vboxsf $USER
+```
+
+需要重新登录或重启才能生效。
+
+如果没有自动挂载成功，下面是手动挂载的方法：
 
 参考：[Mounting VirtualBox shared folders on Ubuntu Server 16.04 LTS](https://gist.github.com/estorgio/1d679f962e8209f8a9232f7593683265)
 

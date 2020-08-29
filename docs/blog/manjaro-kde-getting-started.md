@@ -93,3 +93,12 @@ XMODIFIERS=@im=fcitx
 
 个人推荐中州韵（[fcitx-rime](https://www.archlinux.org/packages/?name=fcitx-rime)）+小鹤双拼，具体配置可以参考这篇文章：[Rime 输入法配置记录](https://10101.io/2019/01/30/rime-configuration)
 
+### yay
+
+使用 `yay` 可以方便的安装 AUR 软件。
+
+- 到 https://github.com/Jguer/yay/releases 下载最新的二进制文件，并解压缩到 `/usr/Applications/yay_10.0.4_x86_64`
+- 创建链接：`ln -s /usr/Applications/yay_10.0.4_x86_64/yay /bin/yay`
+- 设置镜像：`yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save`
+- `yay -P -g`
+- 然后就可以安装 AUR 软件了，不需要 `sudo`，如：`yay -S plymouth`
