@@ -4,9 +4,11 @@
 
 ## 1. Debian/Ubuntu
 
+![image-20200829225253396](./linux-surface-pro7.assets/image-20200829225253396.png)
+
 ### 1.1 下载
 
-可以直接到 Github 的 release 页面下载内核，或者到 https://pkg.surfacelinux.com/debian 手动获取以下的包：
+可以直接到 Github 的 release 页面下载内核，或者到 https://pkg.surfacelinux.com/debian 手动获取 `deb` 包：
 
 下载 [Packages](https://pkg.surfacelinux.com/debian/dists/release/main/binary-amd64/Packages) 文件，用文本编辑器打开，搜索包名。
 
@@ -43,13 +45,21 @@ sudo dpkg -i iptsd_0.1-1_amd64.deb
 
 ## 2. Arch/Manjaro
 
+![image-20200829225438421](./linux-surface-pro7.assets/image-20200829225438421.png)
+
 ### 2.1 下载
 
-待补充。
+在 [这里](https://pkg.surfacelinux.com/arch/) 可以直接下载 `zst` 文件，下载前需去除 `.blob` 后缀，如：`https://pkg.surfacelinux.com/arch/iptsd-0.1-1-x86_64.pkg.tar.zst`
+
+需要下载这些包：
+
+```
+linux-surface-headers linux-surface surface-ipts-firmware iptsd
+```
 
 ### 2.2 安装
 
-如果直接安装，可能会提示证书错误，此时需要修改配置：`/etc/pacman.conf`
+如果直接安装，可能会提示签名错误，此时需要修改配置：`/etc/pacman.conf`
 
 ```
 # SigLevel = Required DatabaseOptional
@@ -66,7 +76,13 @@ sudo pacman -U linux-surface-5.8.5.arch1-1-x86_64.pkg.tar.zst \
 	linux-surface-headers-5.8.5.arch1-1-x86_64.pkg.tar.zst
 
 # 驱动程序
-# 待补充。
+sudo pacman -U surface-ipts-firmware-20200402-1-any.pkg.tar.zst \
+	iptsd-0.1-1-x86_64.pkg.tar.zst
+	
+# 额外的软件，来自 AUR，如果你装了 yay
+# 可能需要开启代理才能下载成功
+export ALL_PROXY=socks5://proxyAddress:port
+yay -S libwacom-surface surface-dtx-daemon surface-control
 ```
 
 ## 3. 常见问题
@@ -88,4 +104,16 @@ sudo pacman -U linux-surface-5.8.5.arch1-1-x86_64.pkg.tar.zst \
     ```
 3. 更新 grub 配置：`sudo update-grub`
 
+### 3.4 从公钥服务器接收失败
+
+```
+:: Importing keys with gpg...
+gpg: 从公钥服务器接收失败：一般错误
+```
+
+手动指定可访问的密钥服务器以添加密钥（最后那一长串就是密钥）：
+
+```
+gpg --keyserver keyserver.ubuntu.com --recv-keys 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
+```
 
