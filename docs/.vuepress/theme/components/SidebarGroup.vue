@@ -110,13 +110,18 @@ export default {
   width 100%
   box-sizing border-box
   margin 0
-  border-left 0.25rem solid transparent
-  background $borderColor
+  border-top: 1px solid $borderColor
   &.open, &:hover
-    text-overflow unset
-    white-space unset
     color #FFF
     background $accentColor
+    box-shadow $common-shadow
+  &.open
+    text-overflow unset
+    white-space unset
+  &:hover
+    background lighten($accentColor, 20)
+  &:active
+    background darken($accentColor, 20)
   .arrow
     position relative
     top -0.12em

@@ -113,5 +113,7 @@ function flatten (items, res) {
     overflow auto // clear float
   .next
     float right
+  a:hover
+    text-decoration underline
 
 </style>

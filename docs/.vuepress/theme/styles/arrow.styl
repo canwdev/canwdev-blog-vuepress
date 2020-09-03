@@ -20,3 +20,17 @@
     border-top 4px solid transparent
     border-bottom 4px solid transparent
     border-right 6px solid $arrowBgColor
+
+.sidebar-heading {
+  &:hover, &.open {
+    .arrow {
+      &.right {
+        border-left-color #fff
+      }
+      &.down {
+        border-top-color #fff
+      }
+    }
+  }
+}
+
