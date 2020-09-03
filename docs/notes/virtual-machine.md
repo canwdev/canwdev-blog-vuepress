@@ -105,19 +105,17 @@ vboxmanage clonehd "cloned.vdi" "compressed.vmdk" --format vmdk
 
 ### Windows 宿主机 VMware 压缩命令
 
-第一种：右键我的电脑->管理->存储->磁盘管理->右键任意磁盘->压缩卷->压缩
+使用图形界面：
 
-第二种：vmware安装目录下，vmware-vdiskmanager.exe -k vmdk路径
+- 虚拟机设置 -> **硬件**选项卡 -> 选择一块**硬盘** -> 磁盘实用工具 -> 压缩
+
+命令行：在 vmware 安装目录下，执行下面命令：
 
 ```
 D:\VMware>vmware-vdiskmanager.exe -k  C:\Users\windows\Desktop\xxxx-disk1.vmdk
 ```
 
-第三种：
-
-![img](./virtual-machine.assets/1309874-20191224175352134-1105705161.png)
-
-## VMware Workstation 与 Device/Credential Guard 不兼容?
+## VMware Workstation 与 Device/Credential Guard 不兼容
 
 > VMware Workstation 与 Device/Credential Guard 不兼容。在禁用 Device/Credential Guard 后，可以运行 VMware Workstation。
 
@@ -168,7 +166,7 @@ WantedBy=multi-user.target
 如果勾选了自动挂载，并设置了挂载点（如 `VMShared`），则一般来说会挂载到 `/media/sf_VMShared/`，但这个目录只有 `root` 用户或 `vboxsf` 组的用户才有权限访问（[参考](https://stackoverflow.com/a/26981786)）。
 
 ```sh
-# 添加当前用户到组
+# 添加当前用户到 vboxsf 组
 sudo adduser $USER vboxsf
 # 如果上面那条执行失败就用这一条
 sudo usermod --append --groups vboxsf $USER
