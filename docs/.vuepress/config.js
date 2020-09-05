@@ -46,8 +46,6 @@ const config = {
           {text: '📚 学习', link: '/notes/'},
           {text: '📖 手册', link: '/manual/'},
           {text: '🐱‍👓 博客', link: '/blog/'},
-          {text: '🛠 工具', link: 'https://zencode.top:81'},
-          // {text: '博客', link: 'https://zencode.top:88'},
         ],
       },
       // '/en/': {
@@ -136,6 +134,9 @@ const config = {
       hostname: 'https://canwdev.github.io'
     },
     // 'vuepress-plugin-mathjax': {}
+  },
+  markdown: {
+    lineNumbers: true
   }
 }
 

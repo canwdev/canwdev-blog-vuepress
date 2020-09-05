@@ -118,13 +118,16 @@ a.sidebar-link
   width: 100%
   box-sizing: border-box
   &:hover, &.active
+    color #FFF
+    background lighten($accentColor, 10)
+    box-shadow $common-shadow
+  &.active
     text-overflow unset
     white-space unset
-    color #FFF
-    background $accentColor
-    font-weight 500
   &:hover
-    background lighten($accentColor, 10)
+    background lighten($accentColor, 20)
+  &:active
+    background darken($accentColor, 20)
   .sidebar-group &
     /*padding-left 1.5rem*/
   .sidebar-sub-headers &
