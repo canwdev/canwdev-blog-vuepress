@@ -1,4 +1,4 @@
-## 怎么把steam的游戏拷贝到另一台电脑？
+## 把 Steam 的游戏拷贝到另一台电脑
 
 原文：https://www.zhihu.com/question/270062762/answer/351631966
 

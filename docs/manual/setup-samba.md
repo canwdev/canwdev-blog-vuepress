@@ -1,6 +1,6 @@
-# 安装并配置 Samba 文件共享服务
+# Samba 文件共享服务安装与配置
 
-参考：https://www.Public/Linux/2018-11/155466.htm
+参考：https://m.linuxidc.com/Linux/2018-11/155466.htm
 
 > Samba(SMB) 是一种在局域网上共享文件和打印机的一种通信协议，我们可以利用 Samba 在网络中访问开启了该服务的计算机中的文件，就像访问本地磁盘一样便利。
 
