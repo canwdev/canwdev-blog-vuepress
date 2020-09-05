@@ -1,6 +1,6 @@
 # 在 Linux 中阻止特定程序联网
 
-参考：[How to block internet access to certain programs on Linux](https://serverfault.com/a/550278)，使用了 用户组 和 iptables 的原理。
+参考：[How to block internet access to certain programs on Linux](https://serverfault.com/a/550278)，使用了 `用户组` 和 `iptables` 的原理。
 
 1. 创建并将所需的用户添加到**用户组**：
 
@@ -30,7 +30,7 @@
    iptables -I OUTPUT 1 -m owner --gid-owner no-internet -j DROP
    ```
 
-   > Note: Don't forget to make the changes permanent, so it would be [applied automatically after reboot](https://unix.stackexchange.com/questions/38019/execute-a-script-as-root-at-boot-on-fedora-15-16). Doing it, depends on your Linux distribution.
+   > 注意：这条规则将在重启后失效，如果要让其开机后自动生效，需要进行配置，这取决于你的 Linux 发行版（[Arch](https://wiki.archlinux.org/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)）。
 
 4. 检查是否成功，例如运行一个 `bash`：
 
@@ -54,4 +54,4 @@
 - `iptables -A OUTPUT -m owner --gid-owner no-internet -d 127.0.0.0/8 -j ACCEPT`
 - `iptables -A OUTPUT -m owner --gid-owner no-internet -j DROP`
 
-> *NOTE:* In case of spawning the rules will be maintained. For example, if you run a program with *no-internet* rule and that program will open browser window, still the rules will be applied.
+> 注意：如果在一个进程中打开另一个新进程，将维持规则。例如，如果你运行带有 `no-internet` 规则的程序，并且该程序将打开浏览器窗口，则仍将应用这些规则。
