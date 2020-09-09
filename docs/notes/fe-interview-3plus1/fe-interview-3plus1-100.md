@@ -1457,13 +1457,24 @@ base64 是一种编码技术，可以在数据与 base64 字符串之间进行�
 
 ### [html] 写个例子说明HTML5在移动端如何打开APP？
 
-使用 a 标签：
+- 有以下几种方式
+    - URL Scheme：最常见
+    - Intent: // ：Android
+    - Universal Link ： iOS， 通过传统的 HTTP 链接即可打开 APP
+    
+- 唤醒途径
+    - iframe的src
+    - a标签的src
+    - window.location
+
+使用 URL Scheme 的 a 标签：
 
 ```html
 <a href="zhihu://">在 APP 内打开</a>
 ```
 
-
+- [H5唤起APP指南(附开源唤端库)](https://juejin.im/post/6844903664155525127)
+- [常用iOS URL Scheme附录 大全](https://blog.csdn.net/dkq972958298/article/details/52954195)
 
 ### [css] 说说你对jpg、png、gif的理解，分别在什么场景下使用？有使用过webp吗？
 

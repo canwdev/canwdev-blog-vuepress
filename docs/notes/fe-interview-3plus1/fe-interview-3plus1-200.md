@@ -1,6 +1,6 @@
 # 101-200天 [前端面试 3+1](https://github.com/haizlin/fe-interview/blob/master/category/history.md) & 个人答案总结
 
-> [ 🌎 | ✅ | 📎 ]每日一刷
+> [ 🌎 | ✅ | 📎 ] 每日一刷
 
 <ClientOnly>
 <ProgressBar completedClass=".theme-default-content>h2" :maxNumber="100" testRegStr="."/>
@@ -339,6 +339,73 @@ function getElementsByClassName(className) {
 
 - 强类型：声明变量时需指定数据类型，一旦指定则不可改变
 - 弱类型：变量没有数据类型的限制，可以随意修改变量的数据类型
+
+## 第185天 (2019.10.18)
+
+### 📎 [html] [HTML5如何唤醒APP？](https://github.com/haizlin/fe-interview/issues/1383)
+
+> 第68天
+
+### 📎 [css] [你是怎么设计css sprites（精灵图）的？有哪些技巧？](https://github.com/haizlin/fe-interview/issues/1384)
+
+### ✅ [js] [onload事件和DOMContentLoaded哪个先执行呢？](https://github.com/haizlin/fe-interview/issues/1385)
+
+- DOMContentLoaded 先执行。
+- DOMContentLoaded 相当于 jQuery 中的 `$(document).ready(function)`，在 DOM 加载完成后立即执行，onload 事件在所有资源（包括图片、样式）加载完成后才执行。
+
+### 🌎 [软技能] [你知道什么是域名备案吗？备案有什么用？可以不备案吗？](https://github.com/haizlin/fe-interview/issues/1386)
+
+## 第184天 (2019.10.17)
+
+### ✅ [html] [如何给一个下拉选项进行分组？](https://github.com/haizlin/fe-interview/issues/1379) (optgroup)
+
+<select name="city">
+	<optgroup label="山东">
+		<option value="1">青岛</option>
+		<option value="2">青岛</option>
+		<option value="3">威海</option>
+	</optgroup>
+	<optgroup label="安徽">
+		<option value="1">蚌埠</option>
+		<option value="2">合肥</option>
+		<option value="3">宿州</option>
+	</optgroup>
+</select>
+
+```html
+<select name="city">
+	<optgroup label="山东">
+		<option value="1">青岛</option>
+		<option value="2">青岛</option>
+		<option value="3">威海</option>
+	</optgroup>
+	<optgroup label="安徽">
+		<option value="1">蚌埠</option>
+		<option value="2">合肥</option>
+		<option value="3">宿州</option>
+	</optgroup>
+</select>
+```
+
+### ✅ [css] [请描述下你对translate()方法的理解](https://github.com/haizlin/fe-interview/issues/1380)
+
+```
+transform: translate(x,y)
+transform: translate3d(x,y,z) 
+```
+
+translate 是二维平面变换，让一个元素在当前位置进行偏移，在平面直角座标系中，x增加是往右移动，y增加是往下移动。
+translate3d 多了一个空间维度z，可以理解为眼睛到屏幕之间的距离，z越大元素离眼睛越近。
+
+### ✅ [js] [说下你对面向对象的理解](https://github.com/haizlin/fe-interview/issues/1381)
+
+世间万物皆可抽象为对象的类，类实例化出多个对象，每一个对象都拥有自己的属性、方法，并且可以继承父类的特征。
+
+### 🌎 [软技能] [你上家公司的接口是怎么管理的？](https://github.com/haizlin/fe-interview/issues/1382)
+
+- Postman
+- Yapi
+- Swagger UI
 
 ## 第183天 (2019.10.16)
 
