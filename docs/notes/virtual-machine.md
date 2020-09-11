@@ -57,7 +57,7 @@ vmware-vdiskmanager -r G:\ubuntu\Ubuntu.vmdk -t 1 G:\ubuntu\ubuntu2.vmdk
 
 ### Linux 客户机系统
 
-将系统空闲空间置为 0，有两种方法：
+将系统空闲空间用 0 填满，然后删除。有两种方法：
 
 第一种：
 
@@ -68,8 +68,8 @@ cat /dev/zero > zero.fill;sync;sleep 1;sync;rm -f zero.fill
 第二种：
 
 ```sh
-sudo dd if=/dev/zero of=/EMPTY bs=1M
-sudo rm -f /EMPTY
+dd if=/dev/zero of=./zero.fill bs=1M
+rm -f ./zero.fill
 ```
 
 ### Windows 客户机系统
@@ -82,15 +82,16 @@ sdelete –z C:
 
 ### 通用宿主机 VirtualBox 压缩命令
 
-如果你的虚拟硬盘是Vmware的VMDK格式，那就要麻烦点，因为VirtualBox不支持直接压缩VMDK格式，但是可以变通下：先转换成VDI并压缩，再转回VMDK。执行命令：
+```sh
+vboxmanage modifyhd cloned.vdi --compact
+```
+
+如果虚拟硬盘是 VMDK 格式，则需要转换：
 
 ```sh
 vboxmanage clonehd "source.vmdk" "cloned.vdi" --format vdi
-vboxmanage modifyhd cloned.vdi --compact
 vboxmanage clonehd "cloned.vdi" "compressed.vmdk" --format vmdk
 ```
-
-> 事实上，执行命令的过程中可以发现：在从VMDK转换到VDI的过程中似乎已经做了压缩，文件大小已经减少了很多，第二条命令反而没见到文件大小有什么变化，所以这里第二条命令应该可以省略了。
 
 ### Linux 宿主机 VMware 压缩命令
 

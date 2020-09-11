@@ -340,6 +340,60 @@ function getElementsByClassName(className) {
 - 强类型：声明变量时需指定数据类型，一旦指定则不可改变
 - 弱类型：变量没有数据类型的限制，可以随意修改变量的数据类型
 
+## 第189天 (2019.10.22)
+
+### 🌎 [html] [有哪些方法可以将图片和文字显示在同一行上呢？](https://github.com/haizlin/fe-interview/issues/1417)
+
+使用 inline 或 flex 布局
+
+### 🌎 [css] [请使用css写一个多级的下拉菜单](https://github.com/haizlin/fe-interview/issues/1418)
+### 🌎 [js] [写一个方法将html页面生成为图片](https://github.com/haizlin/fe-interview/issues/1419)
+
+html2canvas
+
+### ✅ [软技能] [你觉得该不该写注释？你写注释的原则是什么？](https://github.com/haizlin/fe-interview/issues/1420)
+
+一定要写，不仅写给自己看，还要写给别人看。在代码逻辑复杂的情况下写注释，其他情况保证代码可读就可以了。
+
+## 第188天 (2019.10.21)
+
+### ✅ [html] [png8和png24有什么区别呢？](https://github.com/haizlin/fe-interview/issues/1413)
+
+- 颜色深度不同，png 8 每个像素可存 8 bit 的数据，`2^8=256` 因此每像素可以存储 256 种颜色。
+- png 24 相当于 `3*8=24`，也就是说用三个 8 bit 分别存放 R、G、B 三基色，即 `256*256*256=16777216` 种颜色。
+- png 32 在 png 24 之上多了一个透明度通道。
+
+参考：[PNG图片压缩原理解析](https://juejin.im/post/6844903798658318343)
+
+### ✅ [css] [用css给一个元素加边框有哪些方法？](https://github.com/haizlin/fe-interview/issues/1414)
+
+[参考](https://github.com/haizlin/fe-interview/issues/1414#issuecomment-544439771)
+
+```css
+:scope {
+  border: 3px solid black;
+
+  box-shadow: 0 0 0 1px black; /*不影响布局,无限叠加*/
+
+  outline: 1px solid black; /*不支持圆角*/
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' stroke='%23000' fill='transparent'/%3E%3C/svg%3E");
+
+  background-clip: content-box; /*形成透明边框*/
+  padding: 1px;
+
+  border-image: linear-gradient(red, black) 1;
+  border: 1px solid;
+}
+```
+
+### ✅ [js] [stopPropagation()和preventDefault()这两个方法有什么区别？](https://github.com/haizlin/fe-interview/issues/1415)
+
+- 阻止冒泡：阻止事件向外扩散
+- 阻止默认行为：阻止浏览器的默认行为，如 form 刷新，右键点击弹出菜单等
+
+<!-- ### 🌎 [软技能] [你有听说过“分词”吗？说说你对它的理解](https://github.com/haizlin/fe-interview/issues/1416) -->
+
 ## 第187天 (2019.10.20)
 
 <!--### 🌎 [html] [placeholder如何在兼容IE？](https://github.com/haizlin/fe-interview/issues/1408)-->
@@ -360,7 +414,7 @@ function getElementsByClassName(className) {
 - 由于是异步读取，适合读取较大的文件
 
 ### 🌎 [软技能] [你知道什么是人工智能和机器学习吗？说说你对它们的理解认知](https://github.com/haizlin/fe-interview/issues/1411)
-  
+
 ## 第186天 (2019.10.19)
 
 ### 🌎 [html] [举例说明如何实现浏览器桌面通知？](https://github.com/haizlin/fe-interview/issues/1403)
