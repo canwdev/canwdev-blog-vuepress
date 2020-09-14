@@ -1,6 +1,7 @@
 # 101-200天 [前端面试 3+1](https://github.com/haizlin/fe-interview/blob/master/category/history.md) & 个人答案总结
 
 > [ 🌎 | ✅ | 📎 ] 每日一刷
+> 也会包含一些复制粘贴的答案
 
 <ClientOnly>
 <ProgressBar completedClass=".theme-default-content>h2" :maxNumber="100" testRegStr="."/>
@@ -1019,7 +1020,7 @@ clip-path CSS 属性使用裁剪方式创建元素的可显示区域。区域内
 
 ### [软技能] 说说你对前端工程师日常的开发流程的理解
 
-> ~~周一摸鱼、周二摸鱼、周三摸鱼、周四需求出来了开始赶进度，晚上加班，周五接着赶进度加班，晚上上线；周六出bug了在家修bug，周日躺。~~
+<!--~~周一摸鱼、周二摸鱼、周三摸鱼、周四需求出来了开始赶进度，晚上加班，周五接着赶进度加班，晚上上线；周六出bug了在家修bug，周日躺s。~~-->
 
 1. 接到需求（原型图/UI图）
 2. 分析功能点、难点（需要研究）
@@ -1032,7 +1033,7 @@ clip-path CSS 属性使用裁剪方式创建元素的可显示区域。区域内
 
 https://github.com/haizlin/fe-interview/issues/1270
 
-### 第164天 (2019.09.27)
+## 第164天 (2019.09.27)
 
 ### [html] 前端路由指的是什么？它有什么好处？它有哪些方式可以实现呢？
 
