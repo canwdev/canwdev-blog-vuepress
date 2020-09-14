@@ -74,7 +74,7 @@ cpufreq-set -g powersave
 nohup <command> &
 ```
 
-### 创建软链接
+### 创建符号链接
 
 Linux:
 
@@ -94,8 +94,6 @@ mklink /D "C:\目标文件夹\链接文件夹名\" "C:\源文件夹"
 
 rsync 是一个常用的 Linux 应用程序，用于文件同步。GUI 客户端：`grsync`
 
-参考：[rsync 用法教程](https://www.ruanyifeng.com/blog/2020/08/rsync.html)
-
 ```sh
 # 复制文件
 rsync -avrh --progress /pathA/ /pathB/
@@ -113,6 +111,8 @@ rsync -avrhc --delete --progress /pathA/ /pathB/
 - `-c` 默认情况下，rsync 只检查文件的大小和最后修改日期是否发生变化，如果发生变化，就重新传输；使用这个参数以后，则通过判断文件内容的校验和，决定是否重新传输
 - `--progress` 在传输过程中显示进度
 - `--delete` 这将删除只存在于目标目录、不存在于源目录的文件
+
+参考：[rsync 用法教程](https://www.ruanyifeng.com/blog/2020/08/rsync.html)
 
 ### 使用 dd 命令创建引导盘
 
@@ -138,23 +138,55 @@ sdb      8:16   1  14.9G  0 disk
 sudo dd bs=4M if=path/to/input.iso of=/dev/sd<?> conv=fdatasync  status=progress
 ```
 
-`input.iso` 是输入文件（光盘镜像），`/dev/sd<?>` 是目标磁盘。这种方法速度很快，从未失败。
+`input.iso` 是输入文件（光盘镜像），`/dev/sd<?>` 是目标磁盘。这种方法速度很快，从未失败过。
 
-### 使用 iptables 屏蔽 IP 地址
+### 使用 iptables
 
-[iptables](https://wiki.archlinux.org/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)) 是一个配置 Linux 内核 防火墙 的命令行工具，大多数发行版都内置了这个命令。
+iptables 是一个配置 Linux 内核 防火墙 的命令行工具，大多数发行版都内置了这个命令。
 
 ```sh
 # 屏蔽一个IP
 iptables -I INPUT -s <IP地址> -j DROP
-# 显示已屏蔽的IP
-iptables -L INPUT
+# 显示已添加的屏蔽规则
+iptables -L INPUT --line-numbers
+
+# 如果添加错了，则删除一条规则（num为1）
+iptables -D INPUT 1
 ```
 
-参考：[Linux 使用 iptables屏蔽IP段](https://blog.csdn.net/hongkaihua1987/article/details/77336061)
+注意：规则在重启后失效，如果要让其开机后自动生效，需要进行配置，这取决于你的 Linux 发行版。一些通用的解决方案如下：
 
-使用 http://ip.tool.chinaz.com/ 可以查询目标 IP 的详细信息。
+1. 保存 iptables 到文件：
 
+   ```sh
+   #这包括了ipv4和ipv6规则，如果只有ipv4的规则可以只执行第一条
+   iptables-save > /etc/iptables-rules
+   ip6tables-save > /etc/ip6tables-rules
+   ```
+
+2. 重启后重新加载文件：
+
+   ```sh
+   pre-up iptables-restore < /etc/iptables-rules
+   pre-up ip6tables-restore < /etc/ip6tables-rules
+   ```
+
+如果使用 iptables-persistent 则更加方便：
+
+```sh
+sudo apt install iptables-persistent
+# 每当设置了新的iptables规则后，使用如下命令保存规则即可
+# 开机后会自动加载已经保存的规则
+netfilter-persistent save
+```
+
+参考：
+
+- [IP/IPv6查询，服务器地址查询](http://ip.tool.chinaz.com/)
+- [Linux 使用 iptables屏蔽IP段](https://blog.csdn.net/hongkaihua1987/article/details/77336061)
+- [iptables怎么删除一条已有的iptables规则](https://blog.csdn.net/yusiyuuestc/article/details/17455217)
+- [Arch iptables 配置文件](https://wiki.archlinux.org/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)
+- [Ubuntu下如何永久保存iptables规则](https://blog.sourismu.me/archives/87/)
 
 
 ## 类 Debian 系统

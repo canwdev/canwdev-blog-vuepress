@@ -30,7 +30,7 @@
    iptables -I OUTPUT 1 -m owner --gid-owner no-internet -j DROP
    ```
 
-   > 注意：这条规则将在重启后失效，如果要让其开机后自动生效，需要进行配置，这取决于你的 Linux 发行版（[Arch](https://wiki.archlinux.org/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)）。
+   > 注意：规则在重启后失效，另请参阅：[使用iptables](../notes/linux.md#使用-iptables)
 
 4. 检查是否成功，例如运行一个 `bash`：
 
