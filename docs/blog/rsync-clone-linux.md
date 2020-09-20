@@ -41,7 +41,9 @@ UUID=45a8f854-55c1-435b-b37e-8cfce8f8a6b2 /              ext4    defaults,noatim
 
 用任意一种，确定新分区的 UUID 然后替换上面两个文件的旧 UUID 就可以了。
 
-## 4. 修复 GRUB MBR 引导扇区
+## 4. 修复 GRUB 引导
+
+### 4.1 修复 GRUB MBR 引导扇区
 
 > 也适用于任何磁盘 MBR 引导丢失的问题
 
@@ -64,3 +66,56 @@ UUID=45a8f854-55c1-435b-b37e-8cfce8f8a6b2 /              ext4    defaults,noatim
 4. 在 chroot 环境执行 `grub-install /dev/sda` ，为该磁盘安装 GRUB MBR 引导程序。
 
 5. 完成。
+
+### 4.2 修复 GRUB EFI 引导
+
+挂载分区
+
+```sh
+sudo mount /dev/nvme0n1p3 /mnt
+sudo mount /dev/nvme0n1p1 /mnt/boot/efi
+for i in /dev /dev/pts /proc /sys /run; do sudo mount -B $i /mnt$i; done
+```
+
+使用 chroot 修复引导
+
+```
+sudo chroot /mnt
+grub-install /dev/nvme0n1
+```
+
+如果报错：
+
+```
+正在为 x86_64-efi 平台进行安装。
+EFI variables are not supported on this system.
+EFI variables are not supported on this system.
+grub-install：错误： efibootmgr failed to register the boot entry: 没有那个文件或目录.
+```
+
+```
+# 退出到系统终端
+exit
+# 执行这条命令
+sudo mount --bind /sys/firmware/efi/efivars/ /mnt/sys/firmware/efi/efivars/
+# 再次进入 chroot
+sudo chroot /mnt
+# 重新修复引导
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub --recheck
+```
+
+安装成功：
+
+```
+正在为 x86_64-efi 平台进行安装。
+安装完成。没有报告错误。
+```
+
+后续工作：
+
+```sh
+# 更新grub设置
+grub-mkconfig -o /boot/grub/grub.cfg 
+# 或者
+update-grub
+```
