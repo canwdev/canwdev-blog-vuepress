@@ -1,6 +1,6 @@
 # Docker 学习笔记
 
-> 这是《第一本 Docker 书》的读书笔记。
+> 《第一本 Docker 书》的读书笔记。
 
 ![image-20200805164924891](./docker.assets/image-20200805164924891.png)
 
@@ -231,7 +231,11 @@ sudo docker exec -t -i daemon_dave /bin/bash
 docker run --restart=always --name daemon_dave -d ubuntu /bin/sh -c "while true; do echo hello world; sleep 1; done"
 ```
 
-**--restart=on-faliure:5** 意思是只在容器退出代码为非0时才会自动重启，最多重启5次
+`--restart=on-faliure:5` 意思是只在容器退出代码为非0时才会自动重启，最多重启5次
+
+要修改一个已经启动的容器，使用命令：`docker update --restart=always my-container`
+
+要关闭自动启动，使用 `--restart=no` 选项。
 
 ### 深入容器
 
