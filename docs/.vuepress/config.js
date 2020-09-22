@@ -5,7 +5,7 @@ const isProd = process.env.NODE_ENV === 'production'
 const config = {
   base: '/',  // 生产环境文件路径
   head: [
-    ['link', { rel: 'icon', href: `/star.png` }],
+    ['link', { rel: 'icon', href: `/favicon.png` }],
     ['link', { rel: 'manifest', href: '/manifest.json' }],
   ],
   locales: {
@@ -24,7 +24,7 @@ const config = {
   },
   themeConfig: {
     // search: false,
-    logo: '/star.png', // HTT logo from https://www.reddit.com/r/k_on/comments/abw6gf/i_made_some_vectors_of_the_htt_logo_from_the/
+    logo: '/favicon.png',
     repo: 'https://github.com/canwdev/notes-vuepress',
     editLinks: true,
     repoLabel: '源码',
