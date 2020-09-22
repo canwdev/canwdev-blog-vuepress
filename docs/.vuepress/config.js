@@ -14,7 +14,7 @@ const config = {
     '/': {
       lang: 'zh-CN',
       title: '离线笔记 · OfflineNotes',
-      description: '记录学习过程，构建完整知识体系。'
+      description: '记录学习过程。'
     },
     // '/en/': {
     //   lang: 'en-US', // 将会被设置为 <html> 的 lang 属性

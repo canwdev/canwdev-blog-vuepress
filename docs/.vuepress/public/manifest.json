@@ -2,6 +2,5 @@
  "name": "离线笔记",
  "short_name": "离线笔记",
  "version": "1.0.0",
- "description": "记录线上文档，构建完整知识体系",
  "manifest_version": 1
 }

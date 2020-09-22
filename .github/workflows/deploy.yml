@@ -16,7 +16,7 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    
+
     strategy:
       matrix:
         node-version: [12.x]
@@ -35,4 +35,4 @@ jobs:
         with:
             ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
             BRANCH: gh-pages
-            FOLDER: .vuepress/dist
+            FOLDER: docs/.vuepress/dist
