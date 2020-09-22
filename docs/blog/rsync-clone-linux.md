@@ -2,9 +2,9 @@
 
 ## 1. 给新的磁盘分区
 
-推荐新手使用 KDE Partition Manager 进行分区操作。
+推荐使用 KDE Partition Manager 进行分区操作。
 
-具体操作细节略。
+命令行可以使用 `fdisk` 或 `gdisk`，具体操作细节略。
 
 ## 2. 使用 rsync 拷贝系统文件到新的分区
 
@@ -45,7 +45,7 @@ UUID=45a8f854-55c1-435b-b37e-8cfce8f8a6b2 /              ext4    defaults,noatim
 
 ### 4.1 修复 GRUB MBR 引导扇区
 
-> 也适用于任何磁盘 MBR 引导丢失的问题
+> 也适用于任何磁盘丢失 MBR 引导的问题
 
 1. 使用光盘镜像启动到 Live 环境。
 
@@ -64,8 +64,6 @@ UUID=45a8f854-55c1-435b-b37e-8cfce8f8a6b2 /              ext4    defaults,noatim
    ```
 
 4. 在 chroot 环境执行 `grub-install /dev/sda` ，为该磁盘安装 GRUB MBR 引导程序。
-
-5. 完成。
 
 ### 4.2 修复 GRUB EFI 引导
 
@@ -116,6 +114,6 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub 
 ```sh
 # 更新grub设置
 grub-mkconfig -o /boot/grub/grub.cfg 
-# 或者
-update-grub
+
+# 或者使用 `update-grub`，其实这条命令就是封装了上一条命令的 shell 脚本
 ```
