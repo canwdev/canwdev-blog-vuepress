@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background: pink;
+    }
+
+    .container {
+      width: 200px;
+      height: 200px;
+      border: 1px solid rgb(72, 182, 167);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" draggable="true"></div>
+  <div class="container"></div>
+  <script>
+    let box = document.querySelector(".box");
+    let container = document.querySelector(".container");
+    // 移动元素
+    box.addEventListener("dragstart", function (e) {
+      console.log("我要移动了")
+      e.dataTransfer.setData("box", e.target.className);
+    })
+    // 目标元素
+    container.addEventListener("dragenter", function () {
+      console.log("你每次进入我这里都会触发");
+    })
+    container.addEventListener("dragover", function (e) {
+      // 要阻止浏览器默认行为，不然触发不了了下面的drop事件
+      e.preventDefault();
+      console.log("你每次在我里面都会不停地触发");
+    })
+    // drop 要阻止dragover才能触发
+    container.addEventListener('drop', function (e) {
+      console.log("在我里面松开鼠标就会触发");
+      var data = e.dataTransfer.getData("box");
+      e.target.appendChild(document.getElementsByClassName(data)[0]);
+    })
+    container.addEventListener("dragleave", function () {
+      console.log("你离开我的时候就会触发");
+    })
+  </script>
+</body>
+
+</html>

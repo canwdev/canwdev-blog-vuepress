@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>幻灯片实例2 平移循环</title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/holder.min.js"></script>
+
+    <style>
+        .container {
+            width: 80%;
+            padding: 0 15px;
+            margin: 0 auto;
+        }
+
+        .carousel {
+            position: relative;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 1080px;
+            height: 300px;
+        }
+
+        .img-reel {
+            position: absolute;
+            /*left: -1080px;*/
+        }
+
+        .img-reel img {
+            float: left;
+        }
+
+        .pager {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+        }
+
+        .pager a {
+            text-decoration: none;
+            color: #fff;
+            padding: 0 5px;
+            text-shadow: 0 0 3px #000;
+        }
+
+        .pager a.active {
+            background-color: #920000;
+            font-weight: bold;
+            border: 1px solid #610000;
+            border-radius: 2px;
+        }
+
+        .pager a:hover {
+            background-color: #920000;
+            border-radius: 2px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="carousel">
+        <div class="slide">
+            <div class="img-reel">
+                <a href="javascript:"><img data-src="holder.js/1080x300?theme=lava" src=""/></a>
+                <a href="javascript:"><img data-src="holder.js/1080x300?theme=vine" src=""/></a>
+                <a href="javascript:"><img data-src="holder.js/1080x300?theme=sky" src=""/></a>
+            </div>
+        </div>
+
+        <div class="pager">
+            <a href="#" rel="1">1</a>
+            <a href="#" rel="2">2</a>
+            <a href="#" rel="3">3</a>
+        </div>
+    </div>
+
+</div>
+</body>
+<script>
+    $(".pager a:first").addClass("active");
+
+    //获取图像的大小，有多少图像，然后确定图像卷轴的大小。
+    var imgWidth = $('.slide').width();
+    var imgCount = $('.img-reel img').size();
+    var allWidth = imgWidth * imgCount;
+    // 调整图像卷轴到新的大小
+    $('.img-reel').css({'width': allWidth});
+
+
+    rotate = function (end) {
+        if (end) {
+
+            $('.img-reel').animate({
+                left: 0
+            }, 500);
+        } else {
+            var id = active.attr('rel') - 1;
+            var pos = id * imgWidth;
+
+            $('.img-reel').animate({
+                left: -pos
+            }, 500);
+        }
+        $('.pager a').removeClass('active');
+        active.addClass('active');
+    };
+
+    rotateSwitch = function () {
+        play = setInterval(function () {
+            active = $('.pager a.active').next();
+            rel = $('.pager a.active').attr('rel');
+            // document.title=rel;
+
+            if (rel == imgCount) {
+                active = $('.pager a').first();
+                end = true;
+
+            } else {
+                end = false;
+            }
+            rotate(end);
+        }, 3000);
+    };
+
+    rotateSwitch();
+
+    $('.img-reel a').hover(
+        function () {
+            clearInterval(play)
+        }, function () {
+            rotateSwitch();
+        }
+    );
+
+    $('.pager a').click(function () {
+        active = $(this);
+        clearInterval(play);
+        rotate();
+        rotateSwitch();
+        return false;
+    })
+</script>
+</html>

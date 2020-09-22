@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>猜数字游戏！</title>
+    <style>
+        html {
+            font-family: sans-serif;
+        }
+
+        .lastResult {
+            color: white;
+            padding: 3px;
+        }
+    </style>
+    <link rel="stylesheet" href="number-guessing-game.css">
+</head>
+<body>
+<h1>猜数字游戏！</h1>
+
+<div class="guess_body">
+    <p style="margin: 20px;">JavaScript 已经选择了 1 到
+        <script>var MAX_NUMBER = 100;
+        document.write(MAX_NUMBER);</script>
+        之间的一个随机数。看看你是否可以猜测它在10回合或更少。我们会告诉你你的猜测太高或太低。
+    </p>
+    <div class="middle_line"></div>
+    <div class="form">
+        <label for="guessField">输入猜测: </label><input id="guessField" class="guessField">
+        <input type="submit" value="提交" class="guessSubmit">
+    </div>
+    <div class="middle_line"></div>
+    <div class="resultParas">
+        <p class="guesses"></p>
+        <p class="lastResult"></p>
+        <p class="lowOrHi"></p>
+    </div>
+</div>
+
+</body>
+<script>
+
+    var num = MAX_NUMBER, flag = -1, g = 1; //flag：大了(2)还是小了(1)
+    function smartGuess() {
+        if (flag == 1) {
+            num /= 2;
+            if (num == 0) num = 1;	//防止归零
+            g += num;
+        } else if (flag == 2) {
+            g -= num;
+        } else {
+            flag = 1;
+        }
+        return g;
+    }
+
+
+    var randomNumber = Math.floor(Math.random() * MAX_NUMBER) + 1;
+
+    var guessField = document.querySelector('.guessField');
+    var guessSubmit = document.querySelector('.guessSubmit');
+
+    var guesses = document.querySelector('.guesses');
+    var lastResult = document.querySelector('.lastResult');
+    var lowOrHi = document.querySelector('.lowOrHi');
+
+    var guessCount = 1;
+    var resetButton;
+
+    function printLog() {
+        console.log(randomNumber + ';' + guessCount + ';');
+    }
+
+    function resetGame() {
+        num = MAX_NUMBER, flag = -1, g = 1;
+        guessCount = 1;
+
+        var resetParas = document.querySelectorAll('.resultParas p');
+        for (var i = 0; i < resetParas.length; i++) {
+            resetParas[i].textContent = '';
+        }
+
+        resetButton.parentNode.removeChild(resetButton);
+
+        guessField.disabled = false;
+        guessSubmit.disabled = false;
+        guessField.value = '';
+        guessField.focus();
+
+        lastResult.style.backgroundColor = 'white';
+
+        randomNumber = Math.floor(Math.random() * MAX_NUMBER) + 1;
+    }
+
+    function setGameOver() {
+        guessField.disabled = true;
+        guessSubmit.disabled = true;
+        resetButton = document.createElement('button');
+        resetButton.textContent = '新游戏';
+        document.body.appendChild(resetButton);
+        resetButton.addEventListener('click', resetGame);
+        resetButton.focus();
+    }
+
+    function checkGuess() {
+        if (guessField.value === '') {
+            var userGuess = parseInt(smartGuess());
+        } else {
+            var userGuess = Number(guessField.value);
+        }
+
+        if (guessCount === 1) {
+            guesses.textContent = '猜测记录: ';
+        }
+        guesses.textContent += userGuess + ' ';
+
+        if (userGuess === randomNumber) {
+            lastResult.textContent = '恭喜！你猜对了！';
+            lastResult.style.backgroundColor = 'green';
+            lowOrHi.textContent = '';
+            setGameOver();
+        } else if (guessCount >= 10) {
+            lastResult.textContent = '!!! 游戏结束 !!!';
+            setGameOver();
+        } else {
+            lastResult.textContent = '错误!';
+            lastResult.style.backgroundColor = 'red';
+            if (userGuess < randomNumber) {
+                flag = 1;
+                lowOrHi.textContent = "数字太小!"
+            } else if (userGuess > randomNumber) {
+                flag = 2;
+                lowOrHi.textContent = '数字太大!'
+            }
+        }
+
+        guessCount++;
+        guessField.value = '';
+        guessField.focus();
+
+        printLog();
+    }
+
+    guessSubmit.addEventListener('click', checkGuess);
+    guessField.addEventListener('keypress', function (event) {
+        //event.preventDefault();
+        if (event.keyCode === 13) {
+            checkGuess();
+        }
+    });
+
+    //    guessField.onkeypress = function (event) {
+    //        if (event.keyCode === 13) {
+    //            checkGuess();
+    //        }
+    //    }
+</script>
+</html>

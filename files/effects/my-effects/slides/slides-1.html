@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>幻灯片实例1 简单渐变</title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/holder.min.js"></script>
+
+    <style>
+        .container {
+            width: 80%;
+            padding: 0 15px;
+            margin: 0 auto;
+        }
+
+        .slide {
+            position: relative;
+        }
+
+        .slide img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="slide">
+            <img data-src="holder.js/100px500?theme=lava" src=""/>
+            <img data-src="holder.js/100px500?theme=vine" src=""/>
+            <img data-src="holder.js/100px500?theme=sky" src=""/>
+        </div>
+
+    </div>
+</body>
+<script>
+
+    setInterval(function () {
+        $('.slide img').last().fadeOut(1000, function () {
+            $(this).show().prependTo('.slide');
+        });
+    },3000)
+</script>
+</html>

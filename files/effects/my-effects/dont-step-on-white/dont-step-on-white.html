@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>别踩白块</title>
+    <style>
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.44);
+            background-color: rgba(204, 204, 204, 0.39);
+            border-radius: 3px;
+        }
+
+        #main {
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            outline: 1px solid #9e9e9e;
+            background-color: #fff;
+        }
+
+        #con {
+            height: 400px;
+            position: relative;
+            top: -100px;
+
+        }
+
+        .info p:first-child{
+            float: left;
+            margin-left: 15px;
+            line-height: 15px;
+        }
+
+        .info p:last-child{
+            float: right;
+            margin-right: 15px;
+            line-height: 15px;
+        }
+
+        .status {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            box-shadow: 0 0 300px rgba(0, 0, 0, 0.36) inset;
+            z-index: 1;
+            display: none;
+            line-height: 400px;
+            text-align: center;
+            color: #fff;
+            font-size: 30px;
+        }
+
+        .status.active {
+            background-color: rgba(0, 0, 0, 0.54);
+            display: block;
+        }
+
+        .controller {
+            padding: 5px;
+            text-align: center;
+        }
+
+        .row {
+            height: 100px;
+            width: 100%;
+        }
+
+        .cell {
+            height: 100px;
+            width: 100px;
+            float: left;
+            transition: 0.3s all;
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0.36) inset;
+        }
+
+        .clickable {
+            box-shadow: 0 0 100px rgba(0, 0, 0, 0.36) inset;
+        }
+
+        .black {
+            background-color: #616161;
+        }
+
+        .red {
+            background-color: #f44336
+        }
+
+        .green {
+            background-color: #4caf50
+        }
+
+        .yellow {
+            background-color: #ffeb3b
+        }
+
+        .blue {
+            background-color: #2196f3;
+        }
+
+        button {
+            color: #393939;
+            font-size: 20px;
+            line-height: 40px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            outline: none;
+            box-shadow: 0 0 2px black;
+        }
+
+        button:hover {
+            background-color: #fff;
+        }
+
+        button:active {
+            background-color: rgba(210, 210, 210, 0.79);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div style="text-align: center;">
+        <a href="dont-step-on-white-mobile.html" style="color: #959595; text-decoration: none">切换到手机版</a>
+    </div>
+    <div class="info">
+        <p>分数：<span id="score">0</span></p>
+        <p>速度：<span id="speed">-</span></p>
+    </div>
+    <div id="main">
+        <div id="pause" class="status active"><span id="status-info">别踩白块</span></div>
+        <div id="con">
+            <!--<div class="row">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell black"></div>
+            </div>
+            <div class="row">
+                <div class="cell"></div>
+                <div class="cell black"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+            <div class="row">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell black"></div>
+                <div class="cell"></div>
+            </div>
+            <div class="row">
+                <div class="cell black"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>-->
+        </div>
+    </div>
+    <div class="controller">
+        <button id="btn-pause">开始</button>
+    </div>
+</div>
+</body>
+<script>
+    var intervalGameRunning = null,
+        score,
+        speed;
+    var flag_pause = true,
+        flag_gameOver = false;
+
+    // 自定义库函数开始
+    function $(id) {
+        return document.getElementById(id);
+    }
+    function hasClass(ele,cls) {
+        var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)')
+        console.log(reg)
+        return ele.className.match(reg);
+    }
+
+    function addClass(ele,cls) {
+        if (!this.hasClass(ele,cls)) ele.className += " "+cls;
+    }
+
+    function removeClass(ele,cls) {
+        if (hasClass(ele,cls)) {
+            var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+            ele.className=ele.className.replace(reg,'');
+        }
+    }
+    // 自定义库函数结束
+
+    function createDiv(className) {
+        var div = document.createElement('div');
+        div.className = className;
+        return div;
+    }
+
+    function createCellRow() {
+        var maxCell = 4;
+
+        var cells = [];
+        for (var i = 0; i < maxCell; i++) {
+            cells[i] = 'cell';
+        }
+
+        var r = Math.floor(Math.random() * maxCell);
+        var colors = ['red', 'green', 'yellow', 'blue', 'black'];
+        var s = Math.floor(Math.random() * colors.length);
+        cells[r] = 'cell clickable ' + colors[s];
+
+        var rowObj = createDiv('row');
+        for (var j = 0; j < maxCell; j++) {
+            rowObj.appendChild(createDiv(cells[j]));
+        }
+        return rowObj;
+    }
+
+    function createRow(count) {
+        for (var i = 0; i < count; i++) {
+            var con = $('con');
+            con.insertBefore(createCellRow(), con.firstChild);
+        }
+    }
+
+
+    function delRow() {
+        var con = $('con');
+        // console.log(con.childNodes);
+        if (con.childNodes.length >= 6) {
+            con.removeChild(con.lastChild);
+        }
+    }
+
+    function moveBlock() {
+        var con = $('con');
+        var top = parseInt(window.getComputedStyle(con, null)['top']);
+
+        if (speed + top > 0) {
+            top = 0;
+        } else {
+            top += speed;
+        }
+
+        // console.log(top);
+        con.style.top = top + 'px';
+
+        if (top === 0) {
+            createRow(1);
+            con.style.top = '-100px';
+            delRow();
+        } else if (top === (-100 + speed)) {
+            var rows = con.childNodes;
+            if ((rows.length === 5) && !rows[rows.length - 1].pass) {
+                gameOver();
+            }
+        }
+    }
+
+    function judgeClick(ev) {
+        if (ev.target.className.indexOf('clickable') !== -1) {
+            ev.target.className = 'cell';
+            ev.target.parentNode.pass = true;
+            scoreUp();
+        }
+    }
+
+    function scoreUp() {
+        score++;
+        $('score').textContent = score;
+        if (score % 10 === 0) {
+            speedUp();
+        }
+    }
+
+    function speedUp() {
+        speed += 1;
+        $('speed').textContent = speed;
+    }
+
+    function init() {
+        score = 0;
+        speed = 4;
+        $('score').textContent = score;
+        $('speed').textContent = speed;
+
+        var con = $('con').innerHTML = '';
+        createRow(4);
+
+        $('main').onclick = function (ev) {
+            judgeClick(ev);
+        };
+        flag_gameOver = false;
+    }
+
+    function gameOver() {
+        pause();
+        $('status-info').textContent = '游戏结束';
+        $('btn-pause').textContent = '重新开始';
+        flag_gameOver = true;
+    }
+
+
+    $('btn-pause').onclick = function () {
+        if (flag_gameOver) {
+            init();
+            run();
+        } else {
+            if (flag_pause) {
+                run();
+            } else {
+                pause();
+            }
+        }
+    };
+
+    function pause() {
+        clearInterval(intervalGameRunning);
+        addClass($('pause'),'active');
+        flag_pause = true;
+        $('btn-pause').textContent = '继续';
+        $('status-info').textContent = '已暂停';
+    }
+
+    function run() {
+        intervalGameRunning = window.setInterval(moveBlock, 30);
+        removeClass($('pause'),'active');
+        flag_pause = false;
+        $('btn-pause').textContent = '暂停';
+    }
+
+    init();
+</script>
+</html>

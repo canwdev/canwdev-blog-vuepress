@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Border radius & mask</title>
+  <style>
+    .box {
+      width: 280px;
+      height: 230px;
+      background: url("photo.jpg");
+      background-attachment: fixed;
+      margin: 50px;
+      display: inline-block;
+      /* box-shadow: 0 0 10px #000 inset; */
+    }
+
+    .box.b1 {
+      border-top-left-radius: 65% 15%;
+      border-top-right-radius: 65% 15%;
+      border-bottom-left-radius: 65% 15%;
+      border-bottom-right-radius: 65% 15%;
+    }
+
+    .box-wrap {
+      display: inline-block;
+      filter: drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.5))
+    }
+
+    .box.b2 {
+      border-radius: 65%/15%;
+      position: relative;
+      background: #F44336;
+    }
+
+    .box.b2:before {
+      content: "";
+      background: #F44336;
+      position: absolute;
+      top: 6.4%;
+      left: -7.6%;
+      right: -7.6%;
+      bottom: 6.4%;
+      border-radius: 15%/65%;
+    }
+
+    .box.b2:after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-20%,-50%);
+      content: "";
+      border-style: solid;
+      border-color: transparent transparent transparent #fff;
+      border-width: 60px 100px;
+    }
+
+    .box.b3 {
+      width: 126px;
+      height: 180px;
+      border-radius: 50% / 60% 60% 40% 40%;
+    }
+
+    .box.b4 {
+      width: 180px;
+      height: 180px;
+      border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+      /* transform: rotateZ(-45deg) scaleX(1) scaleY(1) scaleZ(1); */
+      transform: rotateZ(-45deg);
+    }
+
+    .photo {
+      /* -webkit-mask-image: url('mask.png'); */
+      width: 500px;
+      -webkit-mask: url('mask.png');
+      -webkit-mask-size: 100% 100%;
+    }
+
+    .photo1 {
+      width: 500px;
+      -webkit-mask: url('mask2.png');
+      -webkit-mask-size: 100% 100%;
+    }
+
+    .photo-wrap{
+      display: inline-block;
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.3))
+    }
+
+    .photo2 {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(180deg, #009FE9, #0076DF);
+      -webkit-mask: url('icon_mask.png');
+      -webkit-mask-size: 100% 100%;
+    }
+
+    .btn-down {
+      width: 400px;
+      padding: 10px 20px;
+      margin: 80px auto;
+      color: #000;
+      text-align: center;
+      border: 10px solid;
+      border-image: linear-gradient(to right, rgba(100, 230, 169, 1) 0%, rgba(255, 234, 0, 1) 20%, rgba(250, 135, 216, 1) 100%);
+      border-image-slice: 1;
+      border-radius: 50px;
+    }
+
+    .down-text {
+      font-size: 80px;
+      font-weight: bold;
+      background: url("photo.jpg") no-repeat;
+      background-size: cover;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+    }
+
+    .btn-down2-wrap {
+      overflow: hidden;
+      background: #ccc;
+    }
+
+    .btn-down2 {
+      font-size: 80px;
+      width: 400px;
+      height: 110px;
+      margin: 80px auto;
+      text-align: center;
+      padding: 10px 20px;
+      background: linear-gradient(to right, rgba(100, 230, 169, 1) 0%, rgba(255, 234, 0, 1) 20%, rgba(250, 135, 216, 1) 100%);
+      border-radius: 100px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .down2-text {
+      background: #fff;
+      border-radius: 100px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box b1"></div>
+  <div class="box-wrap">
+    <div class="box b2" id="tvbox"></div>
+  </div>
+  <div class="box b3"></div>
+  <div class="box b4"></div>
+
+
+  <hr>
+
+  <div class="photo-wrap">
+    <img src="photo.jpg" class="photo">
+  </div>
+
+  <div class="photo-wrap">
+    <img src="photo2.png" class="photo1">
+  </div>
+
+  <div class="photo-wrap">
+    <img src="icon.png" class="photo2">
+  </div>
+
+
+  <hr>
+
+  <div class="btn-down"><span class="down-text">立即下载</span></div>
+
+  <div class="btn-down2-wrap">
+    <div class="btn-down2"><span class="down2-text">立即下载</span></div>
+  </div>
+
+</body>
+
+</html>

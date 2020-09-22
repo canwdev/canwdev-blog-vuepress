@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gird Layout Demo</title>
+
+  <link rel="stylesheet" href="common.css">
+</head>
+<style>
+  .item-header {
+    grid-area: header;
+  }
+  .item-main {
+    grid-area: main;
+  }
+  .item-sidebar {
+    grid-area: sidebar;
+  }
+  .item-footer {
+    grid-area: footer;
+  }
+
+  .container {
+    height: 300px;
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: auto;
+
+    grid-template-areas:
+        "header header header header"
+        "main main . sidebar"
+        "footer footer footer footer";
+  }
+
+</style>
+<body>
+
+  <div class="container">
+    <div class="item item-header yellow"></div>
+    <div class="item item-main blue"></div>
+    <div class="item item-sidebar red"></div>
+    <div class="item item-footer green"></div>
+
+  </div>
+</body>
+</html>

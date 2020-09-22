@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bouncy Ball</title>
+    <style>
+        body {
+            margin: 0px;
+            overflow: hidden;
+        }
+
+        .chrome {
+            position: absolute;
+            animation: rotate 0.4s infinite linear;
+            box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.56);
+            height: 150px;
+            width: 150px;
+            border-radius: 100px;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(360deg);
+            }
+            to {
+                transform: rotate(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<img class='chrome' src="res/chrome.png">
+<!--<img class='chrome' src="res/chrome.png" style="top: 100px; left: 500px;">-->
+</body>
+<script>
+    ball = document.querySelector('.chrome');
+    ball.onload = setBounce(ball);
+
+    var screenHeight, imgHeight, diffHeight;
+    var screenWidth, imgWidth, diffWidth;
+
+    function setBounce(obj) {
+        updateWindowHW(obj);
+
+        var ys = 0;
+        var yv = 10;
+
+        var xs = 0;
+        var xv = 10;
+
+        setInterval(function () {
+            // y轴
+            ys += yv;
+            if (ys >= diffHeight) {
+                ys = diffHeight;
+                yv = -yv;
+            }
+            if (ys <= 0) {
+                yv = -yv;
+            }
+            obj.style.top = ys + 'px';
+
+            // x轴
+            xs += xv;
+            if (xs >= diffWidth) {
+                xs = diffWidth;
+                xv = -xv;
+            }
+            if (xs <= 0) {
+                xv = -xv;
+            }
+            obj.style.left = xs + 'px';
+        }, 10);
+    }
+
+    function updateWindowHW(obj) {
+        // 可视区域的高
+        screenHeight = document.documentElement.clientHeight;
+        imgHeight = obj.clientHeight;
+        diffHeight = screenHeight - imgHeight;
+
+        // 可视区域的宽
+        screenWidth = document.documentElement.clientWidth;
+        imgWidth = obj.clientWidth;
+        diffWidth = screenWidth - imgWidth;
+    }
+
+    window.onresize = function () {
+        updateWindowHW(ball);
+    }
+</script>
+</html>

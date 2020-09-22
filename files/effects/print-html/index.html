@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>局部打印</title>
+  <style>
+    .print-zone {
+      background: #2aa198;
+      border: 5px solid #ccc;
+    }
+  </style>
+
+  <script>
+    function printZone(s) {
+      if (s === undefined) {
+        window.print()
+        return
+      }
+
+      var bodyHTML = window.document.body.innerHTML;//获取当前页的html代码
+      var startFlag = "<!--startprint" + s + "-->";//设置打印开始区域
+      var endFlag = "<!--endprint" + s + "-->";//设置打印结束区域
+      var printHTML = bodyHTML.substring(bodyHTML.indexOf(startFlag) + startFlag.length); //从开始代码向后取html
+      printHTML = printHTML.substring(0, printHTML.indexOf(endFlag));//从结束代码向前取html
+      window.document.body.innerHTML = printHTML;
+      window.print();
+      window.document.body.innerHTML = bodyHTML;
+    }
+  </script>
+</head>
+<body>
+<h1>非打印区域</h1>
+
+<!--startprint0-->
+<div class="print-zone">
+  <h1>打印区域</h1>
+  <p>打印内容 打印内容 打印内容</p>
+</div>
+<!--endprint0-->
+
+<button onclick="printZone(0)">打印</button>
+<h1>非打印区域</h1>
+<h1>非打印区域</h1>
+
+</body>
+</html>

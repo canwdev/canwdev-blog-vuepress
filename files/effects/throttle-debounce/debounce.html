@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Debounce 防抖</title>
+
+  <style>
+    #myForm {
+      background: crimson;
+      width: 560px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    #result {
+      background: #ccc;
+      margin-top: 10px;
+      width: 560px;
+      height: 100px;
+      overflow: auto;
+    }
+  </style>
+
+  <script src="./lodash.min.js"></script>
+</head>
+
+<body>
+
+  <form action="javascript:" id="myForm">
+    <input type="text" name="username" value="Hello">
+    <button type="submit">Submit | 多次点击测试效果</button>
+  </form>
+
+  <pre id="result"></pre>
+
+  <p>防抖，适合多次事件一次响应的情况</p>
+
+  <script>
+    var form = document.getElementById('myForm')
+    var result = document.getElementById('result')
+
+    function doSubmit() {
+      var data = new FormData(form)
+      var username = data.get('username')
+      result.innerText = 'Sending...' + (+new Date())
+      emulateAjax(data).then(res => {
+        console.log(res)
+        result.innerText = JSON.stringify(res)
+      })
+    }
+
+    function emulateAjax(data) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            code: 0,
+            data,
+            message: 'OK',
+            now: (+new Date())
+          })
+        }, 2000);
+      })
+    }
+
+    // 不使用防抖
+    // form.onsubmit = doSubmit
+
+    // 使用防抖
+    var debouncedFn = _.debounce(doSubmit, 2000, {
+      'leading': true,  // 指定调用在延迟开始前
+      'trailing': false // 指定（下次）调用在（当前）延迟结束后
+    })
+    form.onsubmit = debouncedFn
+  </script>
+
+</body>
+
+</html>

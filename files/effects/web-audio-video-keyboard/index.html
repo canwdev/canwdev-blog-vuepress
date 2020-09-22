@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Simple_synth</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Learn about this code on MDN: https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Simple_synth -->
+
+  <div class="container">
+    <div class="keyboard"></div>
+  </div>
+  <div class="settingsBar">
+    <div class="left">
+      <span>Volume: </span>
+      <input type="range" min="0.0" max="1.0" step="0.01" value="0.5" list="volumes" name="volume">
+      <datalist id="volumes">
+        <option value="0.0" label="Mute">
+        <option value="1.0" label="100%">
+      </datalist>
+    </div>
+    <div class="right">
+      <span>Current waveform: </span>
+      <select name="waveform">
+        <option value="sine">Sine</option>
+        <option value="square" selected>Square</option>
+        <option value="sawtooth">Sawtooth</option>
+        <option value="triangle">Triangle</option>
+        <option value="custom">Custom</option>
+      </select>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
+</html>

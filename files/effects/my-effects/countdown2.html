@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>抢购倒计时1</title>
+    <style>
+        .count-frame {
+            max-width: 800px;
+            margin: 50px auto;
+            border: 5px solid #E61414;
+            border-radius: 5px;
+            background-color: #FEE87C;
+            color: #E61414;
+            box-shadow: 0 0 10px #E61414 inset;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;">
+        <div class="count-frame">
+            <h3 id="countdown">......</h3>
+        </div>
+    </div>
+
+</body>
+<script>
+    ui = document.getElementById('countdown');
+    secondAll = 2*3600;
+
+    setInterval(function () {
+        var hours = Math.floor(secondAll/3600);
+        var minutes = Math.floor((secondAll-(hours*3600))/60);
+        var seconds = secondAll-(hours*3600)-(minutes*60);
+
+        ui.textContent = pad(hours,2)+':'+pad(minutes,2)+':'+pad(seconds,2);
+        secondAll--;
+    }, 1000);
+
+    /* 质朴长存法  by lifesinger */
+    function pad(num, n) {
+        var len = num.toString().length;
+        while(len < n) {
+            num = "0" + num;
+            len++;
+        }
+        return num;
+    }
+</script>
+</html>

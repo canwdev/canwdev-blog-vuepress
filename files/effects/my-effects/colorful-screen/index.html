@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" charset="UTF-8">
+    <title>多彩屏幕</title>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script src="screenfull.min.js"></script>
+    <style>
+        * {
+            margin: 0px;
+        }
+
+        body {
+            /*background-color: #000;*/
+        }
+
+        .ctrl-bar {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 5px;
+            min-width: 100%;
+            text-align: center;
+            background-color: rgba(204, 204, 204, 0.39);
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.44);
+        }
+
+        button {
+            color: #393939;
+            font-size: 20px;
+            line-height: 40px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            outline: none;
+            box-shadow: 0 0 2px black;
+        }
+
+        button:hover {
+            background-color: #fff;
+        }
+
+        button:active {
+            background-color: rgba(210, 210, 210, 0.79);
+        }
+    </style>
+</head>
+<body>
+<div class="ctrl-bar">
+    <button id="btn-fullscr">全屏</button>
+    <button id="btn-bw">白黑</button>
+    <button id="btn-switch">暂停/继续</button>
+    <button id="btn-custom-color">颜色</button>
+    <button id="btn-custom-speed">速度</button>
+</div>
+</body>
+<script src="tools.js"></script>
+<script src="index.js"></script>
+</html>

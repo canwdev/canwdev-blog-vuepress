@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX jQuery jsonp解决跨域问题 DEMO</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js"></script>
+</head>
+
+<body>
+    <button id="getData">获取api.douban.com的数据</button>
+    <div id="result"></div>
+
+    <script>
+        $('#getData').click(getDataAsync);
+
+        function getDataAsync() {
+            var url = 'https://api.douban.com/v2/book/search?q=javascript&count=1';
+            var xmlhttp = $.ajax({
+                url: url,
+                dataType: 'jsonp',
+                data: '',
+                jsonp: 'callback',
+                context: $("#result"),
+                success: function (result) {
+                    console.log(result)
+
+                    var html = $('<ol></ol>');
+                    for (var i in result.books[0].tags) {
+                        html.append('<li>'+ result.books[0].tags[i].name + '</li>');
+                    }
+                    console.log(html)
+                    $(this).html(html);
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

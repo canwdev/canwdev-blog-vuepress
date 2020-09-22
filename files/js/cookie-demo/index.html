@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie Demo</title>
+  <script src="./CookieStorage.js"></script>
+</head>
+
+<body>
+  <p>打开控制台查看 Cookie</p>
+  <script>
+    if (!navigator.cookieEnabled) {
+      alert('Cookie 已被禁用！')
+    }
+
+    function setCookie(name, value, daysToLive) {
+      var cookie = name + '=' + encodeURIComponent(value)
+      if (typeof daysToLive === 'number') {
+        cookie += '; max-age=' + (daysToLive * 60 * 60 * 24)
+      }
+      document.cookie = cookie
+    }
+
+    setCookie('testName', 'testValue1', 3)
+
+    var cs = new CookieStorage(3 * 60 * 60 * 24, '/')
+
+    console.log(cs)
+  </script>
+</body>
+
+</html>
