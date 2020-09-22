@@ -136,7 +136,7 @@ const config = {
     // 'vuepress-plugin-mathjax': {}
   },
   markdown: {
-    lineNumbers: true
+    lineNumbers: false
   }
 }
 

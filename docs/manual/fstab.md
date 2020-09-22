@@ -11,7 +11,7 @@
 
 fstab文件可用于定义磁盘分区，各种其他块设备或远程文件系统应如何装入文件系统。
 
-一个`/etc/fstab` 示例，使用内核名称标识磁盘:
+一个 `/etc/fstab` 示例，使用内核名称标识磁盘:
 
 ```
 # /etc/fstab: static file system information.
@@ -29,12 +29,12 @@ tmpfs                  /tmp          tmpfs     nodev,nosuid          0      0
 
 字段解释：
 
-- **<file systems>**：要挂载的分区或存储设备。最初，该字段只包含待挂载分区的设备名（如/dev/sda1）。现在，除设备名外，还可以包含LABEL或UUID。
-- **<dir>**：`<file systems>` 的文件系统挂载点。
-- **<type>**：文件系统类型，支持许多种不同的文件系统：如`ext4`, `vfat`, `ntfs`, `swap`, `auto`等。 设置成`auto`类型，mount 命令会猜测使用的文件系统类型，对 CDROM 和 DVD 等移动设备是非常有用的。
-- **<options>**：挂载时使用的参数，注意有些参数是特定文件系统才有的。
-- **<dump>**：dump 工具通过它决定何时作备份。dump 会检查其内容，并用数字来决定是否对这个文件系统进行备份。 允许的数字是 0 和 1 。0 表示忽略， 1 则进行备份。大部分的用户是没有安装 dump 的 ，对他们而言 <dump> 应设为 0。
-- **<pass>**：fsck 读取 <pass> 的数值来决定需要检查的文件系统的检查顺序。允许的数字是0, 1, 和2。 根目录应当获得最高的优先权 1, 其它所有需要被检查的设备设置为 2。0 表示设备不会被 fsck 所检查。
+- `<file systems>`：要挂载的分区或存储设备。最初，该字段只包含待挂载分区的设备名（如/dev/sda1）。现在，除设备名外，还可以包含LABEL或UUID。
+- `<dir>`：`<file systems>` 的文件系统挂载点。
+- `<type>`：文件系统类型，支持许多种不同的文件系统：如`ext4`, `vfat`, `ntfs`, `swap`, `auto`等。 设置成`auto`类型，mount 命令会猜测使用的文件系统类型，对 CDROM 和 DVD 等移动设备是非常有用的。
+- `<options>`：挂载时使用的参数，注意有些参数是特定文件系统才有的。
+- `<dump>`：dump 工具通过它决定何时作备份。dump 会检查其内容，并用数字来决定是否对这个文件系统进行备份。 允许的数字是 0 和 1 。0 表示忽略， 1 则进行备份。大部分的用户是没有安装 dump 的 ，对他们而言 `<dump>` 应设为 0。
+- `<pass>`：fsck 读取 `<pass>` 的数值来决定需要检查的文件系统的检查顺序。允许的数字是0, 1, 和2。 0表示不必检查该文件系统，数字1示意该文件系统需要先行检查（用于根文件系统）。数字2则表示完成根文件系统检查后，再检查该文件系统。
 
 ## 更改 /home 挂载点
 
@@ -57,7 +57,7 @@ tmpfs                  /tmp          tmpfs     nodev,nosuid          0      0
 
    ```
    UUID=45a8f854-55c1-435b-b37e-8cfce8f8a6b2 /              ext4    defaults,noatime 0 1
-   UUID=ba6bab0d-ecc4-48f8-b0f8-fc999bd67491 /home          ext4    defaults 1 2
+   UUID=ba6bab0d-ecc4-48f8-b0f8-fc999bd67491 /home          ext4    defaults 0 2
    ```
 
    第一个 UUID 是系统根目录的分区，第二个则是新 home 的分区。
