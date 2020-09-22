@@ -115,6 +115,12 @@ const config = {
 
   },
   plugins: {
+    '@vuepress/last-updated': {
+      // https://www.wkii.net/Tech/use-vuepress-push-blog.html
+      transformer: (timestamp) => {
+        return (new Date(timestamp)).toUTCString()
+      }
+    },
     '@vuepress/medium-zoom': {
       options: {
         scrollOffset: 200
