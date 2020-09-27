@@ -901,6 +901,38 @@ docker load < filename.tar
 docker save myimage:latest | gzip > myimage_latest.tar.gz
 ```
 
+### 批量导出/导入镜像
+
+参考：[How to save all Docker images and copy to another machine](https://stackoverflow.com/a/37650072)
+
+一次性导出所有镜像为一个大型 tar：
+
+```sh
+docker save $(docker images -q) -o /path/to/save/mydockersimages.tar
+```
+
+保存 tag 列表：
+
+```sh
+docker images | sed '1d' | awk '{print $1 " " $2 " " $3}' > mydockersimages.list
+```
+
+在另一台机器上导入：
+
+```sh
+docker load -i /path/to/save/mydockersimages.tar
+```
+
+为导入的镜像打上 tag：
+
+```sh
+while read REPOSITORY TAG IMAGE_ID
+do
+        echo "== Tagging $REPOSITORY $TAG $IMAGE_ID =="
+        docker tag "$IMAGE_ID" "$REPOSITORY:$TAG"
+done < mydockersimages.list
+```
+
 ### 容器的导出和导入
 
 ```

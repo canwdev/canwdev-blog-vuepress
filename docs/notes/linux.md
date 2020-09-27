@@ -111,8 +111,26 @@ rsync -avrhc --delete --progress /pathA/ /pathB/
 - `-c` 默认情况下，rsync 只检查文件的大小和最后修改日期是否发生变化，如果发生变化，就重新传输；使用这个参数以后，则通过判断文件内容的校验和，决定是否重新传输
 - `--progress` 在传输过程中显示进度
 - `--delete` 这将删除只存在于目标目录、不存在于源目录的文件
+- `-z` 传输时压缩
+- `-P` 传输进度
 
-参考：[rsync 用法教程](https://www.ruanyifeng.com/blog/2020/08/rsync.html)
+远程拷贝
+
+```sh
+# 从主机拉数据
+rsync -avzP --delete root@{remoteHost}:{remoteDir} {localDir}
+# 示例：
+rsync -avzP --delete root@192.168.1.100:/tmp/rtest1 /tmp/
+
+# 向备机推数据
+rsync -avzP --delete {localDir} root@{remoteHost}:{remoteDir}
+# 示例：
+rsync -avzP --delete /tmp/rtest1 root@192.168.1.101:/tmp/
+```
+
+参考：
+- [rsync 用法教程](https://www.ruanyifeng.com/blog/2020/08/rsync.html)
+- [使用rsync同步目录](https://www.cnblogs.com/MikeZhang/p/rsyncExample_20160818.html)
 
 ### 使用 dd 命令创建引导盘
 
