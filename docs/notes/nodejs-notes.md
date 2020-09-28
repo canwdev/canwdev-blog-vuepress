@@ -22,9 +22,9 @@ node -v
 
 1. 首先，下载 nvm 并安装：https://github.com/coreybutler/nvm-windows/releases
 
-2. 打开 Powershell，输入 `nvm list avaliable` 查看可用的 Node.js 版本，访问 https://nodejs.org/download/release 查看所有可用版本
+2. 打开 Powershell，输入 `nvm list available` 查看可用的 Node.js 版本，访问 https://nodejs.org/download/release 查看所有可用版本
 
-3. 安装你需要的版本，如 10.17.0 版：`nvm install 10.17.0`
+3. 安装你需要的版本，如 10.22.1 版：`nvm install 10.22.1`
    
     > 如果下载缓慢，请编辑 `C:\Users\<YourName>\AppData\Roaming\nvm\settings.txt`(安装目录下)，添加：
     
@@ -42,7 +42,7 @@ node -v
    
 4. 查看安装好的版本列表：`nvm list`
 
-5. 设置默认 Node.js 版本 `nvm use 10.17.0`
+5. 设置默认 Node.js 版本 `nvm use 10.22.1`
 
 ### nvm Node.js 32位/64位 切换
 
@@ -76,34 +76,24 @@ node -p "process.arch"
 - https://mirrors.tuna.tsinghua.edu.cn/help/nodesource/
 - https://github.com/nodesource/distributions/blob/master/README.md
 
-## Linux 上安装 Node.js (二进制安装/不推荐)
+## Linux 上手动安装 Node.js (二进制安装)
 
 ```sh
-# Node 官网已经把 linux 下载版本更改为已编译好的版本了，我们可以直接下载解压后使用：
+# 下载二进制文件压缩包
 wget https://nodejs.org/dist/v10.16.3/node-v10.16.3-linux-x64.tar.xz
+# 解压缩
 tar xvf node-v10.16.3-linux-x64.tar.xz
-# 将目录移动至 /usr/software/nodejs/
+# 将目录移动至 /usr/software/nodejs
+sudo mv ./node-v10.16.3-linux-x64 /usr/software/nodejs
 
-# 设置环境变量
-sudo vi /etc/environment
-# 在文件末尾加上：
-# export PATH="$PATH:/usr/sofrware/nodejs/bin"
-# 立即生效
-source /etc/environment
-
-# 如果使用zsh：
-vi /etc/zsh/zshenv
-# 添加：source /etc/environment
+# 使用 ln 命令设置符号链接
+sudo ln -s /usr/sofrware/nodejs/bin/npm /usr/bin/npm
+sudo ln -s /usr/sofrware/nodejs/bin/npx /usr/bin/npx
+sudo ln -s /usr/sofrware/nodejs/bin/node /usr/bin/node
 
 # 查看版本
 node -v
 npm -v
-
-# 使用 ln 命令来设置软连接(如果设置了环境变量则不需要设置)：
-ln -s /usr/sofrware/nodejs/bin/npm /usr/local/bin/ 
-ln -s /usr/sofrware/nodejs/bin/npx /usr/local/bin/
-ln -s /usr/sofrware/nodejs/bin/node /usr/local/bin/
-
 ```
 
 ## Ubuntu/Debian 安装 yarn
