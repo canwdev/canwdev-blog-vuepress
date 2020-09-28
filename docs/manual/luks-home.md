@@ -69,3 +69,7 @@ cryptsetup luksAddKey /dev/sda3 /root/luks_pass
 ```
 
 重启即可完成。
+
+---
+
+如果要修改加密卷密码，或是删除密钥认证，请参考 [保护数据，用 LUKS 给磁盘全盘加密](https://nova.moe/encrypt-disk-with-luks/)
