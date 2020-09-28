@@ -1,6 +1,9 @@
 # 使用 LUKS 加密 home 目录并在开机时自动解密
 
-参考：[用luks方式对磁盘进行加密以及加密磁盘的自动挂载](https://www.cnblogs.com/guarderming/p/11957780.html)
+参考：
+
+- [用luks方式对磁盘进行加密以及加密磁盘的自动挂载](https://www.cnblogs.com/guarderming/p/11957780.html)
+- [使用cryptsetup创建加密磁盘](http://blog.lujun9972.win/blog/2018/04/12/%E4%BD%BF%E7%94%A8cryptsetup%E5%88%9B%E5%BB%BA%E5%8A%A0%E5%AF%86%E7%A3%81%E7%9B%98/index.html)
 
 ## 创建 LUKS 加密分区
 
@@ -33,11 +36,14 @@ cp -ax /home.old/* /home/
 
 ## 加密设备的开机自动挂载
 
-创建密码文件，这个文件在开机时会自动读取并解密目标分区：
+创建密钥文件，这个文件在开机时会自动读取并解密目标分区：
 
 ```sh
+# 生成随机字符串，熵越大越好
+dd if=/dev/urandom bs=1 count=1024 2>/dev/null | base64 -w 0 | rev | cut -b 2- | rev
+# 将随机内容写入到一个文件，比如这个
 vim /root/luks_pass
-# 输入分区加密密码并保存（不需要换行）
+
 # 设置文件权限，只允许 root 读写
 chmod 600 /root/luks_pass
 ```
