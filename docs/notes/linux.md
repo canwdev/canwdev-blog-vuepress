@@ -300,7 +300,32 @@ https://alternativeto.net/platform/xfce
 sudo apt install exfat-fuse exfat-utils
 ```
 
+### 重启 KDE Plasma 桌面环境
 
+有时候 KDE 会莫名其妙的卡死，这时候如果不想重新登录，可以用命令重启桌面。按 `alt`+`space` 或 `alt`+`F2` 启动 KRunner，输入 `konsole` 启动终端。
+
+KDE4:
+
+```
+killall plasma-desktop
+kstart plasma-desktop
+```
+
+
+KDE5:
+
+```
+killall plasmashell
+kstart plasmashell
+```
+
+
+KDE5.10 及更高版本:
+
+```
+kquitapp5 plasmashell
+kstart5 plasmashell
+```
 
 ## Android 系统
 
