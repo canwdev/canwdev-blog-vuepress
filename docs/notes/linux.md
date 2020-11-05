@@ -39,8 +39,12 @@ rx- = 4 + 1 = 5
 
 ### 让文件属于当前用户(chown)
 
-```
+```sh
+# 递归文件夹属于当前用户
 sudo chown -R $USER:$(id -gn $USER) ./target-folder
+
+# 文件所有者改为用户 bob，文件用户组改为用户 bob 登录系统时所属的用户组。
+sudo chown -R bob: file
 ```
 
 ### 添加当前用户到用户组
