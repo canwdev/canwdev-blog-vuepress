@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /star.png
+heroImage: /favicon.png
 actionText: 开始探索 ➡
 actionLink: /notes/
 ---

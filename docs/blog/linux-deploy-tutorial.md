@@ -1,6 +1,6 @@
 # Linux Deploy 使用教程
 
-Linux Deploy 是一款能够在 Android 设备上运行 Linux 的软件，使用的是 chroot 原理（因此需要安卓设备拥有 root 权限），不是虚拟机，因此性能很强！~~但似乎并没有什么卵用~~
+Linux Deploy 是一款能够在 Android 设备上运行 Linux 的软件。由于使用的是 chroot 原理（需要安卓设备拥有 root 权限），不是虚拟机，因此性能很强，甚至可以当服务器来用。
 
 ## 安装 Linux Deploy
 
@@ -67,7 +67,3 @@ Debian 阿里云镜像：http://mirrors.aliyun.com/debian/
 使用 wine 可以运行一些基础 Windows 软件：
 
 ![image-20200307215150810](./linux-deploy-tutorial.assets/image-20200307215150810.png)
-
----
-
-（完）

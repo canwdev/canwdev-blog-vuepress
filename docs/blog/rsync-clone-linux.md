@@ -1,12 +1,14 @@
-# 使用 rsync 克隆 Linux 系统（MBR）
+# 使用 rsync 克隆 Linux 系统
 
 ## 1. 给新的磁盘分区
 
-推荐新手使用 KDE Partition Manager 进行分区操作。
+使用 `KDE Partition Manager` 或 `gparted` 等 GUI 工具进行分区操作。命令行可以使用 `fdisk` 或 `gdisk`。
 
-具体操作细节略。
+一般来说创建一个 32G 的 ext4 分区就够了。具体操作细节略。
 
 ## 2. 使用 rsync 拷贝系统文件到新的分区
+
+注意：需要在 Live 环境下执行操作，不能在原系统启动的情况下操作。
 
 ```sh
 rsync -avrh --progress /mnt/os_old/ /mnt/os_new/
@@ -14,7 +16,7 @@ rsync -avrh --progress /mnt/os_old/ /mnt/os_new/
 
 ## 3. 修改配置文件的 UUID
 
-新的分区和原来的分区 UUID 肯定是不同的，为了让系统正常启动，需要修改这几个文件：
+新的分区和原来的分区 UUID 是不同的，为了让系统正常启动，需要修改这几个文件：
 
 - `/etc/fstab`
 - `/boot/grub/grub.cfg` —— 这个文件虽然是自动生成的，但为了方便起见也可以手动修改
@@ -41,9 +43,11 @@ UUID=45a8f854-55c1-435b-b37e-8cfce8f8a6b2 /              ext4    defaults,noatim
 
 用任意一种，确定新分区的 UUID 然后替换上面两个文件的旧 UUID 就可以了。
 
-## 4. 修复 GRUB MBR 引导扇区
+## 4. 修复 GRUB 引导
 
-> 也适用于任何磁盘 MBR 引导丢失的问题
+### 4.1 修复 GRUB MBR 引导扇区
+
+> 也适用于任何磁盘丢失 MBR 引导的问题
 
 1. 使用光盘镜像启动到 Live 环境。
 
@@ -63,4 +67,56 @@ UUID=45a8f854-55c1-435b-b37e-8cfce8f8a6b2 /              ext4    defaults,noatim
 
 4. 在 chroot 环境执行 `grub-install /dev/sda` ，为该磁盘安装 GRUB MBR 引导程序。
 
-5. 完成。
+### 4.2 修复 GRUB EFI 引导
+
+挂载分区
+
+```sh
+sudo mkdir /mnt/bootfix
+sudo mount /dev/nvme0n1p3 /mnt/bootfix
+sudo mount /dev/nvme0n1p1 /mnt/bootfix/boot/efi
+for i in /dev /dev/pts /proc /sys /run; do sudo mount -B $i /mnt/bootfix$i; done
+```
+
+使用 chroot 修复引导
+
+```
+sudo chroot /mnt/bootfix
+grub-install /dev/nvme0n1
+```
+
+如果报错：
+
+```
+正在为 x86_64-efi 平台进行安装。
+EFI variables are not supported on this system.
+EFI variables are not supported on this system.
+grub-install：错误： efibootmgr failed to register the boot entry: 没有那个文件或目录.
+```
+
+```
+# 退出到系统终端
+exit
+# 执行这条命令
+sudo mount --bind /sys/firmware/efi/efivars/ /mnt/bootfix/sys/firmware/efi/efivars/
+# 再次进入 chroot
+sudo chroot /mnt/bootfix
+# 重新修复引导
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub --recheck
+```
+
+安装成功：
+
+```
+正在为 x86_64-efi 平台进行安装。
+安装完成。没有报告错误。
+```
+
+后续工作：
+
+```sh
+# 更新grub设置
+grub-mkconfig -o /boot/grub/grub.cfg 
+
+# 或者使用 `update-grub`，其实这条命令就是封装了上一条命令的 shell 脚本
+```

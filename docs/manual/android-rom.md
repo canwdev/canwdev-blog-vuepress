@@ -1,26 +1,47 @@
-# Android 魔改
+# Android 命令
 
-- [Android ROM 在 Ubuntu 下的 system.new.dat 的解包、修改和打包](./android-rom-modify/README.md)
-
-
-## 常用 Android 刷机命令
-
-### 使用 fastboot 刷入 Recovery
+## 网络 ADB 调试 
 
 ```sh
-# 查看设备列表
-fastboot.exe devices
-# 刷入 recovery 到 recovery 分区
-fastboot.exe flash recovery recovery.img
-# 立即引导 recovery
-fastboot.exe boot recovery.img
+# 用 USB 线将设备连接到电脑
+# 为了确保设备已连接，可以先在 adb shell 中查看设备 ip 地址
+adb shell
+$ ifconfig
+$ exit
+
+# 开启网络调试，监听在 5555 端口
+adb tcpip 5555
+
+# 连接网络adb
+# 如 adb connect 192.168.1.103:5555
+adb connect IP地址[:端口号]
+```
+
+## 通过 adb 启动 shizuku
+
+- [Shizuku 让你的应用直接使用系统 API](https://shizuku.rikka.app/zh-hans/)
+
+```sh
+adb shell sh /data/user_de/0/moe.shizuku.privileged.api/start.sh
+```
+
+## 炼妖壶
+
+```
+adb shell
+
+# 开启 File Shuttle
+pm grant com.oasisfeng.island android.permission.INTERACT_ACROSS_USERS
 ```
 
 ## 常用 ADB 命令
 
-参考：https://github.com/jaredrummler/android-shell-scripts
 
 ```sh
+# 重置 adb 服务
+adb kill-server
+
+# 参考：https://github.com/jaredrummler/android-shell-scripts
 # 快速重启
 setprop ctl.restart zygote
 
@@ -46,8 +67,6 @@ setprop sys.powerctl shutdown
 sleep 3
 reboot -p # fallback
 ```
-
-
 
 ## Nokia N1 开启 OTG 命令
 
@@ -93,7 +112,20 @@ debug.sf.nobootanimation=1
 ro.config.low_ram=true
 ```
 
-## 刷机疑难杂症
+## 使用 fastboot 刷入 Recovery
+
+```sh
+# 查看设备列表
+fastboot.exe devices
+# 刷入 recovery 到 recovery 分区
+fastboot.exe flash recovery recovery.img
+# 立即引导 recovery
+fastboot.exe boot recovery.img
+```
+
+## 刷机常见问题
+
+- [Android ROM 在 Ubuntu 下的 system.new.dat 的解包、修改和打包](./android-rom-modify/README.md)
 
 - 如果无法刷入，请检查
   - 设备型号与脚本判定是否一致，如果要强刷，请修改刷机包 `\META-INF\com\google\android\updater-script` 里的判定机制

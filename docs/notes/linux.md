@@ -31,8 +31,8 @@ sudo chmod -R 744 ./target-folder
 执行 = --x = 001（二进制） = 1（十进制）
 
 rwx = 4 + 2 + 1 = 7
-rw- = 4 + 2 = 6
-rx- = 4 + 1 = 5
+rw- = 4 + 2 + 0 = 6
+r-x = 4 + 0 + 1 = 5
 ```
 
 所以：`644`为 `4+2` `4` `4`，即**所属用户**有读、写权限，**群组**只有读权限，**其它**只有读权限。
@@ -115,8 +115,26 @@ rsync -avrhc --delete --progress /pathA/ /pathB/
 - `-c` 默认情况下，rsync 只检查文件的大小和最后修改日期是否发生变化，如果发生变化，就重新传输；使用这个参数以后，则通过判断文件内容的校验和，决定是否重新传输
 - `--progress` 在传输过程中显示进度
 - `--delete` 这将删除只存在于目标目录、不存在于源目录的文件
+- `-z` 传输时压缩
+- `-P` 传输进度
 
-参考：[rsync 用法教程](https://www.ruanyifeng.com/blog/2020/08/rsync.html)
+远程拷贝
+
+```sh
+# 从主机拉数据
+rsync -avzP --delete root@{remoteHost}:{remoteDir} {localDir}
+# 示例：
+rsync -avzP --delete root@192.168.1.100:/tmp/rtest1 /tmp/
+
+# 向备机推数据
+rsync -avzP --delete {localDir} root@{remoteHost}:{remoteDir}
+# 示例：
+rsync -avzP --delete /tmp/rtest1 root@192.168.1.101:/tmp/
+```
+
+参考：
+- [rsync 用法教程](https://www.ruanyifeng.com/blog/2020/08/rsync.html)
+- [使用rsync同步目录](https://www.cnblogs.com/MikeZhang/p/rsyncExample_20160818.html)
 
 ### 使用 dd 命令创建引导盘
 
@@ -286,7 +304,32 @@ https://alternativeto.net/platform/xfce
 sudo apt install exfat-fuse exfat-utils
 ```
 
+### 重启 KDE Plasma 桌面环境
 
+有时候 KDE 会莫名其妙的卡死，这时候如果不想重新登录，可以用命令重启桌面。按 `alt`+`space` 或 `alt`+`F2` 启动 KRunner，输入 `konsole` 启动终端。
+
+KDE4:
+
+```
+killall plasma-desktop
+kstart plasma-desktop
+```
+
+
+KDE5:
+
+```
+killall plasmashell
+kstart plasmashell
+```
+
+
+KDE5.10 及更高版本:
+
+```
+kquitapp5 plasmashell
+kstart5 plasmashell
+```
 
 ## Android 系统
 

@@ -1,17 +1,8 @@
 # 离线笔记 · 📴 Offline notes
 
-> 记录线上文档，构建完整知识体系\
-> Web UI Powered by VuePress
-
-## 目录
-
-- [Notes](docs/notes)
-- [Manual](docs/manual)
-- [Blog](docs/blog)
+基于 VuePress 的个人博客
 
 ## 运行
-
-> 要查看完整的笔记，请运行本项目
 
 ```sh
 # 安装依赖

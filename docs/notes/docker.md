@@ -1,6 +1,6 @@
 # Docker 学习笔记
 
-> 这是《第一本 Docker 书》的读书笔记。
+> 《第一本 Docker 书》的读书笔记。
 
 ![image-20200805164924891](./docker.assets/image-20200805164924891.png)
 
@@ -231,7 +231,11 @@ sudo docker exec -t -i daemon_dave /bin/bash
 docker run --restart=always --name daemon_dave -d ubuntu /bin/sh -c "while true; do echo hello world; sleep 1; done"
 ```
 
-**--restart=on-faliure:5** 意思是只在容器退出代码为非0时才会自动重启，最多重启5次
+`--restart=on-faliure:5` 意思是只在容器退出代码为非0时才会自动重启，最多重启5次
+
+要修改一个已经启动的容器，使用命令：`docker update --restart=always my-container`
+
+要关闭自动启动，使用 `--restart=no` 选项。
 
 ### 深入容器
 
@@ -895,6 +899,38 @@ docker load < filename.tar
 
 ```
 docker save myimage:latest | gzip > myimage_latest.tar.gz
+```
+
+### 批量导出/导入镜像
+
+参考：[How to save all Docker images and copy to another machine](https://stackoverflow.com/a/37650072)
+
+一次性导出所有镜像为一个大型 tar：
+
+```sh
+docker save $(docker images -q) -o /path/to/save/mydockersimages.tar
+```
+
+保存 tag 列表：
+
+```sh
+docker images | sed '1d' | awk '{print $1 " " $2 " " $3}' > mydockersimages.list
+```
+
+在另一台机器上导入：
+
+```sh
+docker load -i /path/to/save/mydockersimages.tar
+```
+
+为导入的镜像打上 tag：
+
+```sh
+while read REPOSITORY TAG IMAGE_ID
+do
+        echo "== Tagging $REPOSITORY $TAG $IMAGE_ID =="
+        docker tag "$IMAGE_ID" "$REPOSITORY:$TAG"
+done < mydockersimages.list
 ```
 
 ### 容器的导出和导入

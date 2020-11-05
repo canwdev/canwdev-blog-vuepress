@@ -5,7 +5,7 @@ const isProd = process.env.NODE_ENV === 'production'
 const config = {
   base: '/',  // 生产环境文件路径
   head: [
-    ['link', { rel: 'icon', href: `/star.png` }],
+    ['link', { rel: 'icon', href: `/favicon.png` }],
     ['link', { rel: 'manifest', href: '/manifest.json' }],
   ],
   locales: {
@@ -14,7 +14,7 @@ const config = {
     '/': {
       lang: 'zh-CN',
       title: '离线笔记 · OfflineNotes',
-      description: '记录学习过程，构建完整知识体系。'
+      description: '记录学习过程。'
     },
     // '/en/': {
     //   lang: 'en-US', // 将会被设置为 <html> 的 lang 属性
@@ -24,7 +24,7 @@ const config = {
   },
   themeConfig: {
     // search: false,
-    logo: '/star.png', // HTT logo from https://www.reddit.com/r/k_on/comments/abw6gf/i_made_some_vectors_of_the_htt_logo_from_the/
+    logo: '/favicon.png',
     repo: 'https://github.com/canwdev/notes-vuepress',
     editLinks: true,
     repoLabel: '源码',
@@ -115,6 +115,12 @@ const config = {
 
   },
   plugins: {
+    '@vuepress/last-updated': {
+      // https://www.wkii.net/Tech/use-vuepress-push-blog.html
+      transformer: (timestamp) => {
+        return (new Date(timestamp)).toUTCString()
+      }
+    },
     '@vuepress/medium-zoom': {
       options: {
         scrollOffset: 200
@@ -136,7 +142,7 @@ const config = {
     // 'vuepress-plugin-mathjax': {}
   },
   markdown: {
-    lineNumbers: true
+    lineNumbers: false
   }
 }
 
