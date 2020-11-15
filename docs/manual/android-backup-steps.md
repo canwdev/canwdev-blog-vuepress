@@ -10,14 +10,14 @@
 
 4. 使用**钛备份**备份应用程序和数据：
 
-   - 系统数据：通话记录、数据使用情况、信息、Wi-Fi接入点
-
-   - 用户应用：备份所有用户数据，时间很长，也可以同时执行第 4 步操作
+   - 系统数据：通话记录、数据使用情况、信息、Wi-Fi接入点、桌面布局、输入法
+   - 用户应用：静读天下、备份所有用户数据，时间很长，也可以同时执行第 4 步操作
+   - linux-deploy 等写入到 `/data` 分区的数据
    - 毒瘤应用：京东、淘宝等耗时太长，不建议备份，可清除应用数据后再备份
 
 5. 备份内置存储（`/sdcard`）数据：
 
-   - 各类文件打包，使用 **Termux** 、终端模拟器或者 `adb shell`：
+   - 各类文件打包，使用 **Termux** 或者 `adb shell`：
 
      ```sh
      cd /sdcard
@@ -32,9 +32,9 @@
      tar cxf tencent.tgz
      ```
 
-6. 等待上面的备份操作完成后，使用 **TotalCommander(TC)** 的 ADBPlugin.wfx 插件（或其他支持 ADB 的文件管理器）将用户文件复制到电脑：
+6. 等待上面的备份操作完成后，使用 **TotalCommander(TC)** 的 ADBPlugin.wfx 插件（或 `ssh` + `rsync`）将用户文件复制到电脑：
 
-   - 我的文件：ADM、Books、BlueDict、Flash、MusicOST
+   - 个人文件：ADM、Books、BlueDict、Flash
    - 系统创建的文件夹：Alarms、DCIM、Documents、Download、Movies、Music、Notifications、Pictures、Podcasts、Ringtones
    - 备份文件：MIUI、data、**TitaniumBackup**、TWRP
    - 打包的备份文件：Android.tgz、tencent.tgz
@@ -51,7 +51,6 @@ ADM\
 Books\
 BlueDict\
 Flash\
-MusicOST\
 Alarms\
 DCIM\
 Documents\

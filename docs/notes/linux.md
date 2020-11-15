@@ -160,7 +160,24 @@ sdb      8:16   1  14.9G  0 disk
 sudo dd bs=4M if=path/to/input.iso of=/dev/sd<?> conv=fdatasync  status=progress
 ```
 
-`input.iso` 是输入文件（光盘镜像），`/dev/sd<?>` 是目标磁盘。这种方法速度很快，从未失败过。
+`input.iso` 是输入文件（光盘镜像），`/dev/sd<?>` 是目标磁盘。这种方法速度很快，从未失败
+
+### 使用 dd 命令创建空文件，格式化并挂载
+
+```sh
+# 创建一个 1024MiB 的文件，并写入空数据，如果文件过大会占用很多时间
+dd if=/dev/zero of=test.img bs=1M count=1024
+
+# 创建一个 32GiB 的文件（瞬间），实际上占用空间为 0
+dd if=/dev/zero of=test.img bs=1M count=0 seek=32768
+
+# 格式化 test.img (创建 ext4 文件系统)
+mkfs.ext4 ./test.img
+
+# 挂载到系统
+sudo mkdir /mnt/backup
+sudo mount ./test.img /mnt/backup
+```
 
 ### 使用 iptables
 
