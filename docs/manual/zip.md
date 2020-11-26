@@ -13,7 +13,13 @@ tar czvf xxx.tgz xxx/
 tar xvf xxx.tgz
 ```
 
-## 7z
+### Linux 批量打包当前目录下的每个件为 tar.gz
+
+```sh
+for i in *; do tar -czvf $i.gz $i; done
+```
+
+## 7z 命令行
 
 ```sh
 # 创建压缩包
@@ -23,7 +29,7 @@ tar xvf xxx.tgz
 7z x xxx.7z -y
 ```
 
-### Windows 批量将文件夹打包成压缩包
+### Windows 批量打包当前目录下的每个件夹
 
 [参考](https://superuser.com/questions/94421/how-to-make-7-zip-do-a-whole-bunch-of-folders)，在 CMD(不是 Powershell) 下执行：
 
@@ -33,4 +39,3 @@ for /D %d in (*.*) do 7z a -tzip "%d.zip" "%d"
 # 压缩为 7z
 for /D %d in (*.*) do 7z a "%d.7z" "%d"
 ```
-
