@@ -111,9 +111,7 @@ server {
 }
 ```
 
-
-
-由于我的服务器没有备案，只能在80/443端口设置SSL：
+由于服务器无备案，只能在非 80/443 端口设置SSL：
 
 ```
 server {
@@ -178,14 +176,24 @@ server {
 
 ### 生成自签证书（.pem/.key/.crt）
 
-```
+```sh
 openssl genrsa -des3 -out rootCA.key 2048
 openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1024 -out rootCA.pem
 # 转换成 crt 格式
 openssl x509 -outform der -in rootCA.pem -out rootCA.crt
 ```
 
-注意，因为是自签名的证书，如果没有和**域名绑定**或者没有**加入证书到系统**里，必然会遇到警告，直接忽略即可。
+```sh
+openssl req -newkey rsa:4096 \
+            -x509 \
+            -sha256 \
+            -days 3650 \
+            -nodes \
+            -out example.crt \
+            -keyout example.key
+```
+
+注意：因为是自签名的证书，如果没有导入证书到系统信任列表里会遇到警告，可以直接忽略。
 
 参考：
 
