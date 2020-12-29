@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>debounce & throttle</title>
+
+  <script>
+    /**
+     * 防抖
+     * @param func 执行函数
+     * @param delay 延迟毫秒
+     * @param immediate 是否第一次立即执行
+     */
+    const debounce = (func, delay, immediate = false) => {
+      let timer
+      let flag = true
+      return function(...args) {
+        clearTimeout(timer)
+
+        if (immediate) { // 第一次调用立即执行
+          if (flag === true) {
+            func.apply(this, args);
+            flag = false
+          }
+          timer = setTimeout(() => {
+            flag = true
+            timer = null
+          }, delay)
+        } else {
+          timer = setTimeout(() => {
+            func.apply(this, args)
+          }, delay)
+        }
+      }
+    }
+
+
+    const mDebounce = debounce((fn) => fn(), 1000, true)
+
+    const testDebounce = () => {
+      console.log('.')
+      mDebounce(() => {
+        console.log('exec:debounce')
+      })
+    }
+
+    /**
+     * 节流函数
+     * @param func 执行函数
+     * @param delay 延迟毫秒
+     */
+    const throttle = function(func, delay) {
+      let prev = Date.now()
+      return function() {
+        const context = this
+        const args = arguments
+        const now = Date.now()
+        if (now - prev >= delay) {
+          func.apply(context, args)
+          prev = Date.now()
+        }
+      }
+    }
+
+    const mThrottle = throttle((fn) => fn(), 1000)
+
+    const testThrottle = () => {
+      console.log('*')
+      mThrottle(() => {
+        console.log('exec:throttle')
+      })
+    }
+  </script>
+</head>
+<body>
+<p>Open console, watch output. Fast clicking a single button to see the function effect.</p>
+<button onclick="testDebounce()">debounce</button>
+<button onclick="testThrottle()">throttle</button>
+</body>
+</html>
