@@ -12,28 +12,39 @@
      * 防抖
      * @param func 执行函数
      * @param delay 延迟毫秒
-     * @param immediate 是否第一次立即执行
+     * @param immediate 是否第一次调用立即执行
      */
     const debounce = (func, delay, immediate = false) => {
       let timer
-      let flag = true
-      return function(...args) {
+      return function (...args) {
         clearTimeout(timer)
 
-        if (immediate) { // 第一次调用立即执行
-          if (flag === true) {
-            func.apply(this, args);
-            flag = false
-          }
+        if (immediate) {
+          const callNow = !timer
           timer = setTimeout(() => {
-            flag = true
+            func.apply(this, args) // 确保最后一次执行
             timer = null
           }, delay)
+          if (callNow) {
+            func.apply(this, args)
+            clearTimeout(timer) // 防止重复执行
+          }
         } else {
           timer = setTimeout(() => {
             func.apply(this, args)
           }, delay)
         }
+
+      }
+    }
+    const debounceSimple = (func, delay) => {
+      let timer
+
+      return function (...args) {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+          func.apply(this, args)
+        }, delay)
       }
     }
 
@@ -51,21 +62,28 @@
      * 节流函数
      * @param func 执行函数
      * @param delay 延迟毫秒
+     * @param isLastExec 是否在最后一次执行
      */
-    const throttle = function(func, delay) {
+    let finTimer
+    const throttle = function (func, delay, isLastExec) {
       let prev = Date.now()
-      return function() {
-        const context = this
-        const args = arguments
+
+      return function (...args) {
         const now = Date.now()
+        clearTimeout(finTimer)
+
         if (now - prev >= delay) {
-          func.apply(context, args)
+          func.apply(this, args)
           prev = Date.now()
+        } else if (isLastExec) {
+          finTimer = setTimeout(() => {
+            func.apply(this, args)
+          }, delay)
         }
       }
     }
 
-    const mThrottle = throttle((fn) => fn(), 1000)
+    const mThrottle = throttle((fn) => fn(), 1000, true)
 
     const testThrottle = () => {
       console.log('*')
