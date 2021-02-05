@@ -168,10 +168,16 @@ npm config set python_mirror https://mirrors.huaweicloud.com/python
 
 ## 在 npm 上发布自己的包
 
-1. 在 https://www.npmjs.com/signup 注册一个账号；
-2. 如果设置了淘宝源，请切换为 npm 官方源 `nrm use npm`；
-3. 执行：`npm login`，输入用户名、密码、邮箱进行登录；
-4. 在项目目录执行：`npm publish` 即可完成发布，如果重名的话会发布失败，请修改 `package.json` 中的信息，也可以使用 `npm-name-cli` 小工具检测是否重名。
+1. 在 https://www.npmjs.com/signup 注册一个账号
+2. 如果设置了淘宝源，切换为 npm 官方源 `nrm use npm`
+3. 执行：`npm login`，输入用户名、密码、邮箱进行登录
+5. 如果是空项目，执行 `npm init` 初始化项目
+4. 在项目目录执行：`npm publish --access public` 完成发布
+
+如果发布失败，可能的原因如下：
+
+- 修改 `package.json` 中 `private` 为 `false`
+- 包名重复，修改 `name` 为一个不重复的值，或使用 `npm-name-cli` 工具检测包名重名
 
 参考：https://xuebin.me/posts/43109cf3.html
 
