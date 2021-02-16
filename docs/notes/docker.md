@@ -265,7 +265,7 @@ docker rm `docker ps -a | grep Exited | awk '{print $1}'`
 
 ## Docker Hub 镜像配置
 
-由于众所周知的网络问题，国内要设置 Docker Hub 的镜像，否则可能拉不下来镜像。
+国内要设置 Docker Hub 的镜像源，否则可能下载失败。
 
 编辑 /etc/docker/daemon.json 文件（不存在则新建），内容如下：
 
