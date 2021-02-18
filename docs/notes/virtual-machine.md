@@ -85,10 +85,17 @@ rm -f ./zero.fill
 sdelete -z C:
 ```
 
-### 通用宿主机 VirtualBox 压缩命令
+### 宿主机 VirtualBox 压缩命令
 
-```sh
-vboxmanage modifyhd cloned.vdi --compact
+```
+# Linux Host:
+vboxmanage modifymedium --compact /path/to/thedisk.vdi
+
+# Windows Host:
+VBoxManage.exe modifymedium --compact c:\path\to\thedisk.vdi
+
+# Mac Host:
+VBoxManage modifymedium --compact /path/to/thedisk.vdi
 ```
 
 如果虚拟硬盘是 VMDK 格式，则需要转换：
@@ -98,7 +105,7 @@ vboxmanage clonehd "source.vmdk" "cloned.vdi" --format vdi
 vboxmanage clonehd "cloned.vdi" "compressed.vmdk" --format vmdk
 ```
 
-### Linux 宿主机 VMware 压缩命令
+### VMware 压缩命令: Linux 宿主机
 
 ```
 /usr/bin/vmware-toolbox-cmd disk shrinkonly
@@ -109,7 +116,7 @@ vboxmanage clonehd "cloned.vdi" "compressed.vmdk" --format vmdk
 - 磁盘是固定分配大小的，这样的话不能收缩
 - 当前磁盘存在快照，删除快照后就再试
 
-### Windows 宿主机 VMware 压缩命令
+### VMware 压缩命令: Windows 宿主机
 
 使用图形界面：
 
