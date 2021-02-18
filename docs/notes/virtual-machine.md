@@ -55,6 +55,11 @@ vmware-vdiskmanager -r G:\ubuntu\Ubuntu.vmdk -t 1 G:\ubuntu\ubuntu2.vmdk
 - [vmware压缩vmdk文件大小](https://www.cnblogs.com/kagari/p/12010147.html)
 - [减小VirtualBox虚拟硬盘文件的大小](https://blog.csdn.net/ganshuyu/article/details/46360271)
 
+压缩分为两个步骤：
+
+1. 将客户机的磁盘空闲空间置零
+2. 在宿主机压缩客户机的虚拟磁盘
+
 ### Linux 客户机系统
 
 将系统空闲空间用 0 填满，然后删除。有两种方法：
@@ -77,7 +82,7 @@ rm -f ./zero.fill
 将系统空闲空间置为 0，Windows系统需要下载 [Sysinternals Suite](https://docs.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite) 并执行：
 
 ```sh
-sdelete –z C:
+sdelete -z C:
 ```
 
 ### 通用宿主机 VirtualBox 压缩命令
