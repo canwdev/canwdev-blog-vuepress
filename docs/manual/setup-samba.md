@@ -9,7 +9,7 @@
 1. 安装服务
     Ubuntu：`sudo apt-get install samba samba-common`
     
-    Manjaro KDE：`pamac install samba kdenetwork-filesharing manjaro-settings-samba`
+    Manjaro KDE：`sudo pacman -S samba kdenetwork-filesharing manjaro-settings-samba`
     
 2. 创建一个用于分享的samba目录
     `sudo mkdir /home/username/Public/share`
@@ -21,7 +21,7 @@
 
     `sudo smbpasswd -a username`
 
-5. 配置samba的配置文件
+5. 修改samba的配置文件
 
     `sudo vi /etc/samba/smb.conf`，在配置文件smb.conf的最后添加下面的内容（`shift+g` 跳转到最后一行）：
 
@@ -50,15 +50,12 @@
     > unix extensions = no
     > ```
 
-6. 重启samba服务器，这样 samba 服务就配置完成并启动成功了
+6. 重启samba服务器
 
     - Ubuntu: `sudo service smbd restart`
     - Manjaro: `sudo systemctl restart smb`
 
 7. 查看本机 IP 地址：`ifconfig` 或者 `ip a`
-
-
-
 
 ## 在 Windows 中连接 Samba
 

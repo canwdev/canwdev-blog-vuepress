@@ -16,7 +16,7 @@ git config  --global core.ignorecase false
 git config --global http.sslVerify false
 ```
 
-## 为 git 设置代理
+## git 设置代理
 
 ```sh
 ALL_PROXY=socks5://127.0.0.1:8888

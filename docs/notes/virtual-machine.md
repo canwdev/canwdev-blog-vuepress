@@ -55,6 +55,11 @@ vmware-vdiskmanager -r G:\ubuntu\Ubuntu.vmdk -t 1 G:\ubuntu\ubuntu2.vmdk
 - [vmware压缩vmdk文件大小](https://www.cnblogs.com/kagari/p/12010147.html)
 - [减小VirtualBox虚拟硬盘文件的大小](https://blog.csdn.net/ganshuyu/article/details/46360271)
 
+压缩分为两个步骤：
+
+1. 将客户机的磁盘空闲空间置零
+2. 在宿主机压缩客户机的虚拟磁盘
+
 ### Linux 客户机系统
 
 将系统空闲空间用 0 填满，然后删除。有两种方法：
@@ -77,13 +82,20 @@ rm -f ./zero.fill
 将系统空闲空间置为 0，Windows系统需要下载 [Sysinternals Suite](https://docs.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite) 并执行：
 
 ```sh
-sdelete –z C:
+sdelete -z C:
 ```
 
-### 通用宿主机 VirtualBox 压缩命令
+### 宿主机 VirtualBox 压缩命令
 
-```sh
-vboxmanage modifyhd cloned.vdi --compact
+```
+# Linux Host:
+vboxmanage modifymedium --compact /path/to/thedisk.vdi
+
+# Windows Host:
+VBoxManage.exe modifymedium --compact c:\path\to\thedisk.vdi
+
+# Mac Host:
+VBoxManage modifymedium --compact /path/to/thedisk.vdi
 ```
 
 如果虚拟硬盘是 VMDK 格式，则需要转换：
@@ -93,7 +105,7 @@ vboxmanage clonehd "source.vmdk" "cloned.vdi" --format vdi
 vboxmanage clonehd "cloned.vdi" "compressed.vmdk" --format vmdk
 ```
 
-### Linux 宿主机 VMware 压缩命令
+### VMware 压缩命令: Linux 宿主机
 
 ```
 /usr/bin/vmware-toolbox-cmd disk shrinkonly
@@ -104,7 +116,7 @@ vboxmanage clonehd "cloned.vdi" "compressed.vmdk" --format vmdk
 - 磁盘是固定分配大小的，这样的话不能收缩
 - 当前磁盘存在快照，删除快照后就再试
 
-### Windows 宿主机 VMware 压缩命令
+### VMware 压缩命令: Windows 宿主机
 
 使用图形界面：
 
