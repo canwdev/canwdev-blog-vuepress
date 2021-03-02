@@ -1,4 +1,4 @@
-# 离线笔记 · 📴 Offline notes
+# 离线笔记 · OfflineNotes
 
 基于 VuePress 的个人博客
 

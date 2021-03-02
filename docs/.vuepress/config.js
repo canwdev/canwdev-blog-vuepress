@@ -14,7 +14,7 @@ const config = {
     '/': {
       lang: 'zh-CN',
       title: '离线笔记 · OfflineNotes',
-      description: '记录学习过程。'
+      description: '记录学习过程'
     },
     // '/en/': {
     //   lang: 'en-US', // 将会被设置为 <html> 的 lang 属性
@@ -45,7 +45,7 @@ const config = {
         nav: [
           {text: '📚 学习', link: '/notes/'},
           {text: '📖 手册', link: '/manual/'},
-          {text: '🐱‍👓 博客', link: '/blog/'},
+          {text: '👓 博客', link: '/blog/'},
         ],
       },
       // '/en/': {
@@ -71,26 +71,6 @@ const config = {
           title: '学习笔记',
           sidebarDepth: 2,
           children: sidebarHelper.getChildren('/notes/')
-        },
-        {
-          title: '合格前端自检笔记',
-          sidebarDepth: 2,
-          children: sidebarHelper.getChildren('/notes/fe-self-check/')
-        },
-        {
-          title: '前端面试 3+1 & 答案整理',
-          sidebarDepth: 1,
-          children: sidebarHelper.getChildren('/notes/fe-interview-3plus1/')
-        },
-        {
-          title: 'Vue 248+ 面试题 & 答案总结',
-          sidebarDepth: 2,
-          children: sidebarHelper.getChildren('/notes/fe-interview-vue/')
-        },
-        {
-          title: '前端面试题（2018.6）',
-          sidebarDepth: 2,
-          children: sidebarHelper.getChildren('/notes/fe-interview-2018/')
         },
         {
           title: 'JavaScript 高程笔记',

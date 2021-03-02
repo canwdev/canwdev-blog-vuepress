@@ -8,10 +8,6 @@
 - [💻 Node.js 笔记](./nodejs-notes.md)
 - [💻 git 笔记](./git-notes.md)
 - [🛸 前端实用特效](./fe-effects-collection.md)
-- [📝 前端面试 3+1 & 答案整理 (1-100天)](./fe-interview-3plus1/fe-interview-3plus1-100.md)
-- [📝 前端面试 3+1 & 答案整理 (101-200天)](./fe-interview-3plus1/fe-interview-3plus1-200.md)
-- [📝 Vue 248+ 面试题 & 答案总结](fe-interview-vue/README.md)
-- [📝 合格前端自检笔记](./fe-self-check/README.md)
 
 ## 原创文章
 
@@ -24,9 +20,5 @@
 ## 读书笔记
 
 - [图解HTTP笔记](./tujie-http.md)
-- [面试题整理01](fe-interview-2018/README.md)
 - [JavaScript 高级程序设计读书笔记](./pro-js-for-web-dev-note/README.md)
 
----
-
-👈 或从左侧列表选择一项开始阅读
