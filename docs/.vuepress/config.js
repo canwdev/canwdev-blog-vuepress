@@ -43,9 +43,9 @@ const config = {
         // 该语言在下拉菜单中的标签
         label: '简体中文',
         nav: [
-          {text: '📚 学习', link: '/notes/'},
-          {text: '📖 手册', link: '/manual/'},
-          {text: '👓 博客', link: '/blog/'},
+          {text: '🎓 学习', link: '/notes/'},
+          {text: '📓 手册', link: '/manual/'},
+          {text: '🖋️ 博客', link: '/blog/'},
         ],
       },
       // '/en/': {
