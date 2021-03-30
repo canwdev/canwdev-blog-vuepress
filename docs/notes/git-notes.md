@@ -166,4 +166,10 @@ git push --force --tags origin 'refs/heads/develop'
 
 ## 关于强制推送
 
-千万不要在公用git仓库 push --force！否则，修改的内容被其他任何人或者CI拉下来后必定会有冲突，这时候就麻烦大了。还好 GitLab 有保护功能，避免了这次灾难。
+千万不要在公用git仓库 push --force！否则，修改的内容被其他任何人或者 CI 拉下来后会有冲突
+
+## 自定义 git 提交时间
+
+```sh
+git commit --date="March 31 20:00:00 2021 +0800" -am "update"
+```
