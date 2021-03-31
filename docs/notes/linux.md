@@ -399,3 +399,16 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 root:x:0:0:root:/root:/usr/bin/zsh
 ```
 
+### 将文件夹制作成 iso 光盘镜像
+
+```
+mkisofs -o dist.iso -J -R -V diskLabel fromFolder
+```
+
+其中：
+
+- dist.iso 生成的目标文件名
+- diskLabel 指定光盘的卷册集ID（光驱在电脑里显示的名称）
+- fromFolder 来源文件夹
+
+或使用图形化工具：K3b is a full-featured CD/DVD/Blu-ray burning and ripping application.
