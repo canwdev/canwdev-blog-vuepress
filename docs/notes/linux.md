@@ -449,6 +449,12 @@ iface enp0s8 inet static
 	gateway 192.168.56.1
 ```
 
+```sh
+# 可能需要配合 ifup 才能生效
+apt install -y ifupdown
+ifup enp0s8
+```
+
 重启网络服务
 
 ```sh
