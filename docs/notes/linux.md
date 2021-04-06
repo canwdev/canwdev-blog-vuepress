@@ -412,3 +412,63 @@ mkisofs -o dist.iso -J -R -V diskLabel fromFolder
 - fromFolder 来源文件夹
 
 或使用图形化工具：K3b is a full-featured CD/DVD/Blu-ray burning and ripping application.
+
+## Linux 网络配置
+
+- https://blog.sunriseydy.top/technology/linux/ubuntu-add-network-interface/
+- https://www.2daygeek.com/enable-disable-up-down-nic-network-interface-port-linux/
+- https://danielmiessler.com/study/manually-set-ip-linux/
+
+### 查看所有网络适配器
+
+```sh
+lshw -class network
+ip a
+```
+
+### 启用/禁用网络
+
+```sh
+# ifconfig [NIC_NAME] down/up
+ifconfig enp0s8 up
+ifconfig enp0s3 down
+
+# 设置静态ip
+ifconfig enp0s8 192.168.56.5 netmask 255.255.255.0 up
+```
+
+### 保存网络设置
+
+- https://wiki.debian.org/NetworkConfiguration
+
+```
+# vim /etc/network/interfaces
+auto enp0s8
+iface enp0s8 inet static
+	address 192.168.56.5/24
+	gateway 192.168.56.1
+```
+
+重启网络服务
+
+```sh
+service networking restart
+systemctl restart systemd-networkd
+```
+
+### network-manager 命令行网络管理器
+
+```sh
+# install
+apt install -y network-manager
+systemctl start network-manager
+
+# CLI
+nmcli con show
+# nmcli con down/up
+nmcli con down 'Wired connection 1'
+nmcli dev status
+
+# UI
+nmtui
+```

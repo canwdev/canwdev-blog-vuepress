@@ -75,7 +75,7 @@ PasswordAuthentication no
 sudo systemctl restart sshd
 ```
 
-## SSH 经常一段时间就断掉解决办法
+## ssh经常一段时间就断掉解决办法
 
 ```
 sudo vim /etc/ssh/sshd_config
@@ -92,6 +92,13 @@ ClientAliveCountMax 86400
 
 # 重启 sshd 服务
 sudo systemctl restart sshd
+```
+
+## ssh允许root登录
+
+```
+# /etc/ssh/sshd_config
+PermitRootLogin yes
 ```
 
 ## ssh config 配置文件
