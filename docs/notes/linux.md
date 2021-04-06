@@ -437,16 +437,23 @@ ifconfig enp0s3 down
 ifconfig enp0s8 192.168.56.5 netmask 255.255.255.0 up
 ```
 
-### 保存网络设置
+### 保存网络设置（Debian/Ubuntu）
 
 - https://wiki.debian.org/NetworkConfiguration
 
 ```
 # vim /etc/network/interfaces
+
+auto enp0s3
+allow-hotplug eth0
+iface enp0s3 inet dhcp
+    metric 0
+
 auto enp0s8
 iface enp0s8 inet static
 	address 192.168.56.5/24
 	gateway 192.168.56.1
+    metric 100
 ```
 
 ```sh
@@ -460,6 +467,32 @@ ifup enp0s8
 ```sh
 service networking restart
 systemctl restart systemd-networkd
+```
+
+### 修改路由连接互联网的优先级(metric)
+
+> [Metric](https://superuser.com/questions/1167244/interpreting-the-metric-column-in-routing-table) indicates the 'distance' to the target.
+> 所以 metric 越低，优先级越高
+
+```sh
+# 查看当前路由表
+route
+
+# ifmetric动态某接口的metric，立即生效
+ifmetric enp0s3 0
+ifmetric enp0s8 100
+```
+
+用 ifmetric 修改后的路由表（重启后失效）：
+
+```
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+default         _gateway        0.0.0.0         UG    0      0        0 enp0s3
+default         _gateway        0.0.0.0         UG    100    0        0 enp0s8
+10.0.2.0        0.0.0.0         255.255.255.0   U     0      0        0 enp0s3
+_gateway        0.0.0.0         255.255.255.255 UH    0      0        0 enp0s3
+192.168.56.0    0.0.0.0         255.255.255.0   U     100    0        0 enp0s8
 ```
 
 ### network-manager 命令行网络管理器
