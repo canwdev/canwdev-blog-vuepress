@@ -12,7 +12,10 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 # 设置镜像
 export NVM_NODEJS_ORG_MIRROR=https://nodejs.org/dist
 
-nvm install 12.18.2
+# 显示所有远程LTS版本
+nvm ls-remote --lts
+# 安装
+nvm install 12.22.1
 node -v
 ```
 
