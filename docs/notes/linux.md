@@ -359,6 +359,12 @@ kquitapp5 plasmashell
 kstart5 plasmashell
 ```
 
+重启 kwin
+
+```sh
+kwin_x11 --replace
+```
+
 ## Android 系统
 
 ### 刷新 Android 设备媒体
