@@ -528,3 +528,23 @@ nmcli dev status
 # UI
 nmtui
 ```
+
+### Linux 挂载 WebDav
+
+```sh
+# 安装 davfs2
+sudo pacman -S davfs2
+sudo sed -i 's/# use_locks       1/use_locks       0/g' /etc/davfs2/davfs2.conf
+
+# 创建挂载点文件夹
+mkdir NAS
+
+# 查看自己的用户id
+id user
+
+# 挂载
+sudo mount.davfs http://192.168.0.123:5005 ./NAS -o uid=1000
+```
+
+参考：[如何在各个平台下挂载WebDAV](https://moe.best/linux-memo/mount-webdav.html)
+
