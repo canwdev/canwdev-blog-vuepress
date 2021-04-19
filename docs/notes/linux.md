@@ -310,21 +310,20 @@ https://github.com/topics/cinnamon-theme
 
 安装deb：`sudo dpkg -i xxx.deb`；如果遇到 “dpkg: 依赖关系问题使得 xxx 的配置工作不能继续”，解决方案：`sudo apt -f -y install`
 
-### 常用GUI软件(使用 apt install)
+### Linux 实用软件
 
 https://alternativeto.net/platform/xfce
 
-- `screenfetch` = 系统信息
+- `screenfetch` `neofetch` `hardinfo` = 系统信息
 - `htop` = 任务管理器
-- `gedit` = Gnome 的文本编辑器
-- `geany` = 轻量级IDE
-- `mousepad` = xfce 的文本编辑器
-- `pcmanfm` = 文件管理器
-- `thunar` = 文件管理器
-- `hardinfo` = 硬件信息
-- `xarchiver` = 压缩软件
-- `gnome-commander` = 类似于 TotalCommander 的双面板文件管理器
-- `partitionmanager` = KDE 分区管理器
+- `vim` `gedit`(Gnome) `mousepad`(Xfce) `kate`(KDE) = 文本编辑器
+- `pcmanfm` `thunar` `dolphin`(KDE) = 文件管理器
+- `xarchiver` `ark`(KDE) = 压缩软件
+- `gnome-commander` `krusader` = 类 TotalCommander 双面板文件管理器
+- `partitionmanager`(KDE) `gparted` = 分区管理器
+- `tmux` = 终端分屏工具
+- `dupeguru` = 文件去重
+- `convmv` = 文件名乱码修复
 
 ### 让 Ubuntu 支持挂载 exFAT 文件系统
 
