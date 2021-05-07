@@ -1,6 +1,6 @@
-# 修改 Windows 10 声音主题（Sound Scheme）为 Win7
+# 修改 Win10 声音主题为 Win7
 
-> Win7 时代有很多自带的声音主题，非常好听，但是到 Win8 以后就被砍了，并且替换为了较长而且播放起来有延迟的音频文件，感觉很不爽。于是我打算恢复 Win7 的声音主题到 Win10（1909），理论上之前版本包括 Win8 也适用。
+> Win7 时代有很多自带的声音主题（Sound Scheme），但是到 Win8 以后就被砍了，并且替换为了冗长而且播放起来有延迟的音频文件，感觉很不爽。于是我打算恢复 Win7 的声音主题到 Win10（1909），理论上 Win8 也适用。
 
 可以直接使用我打包好的资源：https://gitee.com/canwdev/static/blob/master/Windows7%20Sound%20Pack.zip
 

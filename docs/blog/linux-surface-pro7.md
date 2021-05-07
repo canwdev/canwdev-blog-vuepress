@@ -1,14 +1,14 @@
-# Linux for Surface Pro 7 指南
+# Surface Pro 7 安装 Linux 指南
 
 如果你网络状况良好，直接参考 `linux-surface` 的[官方文档](https://github.com/linux-surface/linux-surface/wiki/Installation-and-Setup)安装就可以了。下面介绍如何手动下载包并在离线的情况下安装。
 
-## 1. Debian/Ubuntu
+## 1. 安装 Debian/Ubuntu
 
 ![image-20200829225253396](./linux-surface-pro7.assets/image-20200829225253396.png)
 
-### 1.1 下载
+### 1.1 手动下载
 
-可以直接到 Github 的 release 页面下载内核，或者到 https://pkg.surfacelinux.com/debian 手动获取 `deb` 包：
+可以直接到 linux-surface 的 release 页面下载内核，或者到 https://pkg.surfacelinux.com/debian 手动获取 `deb` 包：
 
 下载 [Packages](https://pkg.surfacelinux.com/debian/dists/release/main/binary-amd64/Packages) 文件，用文本编辑器打开，搜索包名。
 
@@ -43,11 +43,11 @@ sudo dpkg -i surface-ipts-firmware_20200402-1_amd64.deb
 sudo dpkg -i iptsd_0.1-1_amd64.deb
 ```
 
-## 2. Arch/Manjaro
+## 2. 安装 Arch Linux / Manjaro
 
 ![image-20200829225438421](./linux-surface-pro7.assets/image-20200829225438421.png)
 
-### 2.1 下载
+### 2.1 手动下载
 
 在 [这里](https://pkg.surfacelinux.com/arch/) 可以直接下载 `zst` 文件，下载前需去除 `.blob` 后缀，如：`https://pkg.surfacelinux.com/arch/iptsd-0.1-1-x86_64.pkg.tar.zst`
 
@@ -59,7 +59,7 @@ linux-surface-headers linux-surface surface-ipts-firmware iptsd
 
 ### 2.2 安装
 
-如果直接安装，可能会提示签名错误，此时需要修改配置：`/etc/pacman.conf`
+如果直接安装，可能会提示签名错误，此时需要修改配置：`sudo vim /etc/pacman.conf`
 
 ```
 # SigLevel = Required DatabaseOptional
@@ -93,12 +93,12 @@ yay -S libwacom-surface surface-dtx-daemon surface-control
 
 ### 3.2 没有触控
 
-在内核 5.8 及更高版本中，你还需要安装 iptsd 以获得触摸支持并启用 iptsd 守护程序 `sudo systemctl enable iptsd.service`
+在内核 5.8 及更高版本中，还需要安装 iptsd 以获得触摸支持并启用 iptsd 守护程序 `sudo systemctl enable iptsd.service`
 
-### 3.3 [SP7](https://github.com/linux-surface/linux-surface/wiki/Surface-Pro-7) 重启后卡田 Logo
+### 3.3 [SP7](https://github.com/linux-surface/linux-surface/wiki/Surface-Pro-7) 重启后卡田牌 Logo
 
 1. `sudo vim /etc/default/grub`
-2. Add `reboot=pci` to your kernel boot parameters，如：
+2. 添加 `reboot=pci` 到你的内核参数，如：
     ```
     GRUB_CMDLINE_LINUX_DEFAULT="quiet splash reboot=pci"
     ```
