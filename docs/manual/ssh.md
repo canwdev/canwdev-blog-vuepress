@@ -120,3 +120,27 @@ Host demo
 
 保存文件后，在终端输入 `ssh demo` 即可直接连接，无需输入密码（公钥认证）。
 
+## ssh 执行远程命令
+
+参考：[How To Run / Execute Command Using SSH](https://www.cyberciti.biz/faq/unix-linux-execute-command-using-ssh/)
+
+```sh
+ssh user1@server1 command1
+ssh user1@server1 'command2'
+# 管道操作
+ssh user1@server1 'command1 | command2'
+# 多条命令
+ssh admin@box1 "command1; command2; command3"
+```
+
+```sh
+ssh -T $_remote <<'EOL'
+	now="$(date)"
+	name="$HOSTNAME"
+	up="$(uptime)"
+	echo "Server name is $name"
+	echo "Server date and time is $now"
+	echo "Server uptime: $up"
+	echo "Bye"
+EOL
+```
