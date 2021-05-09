@@ -196,17 +196,7 @@ docker top daemon_dave
 
  
 
-### 在容器内部运行进程
-
-执行一条命令，创建一个空文件：
-
-```
-docker exec -d daemon_dave touch /etc/new_config_file
-```
-
--d 表示要运行一个后台进程
-
- 
+### 在容器内部运行进程（进入容器内部的shell）
 
 打开shell交互式任务：
 
@@ -214,7 +204,15 @@ docker exec -d daemon_dave touch /etc/new_config_file
 sudo docker exec -t -i daemon_dave /bin/bash
 ```
 
--t -i 标志为我们的进程创建了可交互的 TTY
+> -t -i 标志为我们的进程创建了可交互的 TTY
+
+执行一条命令，创建一个空文件：
+
+```
+docker exec -d daemon_dave touch /etc/new_config_file
+```
+
+> -d 表示要运行一个后台进程
 
 ![image-20200805165839601](./docker.assets/image-20200805165839601.png)
 
