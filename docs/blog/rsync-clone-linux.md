@@ -1,4 +1,4 @@
-# 使用 rsync 克隆 Linux 系统
+# 使用 rsync 克隆 Linux 并修复 GRUB 引导
 
 ## 1. 给新的磁盘分区
 
