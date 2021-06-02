@@ -553,9 +553,9 @@ docker push canwdev/static_web
 
 和 `docker rm` 用法相似，区别是 rm 是删除容器而 rmi 是删除镜像。
 
-删除名称或标签为none的镜像：
+删除名称或标签为`<none>`的镜像：
 
-```
+```sh
 docker rmi -f `docker images | grep '<none>' | awk '{print $3}'`
 ```
 
@@ -938,6 +938,13 @@ docker export containID > filename.tar
 docker import filename.tar [newname]
 ```
 
+### 使用阿里云容器镜像服务
 
-
-EOF.
+```sh
+docker login --username=<用户名> registry.cn-hangzhou.aliyuncs.com
+# 发布镜像
+docker image tag <镜像名>:latest registry.cn-hangzhou.aliyuncs.com/<命名空间>/<镜像名>:latest
+docker image push registry.cn-hangzhou.aliyuncs.com/<命名空间>/<镜像名>:latest
+# 拉取镜像
+docker pull registry.cn-hangzhou.aliyuncs.com/<命名空间>/<镜像名>:latest
+```
