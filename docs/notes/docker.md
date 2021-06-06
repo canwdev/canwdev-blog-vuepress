@@ -162,11 +162,11 @@ sed -i "s@http://.*security.ubuntu.com@http://mirrors.huaweicloud.com@g" /etc/ap
 
 - 重命名：`docker rename 3d0746cf585e bob_the_container`
 
-- 查看最后运行的镜像：`docker ps -l`
+- 查看最后运行的容器：`docker ps -l`
 
-- 删除镜像：`docker rm 3d0746cf585e`
+- 删除容器：`docker rm 3d0746cf585e`
 
-- 启动镜像：`docker start bob_the_container`（重启则是 restart）
+- 启动容器：`docker start bob_the_container`（重启则是 restart）
 
 ### 附着到容器上
 
@@ -193,8 +193,6 @@ docker run --name daemon_dave -d ubuntu /bin/sh -c "while true; do echo hello wo
 ```
 docker top daemon_dave
 ```
-
- 
 
 ### 在容器内部运行进程（进入容器内部的shell）
 
@@ -551,12 +549,18 @@ docker push canwdev/static_web
 
 使用 `docker rmi` 来删除镜像：`docker rmi canwdev/screenfetch`
 
-和 `docker rm` 用法相似，区别是 rm 是删除容器而 rmi 是删除镜像。
+> 和 `docker rm` 用法相似，区别是 rm 是删除容器而 rmi 是删除镜像。
 
-删除名称或标签为`<none>`的镜像：
+清理：
 
 ```sh
+# 删除名称或标签为`<none>`的镜像：
 docker rmi -f `docker images | grep '<none>' | awk '{print $3}'`
+
+# 自动清理命令
+# -a 一并清除所有未被使用的镜像和悬空镜像
+# -f 用以强制删除，不提示信息
+docker system prune
 ```
 
 ## 在测试中使用Docker
@@ -671,7 +675,7 @@ Docker会自动给宿主机创建一个新的网络接口，名为docker0，每�
 docker inspect -f '{{ .NetworkSettings.IPAddress }}' redis
 ```
 
-经过暗中观察，宿主机和容器的网络结构图如下：
+经过观察，宿主机和容器的网络结构图如下：
 
 ![image-20200805172101202](./docker.assets/image-20200805172101202.png)
 
