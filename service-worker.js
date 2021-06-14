@@ -27,7 +27,7 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "cc53cee7ae65ae41479e80a25f032644"
+    "revision": "388811c33a122fd6a6d9e8c5b2b48649"
   },
   {
     "url": "assets/css/0.styles.0b5beb82.css",
@@ -742,8 +742,8 @@ self.__precacheManifest = [
     "revision": "063d54af1cc2bc103874949677f12c92"
   },
   {
-    "url": "assets/js/80.5a80e973.js",
-    "revision": "03e8b44e059712ab79c6c6148cf9678a"
+    "url": "assets/js/80.7d3aeac7.js",
+    "revision": "84b20f5074808f4fa3c7db51b3de0b88"
   },
   {
     "url": "assets/js/81.2ac508a0.js",
@@ -782,48 +782,48 @@ self.__precacheManifest = [
     "revision": "9f0eaf65b91c98d493aae7ddc14aee62"
   },
   {
-    "url": "assets/js/app.5ec21b40.js",
-    "revision": "8aabe3c0994f6861bd20c9ae463bd8fa"
+    "url": "assets/js/app.af758586.js",
+    "revision": "5d728d9c781d86b83eb0a2e27202108a"
   },
   {
     "url": "blog/index.html",
-    "revision": "ec75ffa36572c79fc4b7036520d1aaa9"
+    "revision": "859da94762fa134d67e97dfb397c7abd"
   },
   {
     "url": "blog/linux-deploy-tutorial.html",
-    "revision": "a4e7f6c1e6cda6894fd614aea633d8d7"
+    "revision": "1462128f249cfaf8b2aa9736938ca94b"
   },
   {
     "url": "blog/linux-surface-pro7.html",
-    "revision": "ec06c2b63a1f0c648b270fcc4bd3fb65"
+    "revision": "41e1a80c005f785fc837e4ce33767981"
   },
   {
     "url": "blog/manjaro-kde-getting-started.html",
-    "revision": "1b3c7984ac7cfad52b3666cc757c9e98"
+    "revision": "449df2b51219818f37a4856d68dc6f97"
   },
   {
     "url": "blog/rsync-clone-linux.html",
-    "revision": "5f9d296afc986aa62cf75f829a6174a9"
+    "revision": "238828f5639b7a0ac5e212e54a3e3e39"
   },
   {
     "url": "blog/surface-pro7-as-paint-tablet.html",
-    "revision": "e0067da411c57d54dd54da6ff82085f0"
+    "revision": "7d4d17cfd3c32155559cdd20ede0e322"
   },
   {
     "url": "blog/virtual-disk-test.html",
-    "revision": "1f1d1b697e1f3f3d18eca1242583d851"
+    "revision": "4422bdccd965b11e453907fb214ce328"
   },
   {
     "url": "blog/win10-sound-scheme-from-win7.html",
-    "revision": "8ef38b525ac952d35b4d750aa7bad0a9"
+    "revision": "6fd712f8241090da416660204f058193"
   },
   {
     "url": "blog/win10-start-menu-backup-restore.html",
-    "revision": "5911b53edafafccce8c1e6a8397f8e6d"
+    "revision": "0b9d1bb775e4808ce65cd306b4e3a235"
   },
   {
     "url": "blog/windows-rdp-ssl.html",
-    "revision": "c02c10dfec4c6732ae83f38b00f8c0ad"
+    "revision": "a402b6fef1f3542f8a93a23ea010300b"
   },
   {
     "url": "favicon.png",
@@ -1315,283 +1315,283 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "fe639e9f18998d29e1963b002686562d"
+    "revision": "72f4c807ab7056d87e2ad89c1401c502"
   },
   {
     "url": "manual/android-backup-steps.html",
-    "revision": "aabb7b200b545f2a14a4823df712cb90"
+    "revision": "3b4887e18cd0cc822c6e347a27e69e3e"
   },
   {
     "url": "manual/android-rom-modify/index.html",
-    "revision": "aa575d2622b36afe3512d704905184b3"
+    "revision": "33976434bc47e954ea192a1a9769763a"
   },
   {
     "url": "manual/android-rom-modify/rimg2sdat-master/index.html",
-    "revision": "02075cf7372564e3b7db981d90e9a117"
+    "revision": "2a54d9f6b5fe9d06ef5930cd22b03a30"
   },
   {
     "url": "manual/android-rom-modify/sdat2img-master/index.html",
-    "revision": "474b21b4bf1962870431ec97d6d000ad"
+    "revision": "90947fc094d8bb01793af0b3545e86ba"
   },
   {
     "url": "manual/android-rom-modify/step5_flash_machine.html",
-    "revision": "ded0a5def8190fa90e418fddc0c805f3"
+    "revision": "f495efe151fd919ac40ba49adb237419"
   },
   {
     "url": "manual/android-rom.html",
-    "revision": "13bd461a5e3545ec99bea1d16743b3b4"
+    "revision": "75986c725ed740d476b8afd33d700218"
   },
   {
     "url": "manual/canvas-wandering.html",
-    "revision": "07095a98e3e2e8c44e6acdfab54e885b"
+    "revision": "ac3232d6466b3e8f55e8963e166c67f4"
   },
   {
     "url": "manual/css-mobile.html",
-    "revision": "467c462b564e197b4e545ab4fafdbad8"
+    "revision": "2fa10c53574223496d8fb993fd8adfb9"
   },
   {
     "url": "manual/echarts.html",
-    "revision": "b94c6dbcf761b409ce4ee3095caf4d0c"
+    "revision": "5c0e74278c786f570cf6b3c54be5cd92"
   },
   {
     "url": "manual/firefox.html",
-    "revision": "53d4a384847abcdefa3e437200e25bc0"
+    "revision": "4905fd9fdf8fd400f5fa0bc413663ad3"
   },
   {
     "url": "manual/free-ssl.html",
-    "revision": "451cbac51577b676e415703611bf9def"
+    "revision": "5a7215b218dee51a2c013dcae3be079d"
   },
   {
     "url": "manual/fstab.html",
-    "revision": "227b9cba51907e9581e36322d615d8c5"
+    "revision": "7da778245f3de43d0db2f299e810b42c"
   },
   {
     "url": "manual/games.html",
-    "revision": "9baaa6395b662d0f7b4bf89869e42ebc"
+    "revision": "7cc38904e51c2408d5ae24487d587d97"
   },
   {
     "url": "manual/git-pushing-multiple.html",
-    "revision": "6883ecaf0f3c36aeed83833cf26c4f7a"
+    "revision": "fd6f7deb74269fce55c199a498c53aab"
   },
   {
     "url": "manual/index.html",
-    "revision": "11a4e10fa9fd353bf465e5f7791a3502"
+    "revision": "29bf8355a9a7ba809e8971669dc72106"
   },
   {
     "url": "manual/luks-home.html",
-    "revision": "38b08c63e57cb34a6afb13a3701a8a07"
+    "revision": "eed76d74958e4b4ef1d6954388a27a91"
   },
   {
     "url": "manual/nextcloud.html",
-    "revision": "abadda27425207ccaf5262e535dcd7ef"
+    "revision": "c2cb3aac56cc6fed485650a6ee5d1a38"
   },
   {
     "url": "manual/prevent-program-accessing-internet.html",
-    "revision": "178484365f3e95b1244b7a470a4a264c"
+    "revision": "02a251c8f618cefbbc40ee85da0f892d"
   },
   {
     "url": "manual/setup-aria2.html",
-    "revision": "7d8295bf9c5de4aea6c61c6ea452fec6"
+    "revision": "fc5227a1d471aaa7bf8cb40c0c8e58e1"
   },
   {
     "url": "manual/setup-cordova.html",
-    "revision": "fb43ae4a8bbc82e779f825f1983d50a0"
+    "revision": "b9e38aa416093f99d8b0d84167d8cda1"
   },
   {
     "url": "manual/setup-electronjs.html",
-    "revision": "72d623e70edc73f8e7835fb912f24e5c"
+    "revision": "0d461f3243595de5a5bc903f29ae3963"
   },
   {
     "url": "manual/setup-frp.html",
-    "revision": "033ea34d7d9248e42e748f71840349a7"
+    "revision": "ddb9b115da74411c22e69536606513de"
   },
   {
     "url": "manual/setup-gitlab.html",
-    "revision": "2c03f6f760d21ed93813b5fd864aa574"
+    "revision": "51aff403c9fce58c9bb4ca93371dc9ac"
   },
   {
     "url": "manual/setup-jenkins.html",
-    "revision": "f8f42ad3e5496c03644e6d7b99ba24cb"
+    "revision": "506693ad2421c0344d6aedee44d30c20"
   },
   {
     "url": "manual/setup-kvm.html",
-    "revision": "c5b6c81163236103166bf9d898d8a159"
+    "revision": "bbd4af59c4a1c846076674e067b13d8e"
   },
   {
     "url": "manual/setup-less.html",
-    "revision": "1054b152feafe73fdfdad87c1aea4b9c"
+    "revision": "8737e4de3f05156165a06340ae05bb0f"
   },
   {
     "url": "manual/setup-mongodb.html",
-    "revision": "a70ed877217567839b530e30f71aa50b"
+    "revision": "b4b59f6e4c21010c9992a430d10d80ac"
   },
   {
     "url": "manual/setup-mysql.html",
-    "revision": "ce68ae55086b7447f0d55c100e6d95d9"
+    "revision": "ac930b7d161e93897ae8c6f76fc64934"
   },
   {
     "url": "manual/setup-nginx.html",
-    "revision": "7de4418605963d35a5135eebe4257598"
+    "revision": "bbd683d3fc0f3e8fa5fff4a61d396902"
   },
   {
     "url": "manual/setup-path.html",
-    "revision": "6fa3e8af1ff6af1baa0258341e192bd4"
+    "revision": "dcf708fc3221fd2c3f42e12d7a537f4c"
   },
   {
     "url": "manual/setup-php.html",
-    "revision": "0eed3638fef65c080123f0703fe387fe"
+    "revision": "dd8f083c0f7880ac488e77a56d050474"
   },
   {
     "url": "manual/setup-pm2.html",
-    "revision": "50009897dc8b8d2540ff374fb7a944e4"
+    "revision": "2bc5082c1bc16c5cf1007579660480b8"
   },
   {
     "url": "manual/setup-samba.html",
-    "revision": "cc3e5e5f731f5e246c4f3118c7fb8311"
+    "revision": "c5854f18a78a77d34ba66c58df9e6486"
   },
   {
     "url": "manual/setup-samsung-s7-rndis.html",
-    "revision": "8b1f57089b16a030b5c87a02580f1b67"
+    "revision": "f9e4645f0e3d5bd94ac0f2266d6f93cb"
   },
   {
     "url": "manual/setup-termux.html",
-    "revision": "b6ad5953d82c1f580f0710e3fce27139"
+    "revision": "0487297c263fa2db311bf3464969ca15"
   },
   {
     "url": "manual/setup-ubuntu-resolution.html",
-    "revision": "51f9b0661a6127e4d257978505bad3db"
+    "revision": "03e7bae8b0fcdf041451ac37d62fd541"
   },
   {
     "url": "manual/setup-vnc.html",
-    "revision": "bc335bd0610c525a75d766a9b49ce330"
+    "revision": "c76fda1a4b076abb65c311fc4fe76538"
   },
   {
     "url": "manual/ssh.html",
-    "revision": "3b6157f3a5777f343b95c6a53fa796a6"
+    "revision": "8b620e6e138e2a9545e814e70988bdcf"
   },
   {
     "url": "manual/vim.html",
-    "revision": "3bc587083cd90dcf9ca74e8e1b15e56f"
+    "revision": "b183d8b125e9012be6d65054a794f7e0"
   },
   {
     "url": "manual/wifi-crack.html",
-    "revision": "48fb241418ad3f9dc9d3e7c079234644"
+    "revision": "067fc12f145493f63c68630feca19873"
   },
   {
     "url": "manual/windows-dual-link-setup.html",
-    "revision": "5ca35472d21f6fb6c9ecb2295ea2855e"
+    "revision": "93cd9e1eb9f92ce7aba0d2fec6da9f44"
   },
   {
     "url": "manual/windows-ssh-server.html",
-    "revision": "a6d65b08dbb37016d0ef79d42a8e3bd7"
+    "revision": "00cd8530cbe3861a81e7b02184cfc24a"
   },
   {
     "url": "manual/zip.html",
-    "revision": "94830ec81d96781151754b225e138c3e"
+    "revision": "5134bd71d7ad4572f252dd4bc025d7d9"
   },
   {
     "url": "notes/css_note.html",
-    "revision": "66b8595d52b40a421de13db8861336bd"
+    "revision": "bf7e76f4d7676cfb41afc82228c089c6"
   },
   {
     "url": "notes/docker.html",
-    "revision": "2494a84be67d9fbed76b5f3b8ce90230"
+    "revision": "f3402112b841c3e691a809e973e9631d"
   },
   {
     "url": "notes/fe-effects-collection.html",
-    "revision": "e4dd7a4b334e6b460dbe94fabb0e5a79"
+    "revision": "f84f173b13f1bc29dfd99be77fe3e4e1"
   },
   {
     "url": "notes/git-notes.html",
-    "revision": "7165f6f5ca25a77bf87d36a994c406ee"
+    "revision": "9a05d1338479ba43ad802ba096572e2c"
   },
   {
     "url": "notes/index.html",
-    "revision": "162c865891df947cd3d8c5158a643dab"
+    "revision": "86258dd1761bb5994dcbfa4fe957b7fc"
   },
   {
     "url": "notes/js-notes.html",
-    "revision": "26114c23e0d1be246320444848f609b9"
+    "revision": "d79cc58b5202bc2ea2a8dc1dd8eae3de"
   },
   {
     "url": "notes/js/js_note_simple.html",
-    "revision": "cea55701dae997fd2e5de10642003ea6"
+    "revision": "9e114715fc2c00f3f8570742a00b21b9"
   },
   {
     "url": "notes/js/js-inherit.html",
-    "revision": "d39c124deb3eeda8ea3aea84cc1fdbba"
+    "revision": "47c55635ae1ac6a53b5db349b91f469b"
   },
   {
     "url": "notes/js/js-object-clone.html",
-    "revision": "7bc098adba8945f556668c7d6eacbfa7"
+    "revision": "deeb1a9ffbd156707329ef9bc10bcfa0"
   },
   {
     "url": "notes/js/js-proto-design-mode.html",
-    "revision": "7b2413c1c52eb9a6fab13e32e57d7cd3"
+    "revision": "f7927632b7d889e41f1307361a667c00"
   },
   {
     "url": "notes/js/js-service-worker.html",
-    "revision": "68bc2472df48f8f1d0a36796e7f3a0aa"
+    "revision": "f8f9db8aaa5d0cd4e93135eda2a9b2f6"
   },
   {
     "url": "notes/js/js-symbol.html",
-    "revision": "5bc0e7cca6ace3f60109013bcbf36f89"
+    "revision": "831fc556359663ab3b5ea4391748bfcb"
   },
   {
     "url": "notes/js/js-throttle-debounce.html",
-    "revision": "af40b04cb807048d6d5f021d59351df1"
+    "revision": "dbfedfb8bcb7a5dd39607d1ba31e2d39"
   },
   {
     "url": "notes/linux.html",
-    "revision": "ee9c9a7884018d487588a45285842a45"
+    "revision": "da1f285aca6a7683859bcb02897d32a8"
   },
   {
     "url": "notes/nodejs-notes.html",
-    "revision": "ab1573a9eb18dab5ba12edc2aa36ee9b"
+    "revision": "90506585a190b9b5924c96dd743ec2da"
   },
   {
     "url": "notes/ports.html",
-    "revision": "0e07348c7c4ea8d50c8f824013770401"
+    "revision": "3de9ed418943493e2869406dcbde0890"
   },
   {
     "url": "notes/pro-js-for-web-dev-note/chapter01.html",
-    "revision": "ddaf3cbd10724ebf4cebc608a816ae79"
+    "revision": "43d61181b97a10ff72a255b6364b011e"
   },
   {
     "url": "notes/pro-js-for-web-dev-note/chapter02.html",
-    "revision": "4712d5a42229798093a90e856dc9d7e2"
+    "revision": "bd9d04371c923839e17ec49bf7b8608e"
   },
   {
     "url": "notes/pro-js-for-web-dev-note/chapter03.html",
-    "revision": "4e6195a61cc0a7f2f11e2588e923141e"
+    "revision": "9b508769518fd65a5ba5d2c9b2d808a6"
   },
   {
     "url": "notes/pro-js-for-web-dev-note/chapter04.html",
-    "revision": "03f88a22bf3c27e08e0b33cf916ab52b"
+    "revision": "9dfa1dc2aba5fd10684380c225f90784"
   },
   {
     "url": "notes/pro-js-for-web-dev-note/chapter05.html",
-    "revision": "c03843d838f6f84ba792fe7012fbf548"
+    "revision": "5e2d8b74d5f203713a60a0893056b231"
   },
   {
     "url": "notes/pro-js-for-web-dev-note/chapter06.html",
-    "revision": "f9e8d665ab94fa315cc1e19bfb93443d"
+    "revision": "7c3fee78113fbed87772f3cb42824537"
   },
   {
     "url": "notes/pro-js-for-web-dev-note/index.html",
-    "revision": "51573e248d7391a5d4acd977517996b7"
+    "revision": "37f8b9c8be189f17f62123cc7c21385d"
   },
   {
     "url": "notes/tujie-http.html",
-    "revision": "100d99786f043381ce07eb7b081fa13a"
+    "revision": "71c2625c29490ea9a32271b20d81680d"
   },
   {
     "url": "notes/virtual-machine.html",
-    "revision": "4fb06d20009c562cf12cb00b2a7ef970"
+    "revision": "e47e5a55939ca6d367be9063575d4a37"
   },
   {
     "url": "notes/windows.html",
-    "revision": "42d2b6f30563c8970fb792bfcb40dee3"
+    "revision": "9ed9ee8968a2af8d77279da88a4c52c0"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
