@@ -398,21 +398,33 @@ killall xfce4-volumed
 nohup volumeicon&
 ```
 
-### 安装 on-my-zsh
+### Linux 安装 on-my-zsh
 
 ```sh
-apt install zsh
-chsh -s $(which zsh)
+# 安装zsh与git
+sudo apt install zsh git
 
-apt install git
+# 手动下载安装
 git clone --depth=1 https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+
+# 把zsh设为默认shell
+sudo chsh -s $(which zsh)
 ```
 
-如果 root 用户 `chsh` 时出现问题，首先使用 `which zsh` 查看 zsh 的位置，然后 `vim /etc/passwd`，参考这样修改：
+如果 `chsh` 时出现问题，首先使用 `which zsh` 查看 zsh 的位置，然后 `vim /etc/passwd`，参考这样修改：
 
 ```
 root:x:0:0:root:/root:/usr/bin/zsh
+```
+
+对于群晖用户，`vim ~/.profile`，加入以下内容：
+
+```sh
+if [[ -x /usr/local/bin/zsh ]]; then
+export SHELL=/usr/local/bin/zsh
+exec /usr/local/bin/zsh
+fi
 ```
 
 ### 将文件夹制作成 iso 光盘镜像
