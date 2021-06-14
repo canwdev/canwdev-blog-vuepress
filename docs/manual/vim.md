@@ -1,6 +1,6 @@
 # VIM 笔记
 
-![image-20210614215900299](vim.assets/image-20210614215900299.png)
+![image-20210614215900299](vim.assets/vim.png)
 
 ## 基本操作
 
