@@ -27,7 +27,7 @@ const config = {
     logo: '/favicon.png',
     repo: 'https://github.com/canwdev/notes-vuepress',
     editLinks: true,
-    repoLabel: '源码',
+    repoLabel: 'Github',
     docsDir: 'docs',
     editLinkText: '查看本页源码',
     lastUpdated: '更新时间',
