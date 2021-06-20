@@ -1,3 +1,13 @@
+---
+title: PHP 的安装与配置
+date: 2021-01-01 22:36:35
+permalink: /pages/f22621/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # PHP 的安装与配置
 
 ## 在 Ubuntu 下安装 php 配合 nginx 使用

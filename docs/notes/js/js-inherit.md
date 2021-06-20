@@ -1,3 +1,14 @@
+---
+title: JS 对象实现继承的几种方法以及优缺点
+date: 2021-01-01 22:36:35
+permalink: /pages/5a6bb7/
+categories: 
+  - notes
+  - js
+article: true
+tags: 
+  - 
+---
 # JS 对象实现继承的几种方法以及优缺点
 
 > [js实现继承的方法以及优缺点](https://juejin.im/post/5ccff45a51882541b07a9e3d)

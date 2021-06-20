@@ -1,3 +1,14 @@
+---
+title: 第四章 变量、作用域和内存问题
+date: 2021-01-01 22:36:35
+permalink: /pages/e9899b/
+categories: 
+  - notes
+  - pro-js-for-web-dev-note
+article: true
+tags: 
+  - 
+---
 # 第四章 变量、作用域和内存问题
 
 ## 基本类型和引用类型的值

@@ -1,3 +1,15 @@
+---
+title: sdat2img
+date: 2021-01-01 22:36:35
+permalink: /pages/c33f93/
+categories: 
+  - manual
+  - android-rom-modify
+  - sdat2img-master
+article: true
+tags: 
+  - 
+---
 # sdat2img
 Convert sparse Android data image (.dat) into filesystem ext4 image (.img)
 

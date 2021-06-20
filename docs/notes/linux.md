@@ -1,3 +1,13 @@
+---
+title: Linux
+date: 2021-01-01 22:36:35
+permalink: /pages/b5bb8c/
+categories: 
+  - notes
+article: true
+tags: 
+  - 
+---
 # Linux
 
 > 常用的系统命令、问题汇总

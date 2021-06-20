@@ -1,3 +1,13 @@
+---
+title: 安装 Cordova
+date: 2021-01-01 22:36:35
+permalink: /pages/c21a7b/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # 安装 Cordova
 
 ## 备注

@@ -1,3 +1,13 @@
+---
+title: 端口占用查询
+date: 2021-01-01 22:36:35
+permalink: /pages/2b892b/
+categories: 
+  - notes
+article: true
+tags: 
+  - 
+---
 # 端口占用查询
 
 ## Linux

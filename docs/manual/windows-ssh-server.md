@@ -1,3 +1,13 @@
+---
+title: 使用 Open SSH 在 Windows 上安装 sftp / ssh 服务器
+date: 2021-01-01 22:36:35
+permalink: /pages/8d0e5c/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # 使用 Open SSH 在 Windows 上安装 sftp / ssh 服务器
 
 > 原文链接：https://winscp.net/eng/docs/guide_windows_openssh_server

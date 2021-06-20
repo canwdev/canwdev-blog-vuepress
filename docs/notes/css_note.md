@@ -1,3 +1,13 @@
+---
+title: CSS 基础用法收集
+date: 2021-01-01 22:36:35
+permalink: /pages/1e14fa/
+categories: 
+  - notes
+article: true
+tags: 
+  - 
+---
 # CSS 基础用法收集
 
 ## HTML5

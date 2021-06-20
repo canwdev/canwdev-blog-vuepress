@@ -1,3 +1,14 @@
+---
+title: JavaScript 高级程序设计 · 笔记
+date: 2021-01-01 22:36:35
+permalink: /pages/7adacd/
+categories: 
+  - notes
+  - pro-js-for-web-dev-note
+article: true
+tags: 
+  - 
+---
 # JavaScript 高级程序设计 · 笔记
 
 ## 目录

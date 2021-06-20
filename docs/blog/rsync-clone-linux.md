@@ -1,3 +1,12 @@
+---
+title: 使用 rsync 克隆 Linux 并修复 GRUB 引导
+date: 2021-06-20 22:15:57
+permalink: /pages/361f67/
+categories:
+  - blog
+tags:
+  - Linux
+---
 # 使用 rsync 克隆 Linux 并修复 GRUB 引导
 
 ## 1. 给新的磁盘分区

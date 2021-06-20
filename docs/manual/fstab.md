@@ -1,3 +1,13 @@
+---
+title: Linux fstab
+date: 2021-01-01 22:36:35
+permalink: /pages/0d1982/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # Linux fstab
 
 > sudo vim /etc/fstab

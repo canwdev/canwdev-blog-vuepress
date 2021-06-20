@@ -1,3 +1,13 @@
+---
+title: 推送到多个git仓库
+date: 2021-01-01 22:36:35
+permalink: /pages/cabc7a/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # 推送到多个git仓库
 
 ## 简易方法

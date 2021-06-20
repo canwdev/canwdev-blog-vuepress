@@ -1,3 +1,13 @@
+---
+title: Win10 开始菜单的备份与恢复
+date: 2021-06-20 22:15:57
+permalink: /pages/59c639/
+categories:
+  - blog
+tags:
+  - Windows
+  - 折腾
+---
 # Win10 开始菜单的备份与恢复
 
 #### 导出到 xml 文件：

@@ -1,3 +1,14 @@
+---
+title: ES6 中的 Symbol 类型
+date: 2021-01-01 22:36:35
+permalink: /pages/dd69bd/
+categories: 
+  - notes
+  - js
+article: true
+tags: 
+  - 
+---
 # ES6 中的 Symbol 类型
 
 Symbol 类型是 ES6 新增的一种基本类型，主要用途是生成独一无二的值

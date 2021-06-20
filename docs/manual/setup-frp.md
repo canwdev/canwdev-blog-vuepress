@@ -1,3 +1,13 @@
+---
+title: 安装 frp 内网穿透工具
+date: 2021-01-01 22:36:35
+permalink: /pages/08adc3/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # 安装 frp 内网穿透工具
 
 https://github.com/fatedier/frp/blob/master/README_zh.md

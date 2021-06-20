@@ -1,3 +1,13 @@
+---
+title: Surface Pro 7 安装 Linux 指南
+date: 2021-06-20 22:15:57
+permalink: /pages/ad6c38/
+categories:
+  - blog
+tags:
+  - Linux
+  - Surface
+---
 # Surface Pro 7 安装 Linux 指南
 
 如果你网络状况良好，直接参考 `linux-surface` 的[官方文档](https://github.com/linux-surface/linux-surface/wiki/Installation-and-Setup)安装就可以了。下面介绍如何手动下载包并在离线的情况下安装。

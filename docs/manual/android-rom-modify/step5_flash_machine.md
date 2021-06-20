@@ -1,3 +1,14 @@
+---
+date: 2021-01-01 22:36:35
+permalink: /pages/d62ab1/
+categories: 
+  - manual
+  - android-rom-modify
+article: true
+title: step5_flash_machine
+tags: 
+  - 
+---
 解锁设备, 进入 fastboot 模式
 
 ```

@@ -1,3 +1,13 @@
+---
+title: Samba 文件共享服务安装与配置
+date: 2021-01-01 22:36:35
+permalink: /pages/159312/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # Samba 文件共享服务安装与配置
 
 参考：https://m.linuxidc.com/Linux/2018-11/155466.htm

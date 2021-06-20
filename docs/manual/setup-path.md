@@ -1,3 +1,13 @@
+---
+title: 环境变量设置
+date: 2021-01-01 22:36:35
+permalink: /pages/aee9dc/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # 环境变量设置
 
 ## Linux 环境变量设置

@@ -1,3 +1,13 @@
+---
+title: Mongodb 的安装与配置
+date: 2021-01-01 22:36:35
+permalink: /pages/7fe312/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # Mongodb 的安装与配置
 
 ## Ubuntu 安装 Mongodb

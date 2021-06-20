@@ -1,3 +1,15 @@
+---
+title: rimg2sdat
+date: 2021-01-01 22:36:35
+permalink: /pages/634795/
+categories: 
+  - manual
+  - android-rom-modify
+  - rimg2sdat-master
+article: true
+tags: 
+  - 
+---
 # rimg2sdat
 Tool to convert raw images(EXT4 filesystem) to sparse Android data (system.new.dat)
 

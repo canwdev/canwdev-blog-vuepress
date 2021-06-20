@@ -1,3 +1,13 @@
+---
+title: Firefox 配置大全
+date: 2021-01-01 22:36:35
+permalink: /pages/7fb191/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # Firefox 配置大全
 
 ### 火狐浏览器开启DNS-over-HTTPS（DoH）解决DNS污染 [来源](https://www.cccitu.com/3913.html)

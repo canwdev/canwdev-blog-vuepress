@@ -1,3 +1,13 @@
+---
+title: Ubuntu 安装 Jenkins
+date: 2021-01-01 22:36:35
+permalink: /pages/cb8211/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # Ubuntu 安装 Jenkins
 
 ## 前置条件：安装Java

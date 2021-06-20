@@ -1,3 +1,13 @@
+---
+title: 常用压缩/解压命令
+date: 2021-01-01 22:36:35
+permalink: /pages/bd8bc3/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # 常用压缩/解压命令
 
 ## tar

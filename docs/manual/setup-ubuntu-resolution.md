@@ -1,3 +1,13 @@
+---
+title: 自定义 Ubuntu/LinuxMint 分辨率
+date: 2021-01-01 22:36:35
+permalink: /pages/e4ddb9/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # 自定义 Ubuntu/LinuxMint 分辨率
 
 - 原文 [How to Set A Custom Screen Resolution in Ubuntu Desktop](http://ubuntuhandbook.org/index.php/2017/04/custom-screen-resolution-ubuntu-desktop/)

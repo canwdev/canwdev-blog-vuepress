@@ -1,3 +1,12 @@
+---
+title: Surface Pro 7 作为数位板使用
+date: 2021-06-20 22:15:57
+permalink: /pages/60bcc9/
+categories:
+  - blog
+tags:
+  - Surface
+---
 # Surface Pro 7 作为数位板使用
 
 1. 外接显示器，按CtrI+P，选择 "仅第二屏幕"

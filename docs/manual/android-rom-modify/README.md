@@ -1,3 +1,14 @@
+---
+title: Android ROM 在 Ubuntu 下的 system.new.dat 的解包、修改和打包
+date: 2021-01-01 22:36:35
+permalink: /pages/858fef/
+categories: 
+  - manual
+  - android-rom-modify
+article: true
+tags: 
+  - 
+---
 # Android ROM 在 Ubuntu 下的 system.new.dat 的解包、修改和打包
 
 推荐使用 [android-rom-modify](https://github.com/canwdev/android-rom-modify) 脚本进行更快捷的操作

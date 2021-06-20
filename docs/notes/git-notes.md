@@ -1,3 +1,13 @@
+---
+title: git 笔记
+date: 2021-01-01 22:36:35
+permalink: /pages/0a74f2/
+categories: 
+  - notes
+article: true
+tags: 
+  - 
+---
 # git 笔记
 
 ## 初始化Git

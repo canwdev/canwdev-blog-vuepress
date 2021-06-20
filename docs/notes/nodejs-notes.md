@@ -1,3 +1,13 @@
+---
+title: Node.js 笔记
+date: 2021-01-01 22:36:35
+permalink: /pages/4dffb3/
+categories: 
+  - notes
+article: true
+tags: 
+  - 
+---
 # Node.js 笔记
 
 ## 使用 nvm 管理 Node.js 版本（推荐）

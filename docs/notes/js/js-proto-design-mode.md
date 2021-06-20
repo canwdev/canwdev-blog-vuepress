@@ -1,3 +1,14 @@
+---
+title: 原型设计模式
+date: 2021-01-01 22:36:35
+permalink: /pages/376f9a/
+categories: 
+  - notes
+  - js
+article: true
+tags: 
+  - 
+---
 # 原型设计模式
 
 ## 工厂模式

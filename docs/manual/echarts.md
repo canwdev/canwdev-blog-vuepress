@@ -1,3 +1,13 @@
+---
+title: echarts 各个配置项详细说明总结
+date: 2021-01-01 22:36:35
+permalink: /pages/3c8698/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # echarts 各个配置项详细说明总结
 
 ```html

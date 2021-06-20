@@ -1,3 +1,13 @@
+---
+title: ssh 笔记
+date: 2021-01-01 22:36:35
+permalink: /pages/de0fd5/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # ssh 笔记
 
 ## Linux 服务端安装 ssh 服务

@@ -1,3 +1,13 @@
+---
+title: Android 命令
+date: 2021-01-01 22:36:35
+permalink: /pages/8ed231/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # Android 命令
 
 ## 网络 ADB 调试 

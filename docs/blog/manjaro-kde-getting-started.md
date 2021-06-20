@@ -1,3 +1,12 @@
+---
+title: Manjaro Linux (KDE) 安装记录
+date: 2021-06-20 22:15:57
+permalink: /pages/d96178/
+categories:
+  - blog
+tags:
+  - Linux
+---
  
 
 # Manjaro Linux (KDE) 安装记录

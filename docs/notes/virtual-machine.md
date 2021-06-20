@@ -1,3 +1,13 @@
+---
+title: 虚拟机笔记
+date: 2021-01-01 22:36:35
+permalink: /pages/79a855/
+categories: 
+  - notes
+article: true
+tags: 
+  - 
+---
 # 虚拟机笔记
 
 ## Linux 安装 VMware Workstation 虚拟机

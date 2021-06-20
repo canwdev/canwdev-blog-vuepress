@@ -1,3 +1,13 @@
+---
+title: 解决 Samsung S7 在 Linux Mint 下无法使用 USB 网络共享(RNDIS)的问题
+date: 2021-01-01 22:36:35
+permalink: /pages/8cc12d/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # 解决 Samsung S7 在 Linux Mint 下无法使用 USB 网络共享(RNDIS)的问题
 
 修改 MAC 地址可以解决该问题

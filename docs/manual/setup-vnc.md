@@ -1,3 +1,13 @@
+---
+title: 安装配置 VNC
+date: 2021-01-01 22:36:35
+permalink: /pages/327eb1/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # 安装配置 VNC
 
 ## LinuxMint 安装 TigerVNC Server

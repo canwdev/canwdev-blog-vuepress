@@ -1,3 +1,13 @@
+---
+date: 2021-01-01 22:36:35
+permalink: /pages/48afba/
+categories: 
+  - manual
+article: true
+title: 把 Steam 的游戏拷贝到另一台电脑
+tags: 
+  - 
+---
 ## 把 Steam 的游戏拷贝到另一台电脑
 
 原文：https://www.zhihu.com/question/270062762/answer/351631966

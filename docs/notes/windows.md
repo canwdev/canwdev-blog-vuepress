@@ -1,3 +1,13 @@
+---
+title: Windows
+date: 2021-01-01 22:36:35
+permalink: /pages/278ffc/
+categories: 
+  - notes
+article: true
+tags: 
+  - 
+---
 # Windows 
 
 ## Win+R 常用命令

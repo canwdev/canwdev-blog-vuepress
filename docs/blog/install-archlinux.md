@@ -1,3 +1,12 @@
+---
+title: 命令行安装 ArchLinux 记录
+date: 2021-06-20 22:15:57
+permalink: /pages/fd87b7/
+categories:
+  - blog
+tags:
+  - Linux
+---
 # 命令行安装 ArchLinux 记录
 
 参考：[2021.02. Arch Linux 安装小记](https://zhuanlan.zhihu.com/p/348370646)

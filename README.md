@@ -1,6 +1,6 @@
-# 离线笔记 · OfflineNotes
+# Canwdev's Blog
 
-canwdev 的个人博客，基于 VuePress
+Canwdev 个人博客，基于 VuePress 和 [Vdoing 主题](https://github.com/xugaoyi/vuepress-theme-vdoing)
 
 ## 运行
 

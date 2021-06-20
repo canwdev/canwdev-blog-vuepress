@@ -1,3 +1,13 @@
+---
+title: PM2 安装与配置
+date: 2021-01-01 22:36:35
+permalink: /pages/e955ea/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # PM2 安装与配置
 
 pm2 是一个超级好用的 Node.js 服务管理工具

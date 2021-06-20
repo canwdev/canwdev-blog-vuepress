@@ -1,3 +1,13 @@
+---
+title: VIM 笔记
+date: 2021-01-01 22:36:35
+permalink: /pages/2817f9/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # VIM 笔记
 
 ![vim](./vim.assets/vim.png)

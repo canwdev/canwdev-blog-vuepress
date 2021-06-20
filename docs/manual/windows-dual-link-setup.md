@@ -1,3 +1,13 @@
+---
+title: Windows 双网卡(WLAN & LAN)选择优先级高的上网
+date: 2021-01-01 22:36:35
+permalink: /pages/91a870/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # Windows 双网卡(WLAN & LAN)选择优先级高的上网
 
 ## 推荐使用更简单的方式：直接通过控制面板设置

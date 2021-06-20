@@ -1,3 +1,13 @@
+---
+title: 使用 LUKS 加密 home 目录并在开机时自动解密
+date: 2021-01-01 22:36:35
+permalink: /pages/2089c7/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # 使用 LUKS 加密 home 目录并在开机时自动解密
 
 参考：

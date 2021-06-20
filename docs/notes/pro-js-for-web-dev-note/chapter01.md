@@ -1,3 +1,14 @@
+---
+title: 第一章 JavaScript简介
+date: 2021-01-01 22:36:35
+permalink: /pages/558eca/
+categories: 
+  - notes
+  - pro-js-for-web-dev-note
+article: true
+tags: 
+  - 
+---
 # 第一章 JavaScript简介
 
 JavaScript 诞生于1995年，最初是用于浏览器端的表单验证。

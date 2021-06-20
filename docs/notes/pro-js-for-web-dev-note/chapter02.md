@@ -1,3 +1,14 @@
+---
+title: 第二章 在HTML中使用JavaScript
+date: 2021-01-01 22:36:35
+permalink: /pages/152d7f/
+categories: 
+  - notes
+  - pro-js-for-web-dev-note
+article: true
+tags: 
+  - 
+---
 # 第二章 在HTML中使用JavaScript
 
 1. 在页面中内嵌JS代码

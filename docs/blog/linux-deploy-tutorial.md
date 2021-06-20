@@ -1,3 +1,12 @@
+---
+title: Linux Deploy 使用教程
+date: 2021-06-20 22:15:57
+permalink: /pages/713951/
+categories:
+  - blog
+tags:
+  - Linux
+---
 # Linux Deploy 使用教程
 
 Linux Deploy 是一款能够在 Android 设备上运行 Linux 的软件。由于使用的是 chroot 原理（需要安卓设备拥有 root 权限），不是虚拟机，因此性能很强，甚至可以当服务器来用。

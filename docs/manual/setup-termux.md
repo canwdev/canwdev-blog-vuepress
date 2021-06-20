@@ -1,3 +1,13 @@
+---
+title: Termux 配置笔记
+date: 2021-01-01 22:36:35
+permalink: /pages/92733e/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # Termux 配置笔记
 
 ## 参考资料

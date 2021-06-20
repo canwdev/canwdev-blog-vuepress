@@ -1,3 +1,13 @@
+---
+title: JavaScript 笔记
+date: 2021-01-01 22:36:35
+permalink: /pages/c88f00/
+categories: 
+  - notes
+article: true
+tags: 
+  - 
+---
 # JavaScript 笔记
 
 ## [JS 浅拷贝与深拷贝](./js/js-object-clone.md)

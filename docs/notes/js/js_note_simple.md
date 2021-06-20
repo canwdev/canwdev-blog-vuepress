@@ -1,3 +1,14 @@
+---
+title: JS Note Simple
+date: 2021-01-01 22:36:35
+permalink: /pages/6277f7/
+categories: 
+  - notes
+  - js
+article: true
+tags: 
+  - 
+---
 # JS Note Simple
 
 ## 如何批量修改（追加）页面底部的JS

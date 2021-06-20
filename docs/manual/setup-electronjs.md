@@ -1,3 +1,13 @@
+---
+title: Electron.js 快速入坑指南
+date: 2021-01-01 22:36:35
+permalink: /pages/c6dbe8/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # Electron.js 快速入坑指南
 
 > 使用 JavaScript, HTML 和 CSS 构建跨平台的桌面应用。如果你可以建一个网站，你就可以建一个桌面应用程序。 Electron 是一个使用 JavaScript, HTML 和 CSS 等 Web 技术创建原生程序的框架，它负责比较难搞的部分，你只需把精力放在你的应用的核心上即可。

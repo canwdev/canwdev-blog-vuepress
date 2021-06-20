@@ -1,3 +1,13 @@
+---
+title: Ubuntu 下 Gitlab 的安装与配置
+date: 2021-01-01 22:36:35
+permalink: /pages/ca4693/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # Ubuntu 下 Gitlab 的安装与配置
 
 ## 安装

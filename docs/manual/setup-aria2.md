@@ -1,3 +1,13 @@
+---
+title: Aria2 终极下载神器 · 安装与配置
+date: 2021-01-01 22:36:35
+permalink: /pages/c52558/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # Aria2 终极下载神器 · 安装与配置
 
 ## 服务端安装

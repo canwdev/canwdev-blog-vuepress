@@ -1,3 +1,13 @@
+---
+title: 移动 Web 开发的几个概念
+date: 2021-01-01 22:36:35
+permalink: /pages/e7da6f/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # 移动 Web 开发的几个概念
 
 原文：https://blog.csdn.net/u013778905/article/details/78073566

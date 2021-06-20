@@ -1,3 +1,14 @@
+---
+title: 面向对象的程序设计
+date: 2021-01-01 22:36:35
+permalink: /pages/a56322/
+categories: 
+  - notes
+  - pro-js-for-web-dev-note
+article: true
+tags: 
+  - 
+---
 # 面向对象的程序设计
 
 ## 对象·Object

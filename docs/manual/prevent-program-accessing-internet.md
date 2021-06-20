@@ -1,3 +1,13 @@
+---
+title: 在 Linux 中阻止特定程序联网
+date: 2021-01-01 22:36:35
+permalink: /pages/c7aa10/
+categories: 
+  - manual
+article: true
+tags: 
+  - 
+---
 # 在 Linux 中阻止特定程序联网
 
 参考：[How to block internet access to certain programs on Linux](https://serverfault.com/a/550278)，使用了 `用户组` 和 `iptables` 的原理。
