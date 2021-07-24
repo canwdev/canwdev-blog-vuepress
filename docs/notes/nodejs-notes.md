@@ -288,13 +288,14 @@ npm config delete proxy
 npm config delete https-proxy
 ```
 
-## npm install 遇到的坑
+## npm install 常见坑解决方案
 
-- 可能是项目本身使用了 cnpm，删掉 `node_modules` 和 `package-lock.json` 用 `npm install` 重装
+- 删掉 `node_modules` 和 `package-lock.json` 用 `npm install` 重装
 - 使用 `cnpm` 或 `yarn` 重装
-- 设置 [npm 代理](#npm设置代理) 或[镜像源](#手动设置npm淘宝镜像源)，重装
-- 清除 npm 缓存 `npm cache clean -f`，重装
+- 设置 [npm 代理](#npm设置代理) 或[镜像源](#手动设置npm淘宝镜像源) 重装
+- 清除 npm 缓存 `npm cache clean -f` 重装
 - 使用 `npm --loglevel info install` 或 `yarn --verbose install` 查看详细输出
+- Windows 缺少 VisualStudio：`npm install --global --production windows-build-tools`
 
 ## 运行大型 Vue 项目时，报内存溢出错误：`CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory`
 
