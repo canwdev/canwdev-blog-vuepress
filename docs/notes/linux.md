@@ -1,6 +1,6 @@
 ---
 title: Linux
-date: 2021-01-01 22:36:35
+date: 2021-07-24 22:36:35
 permalink: /pages/b5bb8c/
 categories: 
   - notes
@@ -10,7 +10,7 @@ tags:
 ---
 # Linux
 
-> 常用的系统命令、问题汇总
+> 常用 Linux 命令汇总
 
 ## 系统命令
 
@@ -569,3 +569,18 @@ sudo mount.davfs http://192.168.0.123:5005 ./NAS -o uid=1000
 
 参考：[如何在各个平台下挂载WebDAV](https://moe.best/linux-memo/mount-webdav.html)
 
+### Linux 时间校准
+
+```sh
+# 查看系统时间
+date
+
+# 查看 BIOS 硬件时间
+hwclock --show
+
+# 互联网时间同步
+ntpdate  0.cn.pool.ntp.org
+
+# 将时间写入BIOS
+hwclock -w
+```

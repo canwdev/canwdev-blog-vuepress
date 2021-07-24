@@ -204,16 +204,15 @@ vue ui
 ## node-sass 安装慢或失败
 
 ```sh
+# node-sass 安装慢或失败
 npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
-```
 
-## electron 安装慢或失败
-
-```
+# electron 安装慢或失败
 npm config set electron_mirror https://npm.taobao.org/mirrors/electron/
-```
 
-一条命令解决：`sudo npm install -g electron --unsafe-perm=true --allow-root --registry=https://registry.npm.taobao.org`
+# canvas 安装慢或失败
+npm config set canvas_binary_host_mirror https://npm.taobao.org/mirrors/node-canvas-prebuilt
+```
 
 ## 如何解决 NodeJS Error: ENOSPC
 
