@@ -1,5 +1,5 @@
 ---
-title: Linux
+title: Linux 常用命令汇总
 date: 2021-07-24 22:36:35
 permalink: /pages/b5bb8c/
 categories: 
@@ -8,9 +8,7 @@ article: true
 tags: 
   - 
 ---
-# Linux
-
-> 常用 Linux 命令汇总
+# Linux 常用命令汇总
 
 ## 系统命令
 

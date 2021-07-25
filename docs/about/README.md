@@ -9,14 +9,12 @@ article: false
 
 ### 技能
 
-专业维修核潜艇，核弹头翻新，改装，抛光，喷漆，回收二手航母，大修核反应堆，清洗航母油槽航天飞机保养换三滤，高空作业擦洗卫星表面除尘星球设计，全球海洋保养及维护，南极冰川修复地球形状改造及时空穿越业务，批发歼10，F22 F35 B2轰炸机，各类核弹头。
-
-量大从优！有发票！
+建设中...
 
 ## :email: 联系
 
 - WeChat or QQ: <a :href="qqUrl" class='qq'>#</a>
-- Email:  <a href="mailto:#@qq.com">#@qq.com</a>
+- Email:  <a href="mailto:#@#.com">#@#.com</a>
 - GitHub: <https://github.com/canwdev>
 
 
