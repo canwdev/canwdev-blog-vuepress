@@ -6,7 +6,7 @@ categories:
   - notes
 article: true
 tags: 
-  - 
+  - Linux
 ---
 # Linux 常用命令汇总
 
@@ -79,7 +79,7 @@ cpufreq-info -g
 cpufreq-set -g powersave
 ```
 
-### 让命令在后台运行
+### 让命令在后台运行(nohup)
 
 ```sh
 # 日志会输出到当前目录 nohup.out
@@ -318,21 +318,6 @@ https://github.com/topics/cinnamon-theme
 
 安装deb：`sudo dpkg -i xxx.deb`；如果遇到 “dpkg: 依赖关系问题使得 xxx 的配置工作不能继续”，解决方案：`sudo apt -f -y install`
 
-### Linux 实用软件
-
-https://alternativeto.net/platform/xfce
-
-- `screenfetch` `neofetch` `hardinfo` = 系统信息
-- `htop` = 任务管理器
-- `vim` `gedit`(Gnome) `mousepad`(Xfce) `kate`(KDE) = 文本编辑器
-- `pcmanfm` `thunar` `dolphin`(KDE) = 文件管理器
-- `xarchiver` `ark`(KDE) = 压缩软件
-- `gnome-commander` `krusader` = 类 TotalCommander 双面板文件管理器
-- `partitionmanager`(KDE) `gparted` = 分区管理器
-- `tmux` = 终端分屏工具
-- `dupeguru` = 文件去重
-- `convmv` = 文件名乱码修复
-
 ### 让 Ubuntu 支持挂载 exFAT 文件系统
 
 ```sh
@@ -447,9 +432,12 @@ mkisofs -o dist.iso -J -R -V diskLabel fromFolder
 - diskLabel 指定光盘的卷册集ID（光驱在电脑里显示的名称）
 - fromFolder 来源文件夹
 
-或使用图形化工具：K3b is a full-featured CD/DVD/Blu-ray burning and ripping application.
+或使用图形化工具：`K3b`
 
 ## Linux 网络配置
+
+参考：
+
 
 - https://blog.sunriseydy.top/technology/linux/ubuntu-add-network-interface/
 - https://www.2daygeek.com/enable-disable-up-down-nic-network-interface-port-linux/
