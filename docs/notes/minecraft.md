@@ -10,17 +10,22 @@ tags:
 
 # Minecraft 脚本
 
-# 启动 Minecraft 服务器
+## 启动 Minecraft 服务器
+
+使用 `tmux` 可以让服务在后台运行。
 
 ```
 # ArchLinux
 sudo pacman -S jre-openjdk
 
+# 普通启动
 java -jar ./minecraft_server.1.16.2.jar
-# 使用 tmux 在后台运行
+
+# 设置最大和最小内存用量
+java -Xmx5120M -Xms5120M -jar ./minecraft_server.1.16.2.jar nogui
 ```
 
-同意 `eula.txt`
+第一次启动需要同意 `eula.txt`
 
 ```
 eula=true
@@ -29,11 +34,25 @@ eula=true
 `server.properties` 常用配置
 
 ```
+# 游戏难度
+difficulty=hard
 # 改为false允许非正版玩家登录（登录失败无效的会话）
 online-mode=false
+# 设为 -1 禁用 watchdog
+max-tick-time=-1
 ```
 
-# 定期备份脚本(corntab)
+## 服务器命令
+
+直接在运行 Minecraft 的服务器终端输入命令并回车即可执行。
+
+```
+# 开启服主权限
+op <用户名>
+deop <用户名>
+```
+
+## 定期备份脚本(corntab)
 
 备份脚本 `backup.sh`
 
