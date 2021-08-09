@@ -25,7 +25,7 @@ tags:
 - `pacman -S <package>` = 安装 包
 - `pacman -Sy <package>` = 安装 包 之前更新源
 - `pacman -R <package>` = 移除 包
-- `pacman -R <package>` = 移除 包 及其依赖项
+- `pacman -Rc <package>` = 移除 包 及其依赖项
 
 ## 办公创作
 
@@ -41,6 +41,7 @@ tags:
 
 - `wqy-microhei wqy-bitmapfont wqy-zenhei` = 文泉驿字体系列
 - `noto-fonts-emoji` = 表情符号
+- `noto-fonts-cjk` Google Noto CJK 字体
 
 ## 输入法
 
