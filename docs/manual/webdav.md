@@ -5,7 +5,7 @@ permalink: /pages/2a0735/
 categories:
   - manual
 tags:
-  - 网络
+  - Network
 ---
 
 # 多平台挂载 webdav

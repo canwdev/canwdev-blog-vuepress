@@ -6,7 +6,7 @@ categories:
   - manual
 article: true
 tags: 
-  - 
+  - Linux
 ---
 # ssh 笔记
 

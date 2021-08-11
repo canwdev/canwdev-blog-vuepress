@@ -6,7 +6,7 @@ categories:
 article: true
 title: 把 Steam 的游戏拷贝到另一台电脑
 tags: 
-  - 
+  - Games
 ---
 ## 把 Steam 的游戏拷贝到另一台电脑
 

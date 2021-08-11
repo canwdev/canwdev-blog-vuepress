@@ -6,7 +6,7 @@ categories:
   - manual
 article: true
 tags: 
-  - 
+  - Network
 ---
 # 安装 frp 内网穿透工具
 

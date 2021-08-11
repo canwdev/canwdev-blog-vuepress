@@ -6,7 +6,7 @@ categories:
   - manual
 article: true
 tags: 
-  - 
+  - Linux
 ---
 # 使用 LUKS 加密 home 目录并在开机时自动解密
 

@@ -5,7 +5,7 @@ permalink: /pages/14abdb/
 categories:
   - notes
 tags:
-  - minecraft
+  - Games
 ---
 
 # Minecraft 脚本
