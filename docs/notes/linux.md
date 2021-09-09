@@ -570,3 +570,18 @@ ntpdate  0.cn.pool.ntp.org
 # 将时间写入BIOS
 hwclock -w
 ```
+
+### 终端设置代理
+
+```sh
+# 走 http 代理
+export http_proxy="http://localhost:port"
+export https_proxy="http://localhost:port"
+
+# 走 socks 代理
+export http_proxy="socks5://127.0.0.1:1080"
+export https_proxy="socks5://127.0.0.1:1080"
+
+# 或者直接设置所有
+export ALL_PROXY=socks5://127.0.0.1:1080
+```
