@@ -141,43 +141,20 @@ yarn config set registry https://registry.npm.taobao.org
 yarn config set disturl https://npm.taobao.org/dist
 ```
 
-## 华为镜像源
 
-NPM的配置文件为用户根目录下的：**~/.npmrc**（Windows路径为：**C:\Users\\.npmrc**），您可以直接修改配置文件，或者运行如下命令设置：
 
-```
-npm config set registry https://mirrors.huaweicloud.com/repository/npm/
-npm cache clean -f
-```
+## 手动更新npm淘宝镜像源
 
-华为开源镜像站同时也提供了工具类加速镜像，可以通过如下的命令设置加速地址：
-
-※ 设置**nodejs**工具的镜像地址
+有时候发布了npm官方源的包，淘宝镜像却没有更新。此时需要手动更新，访问以下网址即可触发更新：
 
 ```
-npm config set disturl https://mirrors.huaweicloud.com/nodejs
+https://npmmirror.com/sync/<你的包名>
+
+# 例如
+https://npmmirror.com/sync/connect
 ```
 
-※ 设置**Node-Sass**的镜像地址
 
-```
-npm config set sass_binary_site https://mirrors.huaweicloud.com/node-sass
-```
-
-※ 设置浏览器引擎驱动镜像地址，如果需要安装**Selenium**，请 点击此处
-
-```
-npm config set phantomjs_cdnurl https://mirrors.huaweicloud.com/phantomjs
-npm config set chromedriver_cdnurl https://mirrors.huaweicloud.com/chromedriver
-npm config set operadriver_cdnurl https://mirrors.huaweicloud.com/operadriver
-```
-
-※ 设置**Electron**和**Python**的镜像地址
-
-```
-npm config set electron_mirror https://mirrors.huaweicloud.com/electron/
-npm config set python_mirror https://mirrors.huaweicloud.com/python
-```
 
 ## 在 npm 上发布自己的包
 
