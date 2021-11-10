@@ -5,8 +5,9 @@ permalink: /pages/91a870/
 categories: 
   - manual
 article: true
-tags: 
-  - 
+tags:
+  - Windows
+  - Network
 ---
 # Windows 双网卡(WLAN & LAN)选择优先级高的上网
 

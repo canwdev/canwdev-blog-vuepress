@@ -6,7 +6,8 @@ categories:
   - manual
 article: true
 tags: 
-  - 
+  - Windows
+  - Network
 ---
 # 使用 Open SSH 在 Windows 上安装 sftp / ssh 服务器
 
