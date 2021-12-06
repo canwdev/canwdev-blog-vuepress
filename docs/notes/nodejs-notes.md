@@ -187,6 +187,10 @@ npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
 # electron 安装慢或失败
 npm config set electron_mirror https://npm.taobao.org/mirrors/electron/
 
+# sharp 安装慢或失败
+npm config set sharp_binary_host "https://npm.taobao.org/mirrors/sharp"
+npm config set sharp_libvips_binary_host "https://npm.taobao.org/mirrors/sharp-libvips"
+
 # canvas 安装慢或失败
 npm config set canvas_binary_host_mirror https://npm.taobao.org/mirrors/node-canvas-prebuilt
 ```
